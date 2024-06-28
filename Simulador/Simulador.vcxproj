@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="Inicio.cpp" />
     <ClCompile Include="Simulador.cpp" />
+    <ClCompile Include="UsuarioSupervisor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inicio.h">
@@ -130,6 +131,7 @@
     <ClInclude Include="Simulador.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="UsuarioSupervisor.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Inicio.resx">

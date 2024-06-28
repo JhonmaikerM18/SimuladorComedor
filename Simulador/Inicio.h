@@ -1,7 +1,6 @@
 #pragma once
 #include "Simulador.h"
 namespace Simulador {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -58,9 +57,9 @@ namespace Simulador {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btn_cerrar = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
-			// 
+			//
 			// btn_iniciar
-			// 
+			//
 			this->btn_iniciar->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
 			this->btn_iniciar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_iniciar->Location = System::Drawing::Point(267, 276);
@@ -70,9 +69,9 @@ namespace Simulador {
 			this->btn_iniciar->Text = L"INICIAR SIMULACIÓN";
 			this->btn_iniciar->UseVisualStyleBackColor = true;
 			this->btn_iniciar->Click += gcnew System::EventHandler(this, &Inicio::button1_Click);
-			// 
+			//
 			// label1
-			// 
+			//
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -81,9 +80,9 @@ namespace Simulador {
 			this->label1->Size = System::Drawing::Size(299, 29);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Bienvenido a la simulación";
-			// 
+			//
 			// btn_cerrar
-			// 
+			//
 			this->btn_cerrar->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
 			this->btn_cerrar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btn_cerrar->Location = System::Drawing::Point(289, 344);
@@ -93,9 +92,9 @@ namespace Simulador {
 			this->btn_cerrar->Text = L"CERRAR";
 			this->btn_cerrar->UseVisualStyleBackColor = true;
 			this->btn_cerrar->Click += gcnew System::EventHandler(this, &Inicio::btn_cerrar_Click);
-			// 
+			//
 			// Inicio
-			// 
+			//
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
@@ -109,7 +108,6 @@ namespace Simulador {
 			this->Text = L"SIMULADOR - COMEDOR";
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
