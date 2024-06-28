@@ -118,6 +118,78 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="verde6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="verde5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="verde4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="verde3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="verde1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="verde2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wAAADsABataJCQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYCAYAAAC+ZpjcAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s
@@ -4336,6 +4408,42 @@
         CoUiG6qppppqqqmmmmqqqaaaaqqppppqqqmmmmqqqaaaaqqppppqqqmmmmqqqaaaaqqppppqqqmmmmqq
         qaaaaqqppppqqqmmmmqqqaaaaqqppppqqqmmmmqqqaaaaqqppppqqqmmmmqqqaaaaqqppppqqqmmmmqq
         5d7eeuv/B52QQ7iabP6EAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="verde9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="verde8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="verde7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVFhHYxgF
+        o4DewPqICK/xHu4i0z3c+cabGbigwvQBhtt4RE328FwC4v9gvJtnI1SK9gDDcgj+CJWmLcBhOQgvhyqh
+        HcBp+W6eI6D0AFVGGzBq+ajlQ8dy8/2cMqY7OWWhXJIBTsv38BzU3i/KA1WGHZjs5i4EKvwLxP9M9nB3
+        MvxnYIRKEQUoshwETPfwvEPWCORPJNYRFFsOAkDFF9E0E+UIqlgOAsZ7uYyAmt6jGfLfeA/PBFyOoJrl
+        MGCym8sQqPktmmEgPAPdEXgsP0xRViPGETSzHAagjniDZjgIz9DbySMGpGlnOQyY7eIyQc8ZUIwtdA7q
+        7RTnhmqlHsATEsiYuj5HBwQcQVvLYcBoH5cx0LJHqJZzb6FJsOMC5tuE+Ex28yYB00WdyV4uT6jwKBgF
+        VAIMDACq3pKxeJ7QFAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="Temporizador.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

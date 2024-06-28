@@ -27,7 +27,8 @@ private:
 	int MenuDieta;
 
 public:
-	Supervisor(int, String^, String^, String^, String^, int, int, int, int);
+	Supervisor(int, String^, String^, String^, String^, int, int, int, int); //Constructor
+	~Supervisor(); //Destructor
 	void guardar();
 	void leer();
 };
@@ -44,16 +45,25 @@ Supervisor::Supervisor(int a, String^ b, String^ c, String^ d, String^ e, int f,
 	MenuRegular = h;
 	MenuDieta = i;
 }
+Supervisor::~Supervisor() {
+	SupervisorID = 0;
+	Nombre = "";
+	Apellido = "";
+	AreaTrabajo = "";
+	NivelJerarquico = "";
+	CantidadTrabajadores = 0;
+	MenuVegetariano = 0;
+	MenuRegular = 0;
+	MenuDieta = 0;
+}
 
 void Supervisor::guardar()
 {
-	// Supongamos que deseas guardar los datos en un archivo de texto
-	String^ rutaArchivo = "Supervisores.txt"; // Cambia la ruta según tu preferencia
+	String^ rutaArchivo = "Supervisores.txt";
 	try
 	{
-		StreamWriter^ escritor = gcnew StreamWriter(rutaArchivo, true); // true para agregar al archivo existente
+		StreamWriter^ escritor = gcnew StreamWriter(rutaArchivo, true); // true para agregar al archivo existente, osea se pone debajo del que ya este
 
-		// Formato de línea: ID|Nombre|Apellido|AreaTrabajo|NivelJerarquico|CantidadTrabajadores
 		String^ linea = String::Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}",
 			SupervisorID, Nombre, Apellido, AreaTrabajo, NivelJerarquico, CantidadTrabajadores,
 			MenuVegetariano, MenuRegular, MenuDieta);
@@ -71,7 +81,7 @@ void Supervisor::guardar()
 
 void Supervisor::leer()
 {
-	String^ rutaArchivo = "Supervisores.txt"; // Cambia la ruta según tu preferencia
+	String^ rutaArchivo = "Supervisores.txt";
 
 	try
 	{
@@ -82,7 +92,7 @@ void Supervisor::leer()
 			String^ linea = lector->ReadLine();
 			array<String^>^ campos = linea->Split('|');
 
-			if (campos->Length == 9) // Asegúrate de que haya suficientes campos en la línea
+			if (campos->Length == 9)//9 porque son la cantidad de variable de la clase
 			{
 				SupervisorID = Convert::ToInt32(campos[0]);
 				Nombre = campos[1];
