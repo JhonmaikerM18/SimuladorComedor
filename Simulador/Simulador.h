@@ -535,7 +535,6 @@ namespace Simulador {
 			// 
 			// Cronometro
 			// 
-			this->Cronometro->Interval = 1000;
 			this->Cronometro->Tick += gcnew System::EventHandler(this, &Simulador::Cronometro_Tick);
 			// 
 			// lbl_Cronometro
@@ -614,40 +613,23 @@ namespace Simulador {
 			Temporizador->Stop(); // Detener el temporizador
 		}
 	}
-		   // Constante con valor por defecto 120 segundos
 		   int timeCronometro = 0;
 	private: System::Void Cronometro_Tick(System::Object^ sender, System::EventArgs^ e) {
-		timeCronometro++; // Suma 1 segundo
-		int minutos;
-		int segundos = timeCronometro;
-		if (timeCronometro > 59) {
-			minutos = 1;
-			if (timeCronometro > 119) {
-				minutos = 2;
-				if (timeCronometro > 179) {
-					minutos = 3;
-					if (timeCronometro > 239) {
-						minutos = 4;
-						if (timeCronometro == 250) {
-							// El tiempo ha expirado
-							Cronometro->Stop(); // Detener el temporizador
-						}
-					}
-				}
-			}
+		timeCronometro++; // Incrementar el tiempo en 1 segundo
 
+		int minutos = timeCronometro / 60;
+		int segundos = timeCronometro % 60;
+		/*{0} y {1} son marcadores de posición para los valores que se reemplazarán en la cadena.
+			Tipo: printf("%s, Hola", String); en lo que era lenguaje C
+
+			:D2 especifica que el valor de segundos debe mostrarse con al menos 2 dígitos
+			(agregando un cero a la izquierda si es necesario).	*/
+		lbl_Cronometro->Text = String::Format(L"{0}:{1:D2} - PRUEBA", minutos, segundos);
+
+		// Detener el temporizador si han pasado 5 minutos (300 segundos) o lo segundos que tiene la constante
+		if (timeCronometro == TIEMPO_MAX_SEGUNDOS_CRONOMETRO) {
+			Cronometro->Stop();
 		}
-
-
-		if (segundos >= 0 && segundos <= 9)
-			lbl_Cronometro->Text = String::Format(L"{0}:0{1} - PRUEBA", minutos, segundos);
-		else
-			lbl_Cronometro->Text = String::Format(L"{0}:{1} - PRUEBA", minutos, segundos);
-		if (timeLeft == 0) {
-			// El tiempo ha expirado
-			Temporizador->Stop(); // Detener el temporizador
-		}
-
 	}
 	};
 }
