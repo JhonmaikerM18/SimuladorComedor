@@ -120,18 +120,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ColaSolicitud.cpp" />
     <ClCompile Include="Inicio.cpp" />
+    <ClCompile Include="MenuClass.cpp" />
     <ClCompile Include="Simulador.cpp" />
-    <ClCompile Include="UsuarioSupervisor.cpp" />
+    <ClCompile Include="SupervisorClass.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ColaSolicitud.h" />
     <ClInclude Include="Inicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MenuClass.h" />
     <ClInclude Include="Simulador.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="UsuarioSupervisor.h" />
+    <ClInclude Include="SupervisorClass.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Inicio.resx">

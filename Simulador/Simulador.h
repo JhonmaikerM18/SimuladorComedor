@@ -2,11 +2,14 @@
 #include "Windows.h"
 #include "ctime"
 #include <iostream>
+#include "SupervisorClass.h"
+#include "ColaSolicitud.h"
+
 #define TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR 120
 #define TIEMPO_MAX_SEGUNDOS_CRONOMETRO 300
 #define TIEMPO_MAX_DE_DATOS 70
 #define TIEMPO_MAX_DE_MENUS 50
-#define CANTIDAD_MENUS_MAX_X_COMIDA 300
+#define CANTIDAD_MAX_TRABAJADORES 300 // Esta constante también modifica la cantidad maxima de comida
 
 namespace Simulador {
 	using namespace System;
@@ -53,13 +56,9 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ lbl_Jerarquia;
 	private: System::Windows::Forms::Label^ lbl_Trabajadores;
 
-	protected:
-
-	protected:
-
 	private: System::Windows::Forms::TextBox^ text_ID;
+	private: System::Windows::Forms::GroupBox^ group_Datos;
 
-	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
@@ -70,14 +69,12 @@ namespace Simulador {
 	private: System::Windows::Forms::TextBox^ text_regular;
 	private: System::Windows::Forms::TextBox^ text_dieta;
 
-	private: System::Windows::Forms::DataGridView^ DGV_DatosCompletos;
-
 	private: System::Windows::Forms::GroupBox^ groupMenu;
 
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Label^ lbl_Menu_Trabajadores;
+	private: System::Windows::Forms::Label^ lbl_Num_Trabajadores;
 
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::TextBox^ text_Trabajadores;
@@ -88,7 +85,7 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ lbl_Cronometro;
 	private: System::Windows::Forms::Label^ lbl_Tiempo_Cronometro;
 	private: System::Windows::Forms::Panel^ panel1;
-	private: System::Windows::Forms::Timer^ Tiempo_Datos;
+
 	private: System::Windows::Forms::PictureBox^ verde6;
 	private: System::Windows::Forms::PictureBox^ verde5;
 	private: System::Windows::Forms::PictureBox^ verde4;
@@ -100,9 +97,14 @@ namespace Simulador {
 	private: System::Windows::Forms::PictureBox^ verde7;
 	private: System::Windows::Forms::PictureBox^ pic_Logo;
 
-	private: System::ComponentModel::IContainer^ components;
+	private: System::Windows::Forms::GroupBox^ group_Atencion;
+	private: System::Windows::Forms::Panel^ panel_Atencion_1;
+	private: System::Windows::Forms::Label^ lbl_Atencion_1;
+	private: System::Windows::Forms::Label^ lbl_Proceso_1;
 
-	protected:
+	private: System::Windows::Forms::ProgressBar^ progressBar1;
+
+	private: System::ComponentModel::IContainer^ components;
 
 	private:
 		/// <summary>
@@ -129,7 +131,7 @@ namespace Simulador {
 			this->lbl_Jerarquia = (gcnew System::Windows::Forms::Label());
 			this->lbl_Trabajadores = (gcnew System::Windows::Forms::Label());
 			this->text_ID = (gcnew System::Windows::Forms::TextBox());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->group_Datos = (gcnew System::Windows::Forms::GroupBox());
 			this->verde6 = (gcnew System::Windows::Forms::PictureBox());
 			this->verde5 = (gcnew System::Windows::Forms::PictureBox());
 			this->verde4 = (gcnew System::Windows::Forms::PictureBox());
@@ -146,14 +148,13 @@ namespace Simulador {
 			this->text_vegetariano = (gcnew System::Windows::Forms::TextBox());
 			this->text_regular = (gcnew System::Windows::Forms::TextBox());
 			this->text_dieta = (gcnew System::Windows::Forms::TextBox());
-			this->DGV_DatosCompletos = (gcnew System::Windows::Forms::DataGridView());
 			this->groupMenu = (gcnew System::Windows::Forms::GroupBox());
 			this->verde9 = (gcnew System::Windows::Forms::PictureBox());
 			this->verde8 = (gcnew System::Windows::Forms::PictureBox());
 			this->verde7 = (gcnew System::Windows::Forms::PictureBox());
 			this->lbl_Temporizador = (gcnew System::Windows::Forms::Label());
 			this->lbl_Tiempo = (gcnew System::Windows::Forms::Label());
-			this->lbl_Menu_Trabajadores = (gcnew System::Windows::Forms::Label());
+			this->lbl_Num_Trabajadores = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -163,9 +164,13 @@ namespace Simulador {
 			this->lbl_Cronometro = (gcnew System::Windows::Forms::Label());
 			this->lbl_Tiempo_Cronometro = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->Tiempo_Datos = (gcnew System::Windows::Forms::Timer(this->components));
 			this->pic_Logo = (gcnew System::Windows::Forms::PictureBox());
-			this->groupBox1->SuspendLayout();
+			this->group_Atencion = (gcnew System::Windows::Forms::GroupBox());
+			this->panel_Atencion_1 = (gcnew System::Windows::Forms::Panel());
+			this->lbl_Proceso_1 = (gcnew System::Windows::Forms::Label());
+			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
+			this->lbl_Atencion_1 = (gcnew System::Windows::Forms::Label());
+			this->group_Datos->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde6))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde4))->BeginInit();
@@ -175,34 +180,39 @@ namespace Simulador {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_DatosCompletos))->BeginInit();
 			this->groupMenu->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde7))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pic_Logo))->BeginInit();
+			this->group_Atencion->SuspendLayout();
+			this->panel_Atencion_1->SuspendLayout();
 			this->SuspendLayout();
-			// 
+			//
 			// combo_Nombre
-			// 
+			//
+			this->combo_Nombre->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->combo_Nombre->Enabled = false;
 			this->combo_Nombre->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->combo_Nombre->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->combo_Nombre->FormattingEnabled = true;
-			this->combo_Nombre->Items->AddRange(gcnew cli::array< System::Object^  >(39) {
+			this->combo_Nombre->Items->AddRange(gcnew cli::array< System::Object^  >(41) {
 				L"María", L"Carmen", L"Antonio", L"Manuel",
 					L"José", L"Francisco", L"David", L"Juan", L"Javier", L"Daniel", L"Alejandro", L"Carlos", L"Miguel", L"Pablo", L"Rafael", L"Sergio",
-					L"Ángel", L"Pedro", L"Fernando", L"José ", L"María", L"Luis", L"Alberto", L"Adrián", L"Juan ", L"Carlos", L"Diego", L"Iván",
-					L"Óscar", L"Enrique", L"Martín", L"Hugo", L"Mateo", L"Leo", L"Lucas", L"Daniel", L"Alejandro", L"Pablo", L"Enzo"
+					L"Ángel", L"Pedro", L"Fernando", L"José ", L"Susej", L"Antonia", L"Blanca", L"Luis", L"Alberto", L"Adrián", L"Juan ", L"Carlos",
+					L"Diego", L"Iván", L"Óscar", L"Enrique", L"Martín", L"Hugo", L"Mateo", L"Leo", L"Lucas", L"Daniel", L"Alejandro", L"Pablo", L"Enzo"
 			});
 			this->combo_Nombre->Location = System::Drawing::Point(15, 123);
 			this->combo_Nombre->Name = L"combo_Nombre";
 			this->combo_Nombre->Size = System::Drawing::Size(192, 28);
 			this->combo_Nombre->TabIndex = 1;
-			// 
+			//
 			// combo_Apellido
-			// 
+			//
+			this->combo_Apellido->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->combo_Apellido->Enabled = false;
 			this->combo_Apellido->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->combo_Apellido->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -218,9 +228,11 @@ namespace Simulador {
 			this->combo_Apellido->Name = L"combo_Apellido";
 			this->combo_Apellido->Size = System::Drawing::Size(192, 28);
 			this->combo_Apellido->TabIndex = 2;
-			// 
+			//
 			// combo_Area
-			// 
+			//
+			this->combo_Area->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->combo_Area->Enabled = false;
 			this->combo_Area->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->combo_Area->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -236,9 +248,11 @@ namespace Simulador {
 			this->combo_Area->Name = L"combo_Area";
 			this->combo_Area->Size = System::Drawing::Size(192, 24);
 			this->combo_Area->TabIndex = 3;
-			// 
+			//
 			// combo_Jerarquia
-			// 
+			//
+			this->combo_Jerarquia->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->combo_Jerarquia->Enabled = false;
 			this->combo_Jerarquia->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->combo_Jerarquia->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -251,9 +265,9 @@ namespace Simulador {
 			this->combo_Jerarquia->Name = L"combo_Jerarquia";
 			this->combo_Jerarquia->Size = System::Drawing::Size(192, 28);
 			this->combo_Jerarquia->TabIndex = 4;
-			// 
+			//
 			// lbl_ID
-			// 
+			//
 			this->lbl_ID->AutoSize = true;
 			this->lbl_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -262,9 +276,9 @@ namespace Simulador {
 			this->lbl_ID->Size = System::Drawing::Size(103, 20);
 			this->lbl_ID->TabIndex = 6;
 			this->lbl_ID->Text = L"Identificación";
-			// 
+			//
 			// lbl_Nombre
-			// 
+			//
 			this->lbl_Nombre->AutoSize = true;
 			this->lbl_Nombre->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -273,9 +287,9 @@ namespace Simulador {
 			this->lbl_Nombre->Size = System::Drawing::Size(65, 20);
 			this->lbl_Nombre->TabIndex = 7;
 			this->lbl_Nombre->Text = L"Nombre";
-			// 
+			//
 			// lbl_Apellido
-			// 
+			//
 			this->lbl_Apellido->AutoSize = true;
 			this->lbl_Apellido->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -284,9 +298,9 @@ namespace Simulador {
 			this->lbl_Apellido->Size = System::Drawing::Size(65, 20);
 			this->lbl_Apellido->TabIndex = 8;
 			this->lbl_Apellido->Text = L"Apellido";
-			// 
+			//
 			// lbl_Area
-			// 
+			//
 			this->lbl_Area->AutoSize = true;
 			this->lbl_Area->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -295,9 +309,9 @@ namespace Simulador {
 			this->lbl_Area->Size = System::Drawing::Size(122, 20);
 			this->lbl_Area->TabIndex = 9;
 			this->lbl_Area->Text = L"Area de Trabajo";
-			// 
+			//
 			// lbl_Jerarquia
-			// 
+			//
 			this->lbl_Jerarquia->AutoSize = true;
 			this->lbl_Jerarquia->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -306,9 +320,9 @@ namespace Simulador {
 			this->lbl_Jerarquia->Size = System::Drawing::Size(75, 20);
 			this->lbl_Jerarquia->TabIndex = 10;
 			this->lbl_Jerarquia->Text = L"Jerarquia";
-			// 
+			//
 			// lbl_Trabajadores
-			// 
+			//
 			this->lbl_Trabajadores->AutoSize = true;
 			this->lbl_Trabajadores->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -317,46 +331,49 @@ namespace Simulador {
 			this->lbl_Trabajadores->Size = System::Drawing::Size(102, 20);
 			this->lbl_Trabajadores->TabIndex = 11;
 			this->lbl_Trabajadores->Text = L"Trabajadores";
-			// 
+			//
 			// text_ID
-			// 
+			//
 			this->text_ID->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->text_ID->Enabled = false;
 			this->text_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->text_ID->Location = System::Drawing::Point(15, 58);
 			this->text_ID->Name = L"text_ID";
 			this->text_ID->Size = System::Drawing::Size(192, 29);
 			this->text_ID->TabIndex = 12;
-			// 
-			// groupBox1
-			// 
-			this->groupBox1->Controls->Add(this->verde6);
-			this->groupBox1->Controls->Add(this->verde5);
-			this->groupBox1->Controls->Add(this->verde4);
-			this->groupBox1->Controls->Add(this->verde3);
-			this->groupBox1->Controls->Add(this->verde1);
-			this->groupBox1->Controls->Add(this->verde2);
-			this->groupBox1->Controls->Add(this->text_Trabajadores);
-			this->groupBox1->Controls->Add(this->lbl_ID);
-			this->groupBox1->Controls->Add(this->text_ID);
-			this->groupBox1->Controls->Add(this->combo_Nombre);
-			this->groupBox1->Controls->Add(this->lbl_Trabajadores);
-			this->groupBox1->Controls->Add(this->combo_Apellido);
-			this->groupBox1->Controls->Add(this->lbl_Jerarquia);
-			this->groupBox1->Controls->Add(this->combo_Area);
-			this->groupBox1->Controls->Add(this->lbl_Area);
-			this->groupBox1->Controls->Add(this->combo_Jerarquia);
-			this->groupBox1->Controls->Add(this->lbl_Apellido);
-			this->groupBox1->Controls->Add(this->lbl_Nombre);
-			this->groupBox1->Location = System::Drawing::Point(12, 12);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(258, 485);
-			this->groupBox1->TabIndex = 13;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Datos necesarios";
-			// 
+			//
+			// group_Datos
+			//
+			this->group_Datos->Controls->Add(this->verde6);
+			this->group_Datos->Controls->Add(this->verde5);
+			this->group_Datos->Controls->Add(this->verde4);
+			this->group_Datos->Controls->Add(this->verde3);
+			this->group_Datos->Controls->Add(this->verde1);
+			this->group_Datos->Controls->Add(this->verde2);
+			this->group_Datos->Controls->Add(this->text_Trabajadores);
+			this->group_Datos->Controls->Add(this->lbl_ID);
+			this->group_Datos->Controls->Add(this->text_ID);
+			this->group_Datos->Controls->Add(this->combo_Nombre);
+			this->group_Datos->Controls->Add(this->lbl_Trabajadores);
+			this->group_Datos->Controls->Add(this->combo_Apellido);
+			this->group_Datos->Controls->Add(this->lbl_Jerarquia);
+			this->group_Datos->Controls->Add(this->combo_Area);
+			this->group_Datos->Controls->Add(this->lbl_Area);
+			this->group_Datos->Controls->Add(this->combo_Jerarquia);
+			this->group_Datos->Controls->Add(this->lbl_Apellido);
+			this->group_Datos->Controls->Add(this->lbl_Nombre);
+			this->group_Datos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->group_Datos->Location = System::Drawing::Point(12, 12);
+			this->group_Datos->Name = L"group_Datos";
+			this->group_Datos->Size = System::Drawing::Size(258, 485);
+			this->group_Datos->TabIndex = 13;
+			this->group_Datos->TabStop = false;
+			this->group_Datos->Text = L"Datos necesarios";
+			//
 			// verde6
-			// 
+			//
 			this->verde6->Enabled = false;
 			this->verde6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde6.Image")));
 			this->verde6->Location = System::Drawing::Point(215, 439);
@@ -365,9 +382,10 @@ namespace Simulador {
 			this->verde6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde6->TabIndex = 20;
 			this->verde6->TabStop = false;
-			// 
+			this->verde6->Visible = false;
+			//
 			// verde5
-			// 
+			//
 			this->verde5->Enabled = false;
 			this->verde5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde5.Image")));
 			this->verde5->Location = System::Drawing::Point(215, 366);
@@ -376,9 +394,10 @@ namespace Simulador {
 			this->verde5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde5->TabIndex = 19;
 			this->verde5->TabStop = false;
-			// 
+			this->verde5->Visible = false;
+			//
 			// verde4
-			// 
+			//
 			this->verde4->Enabled = false;
 			this->verde4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde4.Image")));
 			this->verde4->Location = System::Drawing::Point(215, 288);
@@ -387,9 +406,10 @@ namespace Simulador {
 			this->verde4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde4->TabIndex = 18;
 			this->verde4->TabStop = false;
-			// 
+			this->verde4->Visible = false;
+			//
 			// verde3
-			// 
+			//
 			this->verde3->Enabled = false;
 			this->verde3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde3.Image")));
 			this->verde3->Location = System::Drawing::Point(215, 204);
@@ -398,9 +418,10 @@ namespace Simulador {
 			this->verde3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde3->TabIndex = 17;
 			this->verde3->TabStop = false;
-			// 
+			this->verde3->Visible = false;
+			//
 			// verde1
-			// 
+			//
 			this->verde1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde1.Image")));
 			this->verde1->Location = System::Drawing::Point(215, 58);
 			this->verde1->Name = L"verde1";
@@ -408,9 +429,10 @@ namespace Simulador {
 			this->verde1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde1->TabIndex = 16;
 			this->verde1->TabStop = false;
-			// 
+			this->verde1->Visible = false;
+			//
 			// verde2
-			// 
+			//
 			this->verde2->Enabled = false;
 			this->verde2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde2.Image")));
 			this->verde2->Location = System::Drawing::Point(215, 123);
@@ -419,124 +441,117 @@ namespace Simulador {
 			this->verde2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde2->TabIndex = 15;
 			this->verde2->TabStop = false;
-			// 
+			this->verde2->Visible = false;
+			//
 			// text_Trabajadores
-			// 
+			//
 			this->text_Trabajadores->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->text_Trabajadores->Enabled = false;
 			this->text_Trabajadores->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->text_Trabajadores->Location = System::Drawing::Point(15, 439);
 			this->text_Trabajadores->Name = L"text_Trabajadores";
 			this->text_Trabajadores->Size = System::Drawing::Size(192, 29);
 			this->text_Trabajadores->TabIndex = 13;
-			// 
+			//
 			// pictureBox1
-			// 
+			//
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(8, 15);
+			this->pictureBox1->Location = System::Drawing::Point(9, 23);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(75, 66);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox1->TabIndex = 14;
 			this->pictureBox1->TabStop = false;
-			// 
+			//
 			// pictureBox2
-			// 
+			//
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(207, 15);
+			this->pictureBox2->Location = System::Drawing::Point(208, 23);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(75, 66);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox2->TabIndex = 15;
 			this->pictureBox2->TabStop = false;
-			// 
+			//
 			// pictureBox3
-			// 
+			//
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(411, 15);
+			this->pictureBox3->Location = System::Drawing::Point(412, 23);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(75, 66);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pictureBox3->TabIndex = 16;
 			this->pictureBox3->TabStop = false;
-			// 
+			//
 			// label7
-			// 
+			//
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(89, 15);
+			this->label7->Location = System::Drawing::Point(90, 23);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(112, 24);
 			this->label7->TabIndex = 17;
 			this->label7->Text = L"Vegetariano";
-			// 
+			//
 			// label8
-			// 
+			//
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(305, 15);
+			this->label8->Location = System::Drawing::Point(306, 23);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(76, 24);
 			this->label8->TabIndex = 18;
 			this->label8->Text = L"Regular";
-			// 
+			//
 			// label9
-			// 
+			//
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(518, 15);
+			this->label9->Location = System::Drawing::Point(519, 23);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(52, 24);
 			this->label9->TabIndex = 19;
 			this->label9->Text = L"Dieta";
-			// 
+			//
 			// text_vegetariano
-			// 
+			//
 			this->text_vegetariano->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->text_vegetariano->Enabled = false;
 			this->text_vegetariano->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->text_vegetariano->Location = System::Drawing::Point(93, 44);
+			this->text_vegetariano->Location = System::Drawing::Point(94, 52);
 			this->text_vegetariano->Name = L"text_vegetariano";
 			this->text_vegetariano->Size = System::Drawing::Size(82, 26);
 			this->text_vegetariano->TabIndex = 20;
-			// 
+			//
 			// text_regular
-			// 
+			//
 			this->text_regular->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->text_regular->Enabled = false;
 			this->text_regular->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->text_regular->Location = System::Drawing::Point(292, 44);
+			this->text_regular->Location = System::Drawing::Point(293, 52);
 			this->text_regular->Name = L"text_regular";
 			this->text_regular->Size = System::Drawing::Size(89, 26);
 			this->text_regular->TabIndex = 21;
-			// 
+			//
 			// text_dieta
-			// 
+			//
 			this->text_dieta->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->text_dieta->Enabled = false;
 			this->text_dieta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->text_dieta->Location = System::Drawing::Point(496, 44);
+			this->text_dieta->Location = System::Drawing::Point(497, 52);
 			this->text_dieta->Name = L"text_dieta";
 			this->text_dieta->Size = System::Drawing::Size(86, 26);
 			this->text_dieta->TabIndex = 22;
-			// 
-			// DGV_DatosCompletos
-			// 
-			this->DGV_DatosCompletos->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->DGV_DatosCompletos->BackgroundColor = System::Drawing::Color::White;
-			this->DGV_DatosCompletos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->DGV_DatosCompletos->Location = System::Drawing::Point(276, 171);
-			this->DGV_DatosCompletos->Name = L"DGV_DatosCompletos";
-			this->DGV_DatosCompletos->Size = System::Drawing::Size(618, 294);
-			this->DGV_DatosCompletos->TabIndex = 23;
-			// 
+			//
 			// groupMenu
-			// 
+			//
 			this->groupMenu->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->groupMenu->Controls->Add(this->verde9);
@@ -544,7 +559,7 @@ namespace Simulador {
 			this->groupMenu->Controls->Add(this->verde7);
 			this->groupMenu->Controls->Add(this->lbl_Temporizador);
 			this->groupMenu->Controls->Add(this->lbl_Tiempo);
-			this->groupMenu->Controls->Add(this->lbl_Menu_Trabajadores);
+			this->groupMenu->Controls->Add(this->lbl_Num_Trabajadores);
 			this->groupMenu->Controls->Add(this->label10);
 			this->groupMenu->Controls->Add(this->pictureBox1);
 			this->groupMenu->Controls->Add(this->pictureBox2);
@@ -555,170 +570,186 @@ namespace Simulador {
 			this->groupMenu->Controls->Add(this->text_vegetariano);
 			this->groupMenu->Controls->Add(this->label8);
 			this->groupMenu->Controls->Add(this->label9);
-			this->groupMenu->Location = System::Drawing::Point(276, 14);
+			this->groupMenu->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupMenu->Location = System::Drawing::Point(276, 5);
 			this->groupMenu->Name = L"groupMenu";
-			this->groupMenu->Size = System::Drawing::Size(618, 121);
+			this->groupMenu->Size = System::Drawing::Size(913, 130);
 			this->groupMenu->TabIndex = 24;
 			this->groupMenu->TabStop = false;
 			this->groupMenu->Text = L"Selección de Menus";
-			// 
+			//
 			// verde9
-			// 
+			//
 			this->verde9->Enabled = false;
 			this->verde9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde9.Image")));
-			this->verde9->Location = System::Drawing::Point(588, 44);
+			this->verde9->Location = System::Drawing::Point(589, 52);
 			this->verde9->Name = L"verde9";
 			this->verde9->Size = System::Drawing::Size(23, 26);
 			this->verde9->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde9->TabIndex = 31;
 			this->verde9->TabStop = false;
-			// 
+			this->verde9->Visible = false;
+			//
 			// verde8
-			// 
+			//
 			this->verde8->Enabled = false;
 			this->verde8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde8.Image")));
-			this->verde8->Location = System::Drawing::Point(385, 44);
+			this->verde8->Location = System::Drawing::Point(386, 52);
 			this->verde8->Name = L"verde8";
 			this->verde8->Size = System::Drawing::Size(23, 26);
 			this->verde8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde8->TabIndex = 30;
 			this->verde8->TabStop = false;
-			// 
+			this->verde8->Visible = false;
+			//
 			// verde7
-			// 
+			//
 			this->verde7->Enabled = false;
 			this->verde7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde7.Image")));
-			this->verde7->Location = System::Drawing::Point(179, 44);
+			this->verde7->Location = System::Drawing::Point(180, 52);
 			this->verde7->Name = L"verde7";
 			this->verde7->Size = System::Drawing::Size(23, 26);
 			this->verde7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->verde7->TabIndex = 21;
 			this->verde7->TabStop = false;
-			// 
+			this->verde7->Visible = false;
+			//
 			// lbl_Temporizador
-			// 
+			//
 			this->lbl_Temporizador->AutoSize = true;
 			this->lbl_Temporizador->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lbl_Temporizador->ForeColor = System::Drawing::Color::Red;
-			this->lbl_Temporizador->Location = System::Drawing::Point(447, 91);
+			this->lbl_Temporizador->Location = System::Drawing::Point(528, 99);
 			this->lbl_Temporizador->Name = L"lbl_Temporizador";
 			this->lbl_Temporizador->Size = System::Drawing::Size(106, 20);
 			this->lbl_Temporizador->TabIndex = 29;
 			this->lbl_Temporizador->Text = L"Temporizador";
-			// 
+			//
 			// lbl_Tiempo
-			// 
+			//
 			this->lbl_Tiempo->AutoSize = true;
 			this->lbl_Tiempo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl_Tiempo->Location = System::Drawing::Point(382, 91);
+			this->lbl_Tiempo->Location = System::Drawing::Point(457, 99);
 			this->lbl_Tiempo->Name = L"lbl_Tiempo";
 			this->lbl_Tiempo->Size = System::Drawing::Size(65, 20);
 			this->lbl_Tiempo->TabIndex = 28;
 			this->lbl_Tiempo->Text = L"Tiempo:";
-			// 
-			// lbl_Menu_Trabajadores
-			// 
-			this->lbl_Menu_Trabajadores->AutoSize = true;
-			this->lbl_Menu_Trabajadores->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
+			//
+			// lbl_Num_Trabajadores
+			//
+			this->lbl_Num_Trabajadores->AutoSize = true;
+			this->lbl_Num_Trabajadores->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lbl_Menu_Trabajadores->Location = System::Drawing::Point(201, 91);
-			this->lbl_Menu_Trabajadores->Name = L"lbl_Menu_Trabajadores";
-			this->lbl_Menu_Trabajadores->Size = System::Drawing::Size(175, 20);
-			this->lbl_Menu_Trabajadores->TabIndex = 24;
-			this->lbl_Menu_Trabajadores->Text = L"lbl_Menu_Trabajadores";
-			// 
+			this->lbl_Num_Trabajadores->Location = System::Drawing::Point(202, 99);
+			this->lbl_Num_Trabajadores->Name = L"lbl_Num_Trabajadores";
+			this->lbl_Num_Trabajadores->Size = System::Drawing::Size(18, 20);
+			this->lbl_Num_Trabajadores->TabIndex = 24;
+			this->lbl_Num_Trabajadores->Text = L"0";
+			this->lbl_Num_Trabajadores->Visible = false;
+			//
 			// label10
-			// 
+			//
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(10, 91);
+			this->label10->Location = System::Drawing::Point(11, 99);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(192, 20);
 			this->label10->TabIndex = 23;
 			this->label10->Text = L"Numeros de trabajadores:";
-			// 
+			//
 			// button1
-			// 
+			//
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button1->Location = System::Drawing::Point(14, 5);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(83, 34);
 			this->button1->TabIndex = 25;
-			this->button1->Text = L"Detener Simulación";
+			this->button1->Text = L"Detener";
 			this->button1->UseVisualStyleBackColor = true;
-			// 
+			//
 			// button2
-			// 
+			//
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button2->Location = System::Drawing::Point(105, 5);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(83, 34);
 			this->button2->TabIndex = 26;
-			this->button2->Text = L"Pausar Simulación";
+			this->button2->Text = L"Pausar";
 			this->button2->UseVisualStyleBackColor = true;
-			// 
+			//
 			// button3
-			// 
+			//
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button3->Location = System::Drawing::Point(197, 5);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(86, 34);
 			this->button3->TabIndex = 27;
-			this->button3->Text = L"Imprimir reportes";
+			this->button3->Text = L"Imprimir";
 			this->button3->UseVisualStyleBackColor = true;
-			// 
+			this->button3->Visible = false;
+			//
 			// Temporizador
-			// 
+			//
 			this->Temporizador->Interval = 1000;
 			this->Temporizador->Tick += gcnew System::EventHandler(this, &Simulador::Temporizador_Tick);
-			// 
+			//
 			// Cronometro
-			// 
+			//
 			this->Cronometro->Interval = 1000;
 			this->Cronometro->Tick += gcnew System::EventHandler(this, &Simulador::Cronometro_Tick);
-			// 
+			//
 			// lbl_Cronometro
-			// 
+			//
 			this->lbl_Cronometro->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->lbl_Cronometro->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lbl_Cronometro->ForeColor = System::Drawing::Color::Red;
-			this->lbl_Cronometro->Location = System::Drawing::Point(471, 11);
+			this->lbl_Cronometro->Location = System::Drawing::Point(465, 14);
 			this->lbl_Cronometro->Name = L"lbl_Cronometro";
-			this->lbl_Cronometro->Size = System::Drawing::Size(144, 20);
+			this->lbl_Cronometro->Size = System::Drawing::Size(144, 25);
 			this->lbl_Cronometro->TabIndex = 31;
 			this->lbl_Cronometro->Text = L"Cronometro";
-			// 
+			//
 			// lbl_Tiempo_Cronometro
-			// 
+			//
 			this->lbl_Tiempo_Cronometro->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->lbl_Tiempo_Cronometro->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lbl_Tiempo_Cronometro->Location = System::Drawing::Point(307, 12);
+			this->lbl_Tiempo_Cronometro->Location = System::Drawing::Point(310, 14);
 			this->lbl_Tiempo_Cronometro->Name = L"lbl_Tiempo_Cronometro";
-			this->lbl_Tiempo_Cronometro->Size = System::Drawing::Size(160, 20);
+			this->lbl_Tiempo_Cronometro->Size = System::Drawing::Size(160, 25);
 			this->lbl_Tiempo_Cronometro->TabIndex = 30;
 			this->lbl_Tiempo_Cronometro->Text = L"Tiempo transcurido:";
-			// 
+			//
 			// panel1
-			// 
+			//
 			this->panel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			this->panel1->Controls->Add(this->button1);
 			this->panel1->Controls->Add(this->lbl_Cronometro);
 			this->panel1->Controls->Add(this->button2);
 			this->panel1->Controls->Add(this->lbl_Tiempo_Cronometro);
 			this->panel1->Controls->Add(this->button3);
-			this->panel1->Location = System::Drawing::Point(276, 471);
+			this->panel1->Location = System::Drawing::Point(571, 451);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(618, 45);
 			this->panel1->TabIndex = 32;
-			// 
+			//
 			// pic_Logo
-			// 
+			//
 			this->pic_Logo->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pic_Logo.Image")));
 			this->pic_Logo->Location = System::Drawing::Point(20, 500);
 			this->pic_Logo->Name = L"pic_Logo";
@@ -726,25 +757,81 @@ namespace Simulador {
 			this->pic_Logo->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->pic_Logo->TabIndex = 33;
 			this->pic_Logo->TabStop = false;
-			// 
+			//
+			// group_Atencion
+			//
+			this->group_Atencion->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->group_Atencion->Controls->Add(this->panel_Atencion_1);
+			this->group_Atencion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->group_Atencion->Location = System::Drawing::Point(276, 144);
+			this->group_Atencion->Name = L"group_Atencion";
+			this->group_Atencion->Size = System::Drawing::Size(913, 295);
+			this->group_Atencion->TabIndex = 34;
+			this->group_Atencion->TabStop = false;
+			this->group_Atencion->Text = L"Atención y Entrega ";
+			//
+			// panel_Atencion_1
+			//
+			this->panel_Atencion_1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->panel_Atencion_1->Controls->Add(this->lbl_Proceso_1);
+			this->panel_Atencion_1->Controls->Add(this->progressBar1);
+			this->panel_Atencion_1->Controls->Add(this->lbl_Atencion_1);
+			this->panel_Atencion_1->Location = System::Drawing::Point(15, 22);
+			this->panel_Atencion_1->Name = L"panel_Atencion_1";
+			this->panel_Atencion_1->Size = System::Drawing::Size(889, 34);
+			this->panel_Atencion_1->TabIndex = 0;
+			this->panel_Atencion_1->Visible = false;
+			//
+			// lbl_Proceso_1
+			//
+			this->lbl_Proceso_1->AutoSize = true;
+			this->lbl_Proceso_1->Location = System::Drawing::Point(646, 9);
+			this->lbl_Proceso_1->Name = L"lbl_Proceso_1";
+			this->lbl_Proceso_1->Size = System::Drawing::Size(79, 16);
+			this->lbl_Proceso_1->TabIndex = 2;
+			this->lbl_Proceso_1->Text = L"Preparando";
+			//
+			// progressBar1
+			//
+			this->progressBar1->Location = System::Drawing::Point(749, 5);
+			this->progressBar1->Name = L"progressBar1";
+			this->progressBar1->Size = System::Drawing::Size(126, 23);
+			this->progressBar1->TabIndex = 1;
+			//
+			// lbl_Atencion_1
+			//
+			this->lbl_Atencion_1->AutoSize = true;
+			this->lbl_Atencion_1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lbl_Atencion_1->Location = System::Drawing::Point(7, 9);
+			this->lbl_Atencion_1->Name = L"lbl_Atencion_1";
+			this->lbl_Atencion_1->Size = System::Drawing::Size(623, 18);
+			this->lbl_Atencion_1->TabIndex = 0;
+			this->lbl_Atencion_1->Text = L"El supervisor Jhonmaiker Machado a ordenado: 20 Vegetarianos, 3 Regulares y 60 Di"
+				L"eteticos";
+			//
 			// Simulador
-			// 
+			//
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(906, 519);
+			this->ClientSize = System::Drawing::Size(1201, 499);
+			this->Controls->Add(this->group_Atencion);
 			this->Controls->Add(this->pic_Logo);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->groupMenu);
-			this->Controls->Add(this->DGV_DatosCompletos);
-			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->group_Datos);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->Name = L"Simulador";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Simulador";
 			this->Load += gcnew System::EventHandler(this, &Simulador::Simulador_Load);
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
+			this->group_Datos->ResumeLayout(false);
+			this->group_Datos->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde6))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde5))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde4))->EndInit();
@@ -754,7 +841,6 @@ namespace Simulador {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_DatosCompletos))->EndInit();
 			this->groupMenu->ResumeLayout(false);
 			this->groupMenu->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde9))->EndInit();
@@ -762,43 +848,25 @@ namespace Simulador {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde7))->EndInit();
 			this->panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pic_Logo))->EndInit();
+			this->group_Atencion->ResumeLayout(false);
+			this->panel_Atencion_1->ResumeLayout(false);
+			this->panel_Atencion_1->PerformLayout();
 			this->ResumeLayout(false);
-
 		}
 #pragma endregion
+
 		//VARIABLES BOOLEANAS GLOBALES DE VERIFICACION
 		bool b_id, b_name, b_apellido, b_area, b_jerarquia, b_trabajadores, b_vegetariano, b_regular, b_dieta;
-		void boolenas_clear() {
-			b_id = b_name = b_apellido = b_area = b_jerarquia = b_trabajadores = b_vegetariano = b_regular = b_dieta = false;
-			verde1->Visible = false;
-			verde2->Visible = false;
-			verde3->Visible = false;
-			verde4->Visible = false;
-			verde5->Visible = false;
-			verde6->Visible = false;
-			verde7->Visible = false;
-			verde8->Visible = false;
-			verde9->Visible = false;
-		}
-		void boolenas_tick_verdes_Enabled() {
-			if (b_id) verde1->Visible = true;
-			if (b_name) verde2->Visible = true;
-			if (b_apellido) verde3->Visible = true;
-			if (b_area) verde4->Visible = true;
-			if (b_jerarquia) verde5->Visible = true;
-			if (b_trabajadores) verde6->Visible = true;
-			if (b_vegetariano) verde7->Visible = true;
-			if (b_regular) verde8->Visible = true;
-			if (b_dieta) verde9->Visible = true;
-		}
+		//VARIABLES STRING GLOBALES DE DATOS
+		String^ _nombre, ^ _apellido, ^ _area, ^ _jerarquia;
+		//VARIABLES INT GLOBALES DE DATOS
+		int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0;
 
 	private: System::Void Simulador_Load(System::Object^ sender, System::EventArgs^ e) {
-		lbl_Menu_Trabajadores->Text = "0";
+		lbl_Num_Trabajadores->Text = "0";
 		lbl_Temporizador->Text = "2:00";
-		boolenas_clear();
 		Temporizador->Start();
 		Cronometro->Start();
-		Llenar_Campos_De_Datos();
 	}
 
 		   int timeLeft = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR; // Constante con valor por defecto 120 segundos
@@ -822,15 +890,7 @@ namespace Simulador {
 		//int segundos = timeCronometro % 60;
 		TimeSpan tiempo = TimeSpan::FromSeconds(timeCronometro);
 		lbl_Cronometro->Text = String::Format(L"{0}:{1:D2} - PRUEBA", tiempo.Minutes, tiempo.Seconds);
-
-		if (!b_id || !b_name || !b_apellido || !b_area || !b_jerarquia || !b_trabajadores) {
-			Llenar_Campos_De_Datos();
-		}
-		else {
-			if (!b_vegetariano || !b_regular || !b_dieta)
-				Llenar_Campos_De_Menus();
-		}
-		boolenas_tick_verdes_Enabled();
+		Verificador_TEXT();
 		// Detener el temporizador si han pasado 5 minutos (300 segundos) o lo segundos que tiene la constante
 		if (timeCronometro == TIEMPO_MAX_SEGUNDOS_CRONOMETRO) {
 			Cronometro->Stop();
@@ -840,124 +900,158 @@ namespace Simulador {
 		Random^ rnd = gcnew Random();
 		return rnd->Next(min, max + 1);
 	}
+	private: void Verificador_TEXT() {
+		//DATOS DEL SUPERVISOR
+		String^ S_id = text_ID->Text;
+		String^ S_nombre = combo_Nombre->Text;;
+		String^ S_apellido = combo_Apellido->Text;
+		String^ S_area = combo_Area->Text;
+		String^ S_jra = combo_Jerarquia->Text;
+		String^ S_trabjs = text_Trabajadores->Text;
+		//DATOS DEL LOS MENUS
+		String^ S_vegetariano = text_vegetariano->Text;
+		String^ S_regular = text_regular->Text;
+		String^ S_dieta = text_dieta->Text;
+
+		if (String::IsNullOrEmpty(S_id) || String::IsNullOrEmpty(S_nombre) || String::IsNullOrEmpty(S_apellido) ||
+			String::IsNullOrEmpty(S_area) || String::IsNullOrEmpty(S_jra) || String::IsNullOrEmpty(S_trabjs)) {
+			Llenar_Campos_De_Datos();
+		}
+		else if (String::IsNullOrEmpty(S_vegetariano) || String::IsNullOrEmpty(S_regular) || String::IsNullOrEmpty(S_dieta)) {
+			Llenar_Campos_De_Menus();
+		}
+		else {
+			Supervisor^ super = gcnew Supervisor(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
+			MenuClass^ menu = gcnew MenuClass(_vegetariano, _regular, _dieta);
+			super->guardar(menu);
+			activarPanel_de_atención(panel_Atencion_1, lbl_Atencion_1, lbl_Proceso_1);
+			Cronometro->Stop();
+		}
+		//ACTIVADO EL TICK VERDE CUANDO HAY TEXTO YA SELECIONADO
+		if (!String::IsNullOrEmpty(S_id))			 verde1->Visible = true;
+		if (!String::IsNullOrEmpty(S_nombre))		 verde2->Visible = true;
+		if (!String::IsNullOrEmpty(S_apellido))		 verde3->Visible = true;
+		if (!String::IsNullOrEmpty(S_area))			 verde4->Visible = true;
+		if (!String::IsNullOrEmpty(S_jra))			 verde5->Visible = true;
+		if (!String::IsNullOrEmpty(S_trabjs)) {
+			verde6->Visible = true;
+			lbl_Num_Trabajadores->Text = S_trabjs;
+		}
+		//COMIDAS
+		if (!String::IsNullOrEmpty(S_vegetariano))	verde7->Visible = true;
+		if (!String::IsNullOrEmpty(S_regular))		verde8->Visible = true;
+		if (!String::IsNullOrEmpty(S_dieta))			verde9->Visible = true;
+	}
 
 	private: void Llenar_Campos_De_Datos() {
+		//PASANDO VALORES PARA USARLOS COMO OBJETOS
+		String^ S_id = text_ID->Text;
+		String^ S_nombre = combo_Nombre->Text;
+		String^ S_apellido = combo_Apellido->Text;
+		String^ S_area = combo_Area->Text;
+		String^ S_jerarquia = combo_Jerarquia->Text;
+		String^ S_trabajadores = text_Trabajadores->Text;
 		// Verificar si el tiempo está dentro del límite
 		if (timeCronometro <= TIEMPO_MAX_DE_DATOS) {
 			// Llenar campos según condiciones específicas
-			if (!b_id && timeCronometro == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
-				int num_ID = generarNumeroAleatorio(1, 8000);
-				text_ID->Text = Convert::ToString(num_ID);
-				b_id = true;
+			if (S_id->Length == 0 && timeCronometro == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
+				_id = generarNumeroAleatorio(1, 10000);
+				text_ID->Text = Convert::ToString(_id);
 			}
 			// Llenar campos según condiciones específicas
-			if (!b_name && timeCronometro + 1 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
-				String^ Nombre = seleccionarElementoCombo(combo_Nombre);
-				b_name = true;
+			if (S_nombre->Length == 0 && timeCronometro + 1 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
+				_nombre = seleccionarElementoCombo(combo_Nombre);
 			}
 			//..
-			if (!b_apellido && timeCronometro + 2 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
-				String^ Apellido = seleccionarElementoCombo(combo_Apellido);
-				b_apellido = true;
+			if (S_apellido->Length == 0 && timeCronometro + 2 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
+				_apellido = seleccionarElementoCombo(combo_Apellido);
 			}
 			//..
-			if (!b_area && timeCronometro + 3 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
-				String^ Area = seleccionarElementoCombo(combo_Area);
-				b_area = true;
+			if (S_area->Length == 0 && timeCronometro + 3 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
+				_area = seleccionarElementoCombo(combo_Area);
 			}
 			//..
-			if (!b_jerarquia && timeCronometro + 4 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
-				String^ Jerarquia = seleccionarElementoCombo(combo_Jerarquia);
-				b_jerarquia = true;
+			if (S_jerarquia->Length == 0 && timeCronometro + 4 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
+				_jerarquia = seleccionarElementoCombo(combo_Jerarquia);
 			}
 			//..
-			if (!b_trabajadores && timeCronometro + 5 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
-				int num_trabajadores = generarNumeroAleatorio(1, 8000);
-				b_trabajadores = true;
-				text_Trabajadores->Text = Convert::ToString(num_trabajadores);
+			if (S_trabajadores->Length == 0 && timeCronometro + 5 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_DATOS)) {
+				_trabajadores = generarNumeroAleatorio(1, CANTIDAD_MAX_TRABAJADORES);
+				text_Trabajadores->Text = Convert::ToString(_trabajadores);
 			}
 		}
 		// Llenar campos sin restricciones de tiempo, si no se han llenado algun faltante
 		else {
-			if (!b_id) {
-				int num_ID = generarNumeroAleatorio(1, 10000);
-				text_ID->Text = Convert::ToString(num_ID);
-				b_id = true;
+			if (S_id->Length == 0) {
+				_id = generarNumeroAleatorio(1, 10000);
+				text_ID->Text = Convert::ToString(_id);
 			}
 			//..
-			else if (!b_name) {
-				String^ Nombre = seleccionarElementoCombo(combo_Nombre);
-				b_name = true;
+			else if (S_nombre->Length == 0) {
+				_nombre = seleccionarElementoCombo(combo_Nombre);
 			}
 			//..
-			else if (!b_apellido) {
-				String^ Apellido = seleccionarElementoCombo(combo_Apellido);
-				b_apellido = true;
+			else if (S_apellido->Length == 0) {
+				_apellido = seleccionarElementoCombo(combo_Apellido);
 			}
 			//..
-			else if (!b_area) {
-				String^ Area = seleccionarElementoCombo(combo_Area);
-				b_area = true;
+			else if (S_area->Length == 0) {
+				_area = seleccionarElementoCombo(combo_Area);
 			}
 			//..
-			else if (!b_jerarquia) {
-				String^ Jerarquia = seleccionarElementoCombo(combo_Jerarquia);
-				b_jerarquia = true;
+			else if (S_jerarquia->Length == 0) {
+				_jerarquia = seleccionarElementoCombo(combo_Jerarquia);
 			}
 			//..
-			else if (!b_trabajadores) {
-				int num_trabajadores = generarNumeroAleatorio(1, TIEMPO_MAX_DE_MENUS * 3);
-				b_trabajadores = true;
-				text_Trabajadores->Text = Convert::ToString(num_trabajadores);
+			else if (S_trabajadores->Length == 0) {
+				_trabajadores = generarNumeroAleatorio(1, CANTIDAD_MAX_TRABAJADORES);
+				text_Trabajadores->Text = Convert::ToString(_trabajadores);
 			}
 		}
 		//Mostradores de los datos
 	}
 	private: void Llenar_Campos_De_Menus() {
+		String^ Tvegetariano = text_vegetariano->Text;
+		String^ Tregular = text_regular->Text;
+		String^ Tdieta = text_dieta->Text;
 		// Verificar si el tiempo está dentro del límite
-		if (timeCronometro <= (TIEMPO_MAX_DE_DATOS + TIEMPO_MAX_DE_MENUS) - 5) {
+		if (timeCronometro <= (TIEMPO_MAX_DE_DATOS + TIEMPO_MAX_DE_MENUS) - 10) {
 			// Llenar campos según condiciones específicas
-			if (!b_vegetariano && timeCronometro == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_MENUS + TIEMPO_MAX_DE_DATOS)) {
-				int num = generarNumeroAleatorio(1, CANTIDAD_MENUS_MAX_X_COMIDA);
-				text_vegetariano->Text = Convert::ToString(num);
-				b_vegetariano = true;
+			if (String::IsNullOrEmpty(Tvegetariano) && timeCronometro == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_MENUS + TIEMPO_MAX_DE_DATOS)) {
+				_vegetariano = generarNumeroAleatorio(0, (_trabajadores - (_vegetariano + _regular + _dieta)));
+				text_vegetariano->Text = Convert::ToString(_vegetariano);
 			}
 			//..
-			else if (!b_regular && timeCronometro == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_MENUS + TIEMPO_MAX_DE_DATOS)) {
-				int num = generarNumeroAleatorio(1, CANTIDAD_MENUS_MAX_X_COMIDA);
-				text_regular->Text = Convert::ToString(num);
-				b_regular = true;
+			if (String::IsNullOrEmpty(Tregular) && timeCronometro + 1 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_MENUS + TIEMPO_MAX_DE_DATOS)) {
+				_regular = generarNumeroAleatorio(0, (_trabajadores - (_vegetariano + _regular + _dieta)));
+				text_regular->Text = Convert::ToString(_regular);
 			}
 			//..
-			else if (!b_dieta && timeCronometro == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_MENUS + TIEMPO_MAX_DE_DATOS)) {
-				int num = generarNumeroAleatorio(1, CANTIDAD_MENUS_MAX_X_COMIDA);
-				text_dieta->Text = Convert::ToString(num);
-				b_dieta = true;
+			if (String::IsNullOrEmpty(Tdieta) && timeCronometro + 2 == generarNumeroAleatorio(timeCronometro, TIEMPO_MAX_DE_MENUS + TIEMPO_MAX_DE_DATOS)) {
+				_dieta = generarNumeroAleatorio(0, (_trabajadores - (_vegetariano + _regular + _dieta)));
+				text_dieta->Text = Convert::ToString(_dieta);
 			}
 		}
 		// Llenar campos sin restricciones de tiempo, si no se han llenado algun faltante
 		else {
-			if (!b_vegetariano) {
-				int num = generarNumeroAleatorio(1, CANTIDAD_MENUS_MAX_X_COMIDA);
-				text_vegetariano->Text = Convert::ToString(num);
-				b_vegetariano = true;
+			if (String::IsNullOrEmpty(Tvegetariano)) {
+				_vegetariano = generarNumeroAleatorio(0, (_trabajadores - (_vegetariano + _regular + _dieta)));
+				text_vegetariano->Text = Convert::ToString(_vegetariano);
 			}
 			//..
-			else if (!b_regular) {
-				int num = generarNumeroAleatorio(1, CANTIDAD_MENUS_MAX_X_COMIDA);
-				text_regular->Text = Convert::ToString(num);
-				b_regular = true;
+			else if (String::IsNullOrEmpty(Tregular)) {
+				_regular = generarNumeroAleatorio(0, (_trabajadores - (_vegetariano + _regular + _dieta)));
+				text_regular->Text = Convert::ToString(_regular);
 			}
 			//..
-			else if (!b_dieta && timeCronometro) {
-				int num = generarNumeroAleatorio(1, CANTIDAD_MENUS_MAX_X_COMIDA);
-				text_dieta->Text = Convert::ToString(num);
-				b_dieta = true;
+			else if (String::IsNullOrEmpty(Tdieta)) {
+				_dieta = generarNumeroAleatorio(0, (_trabajadores - (_vegetariano + _regular + _dieta)));
+				text_dieta->Text = Convert::ToString(_dieta);
 			}
 		}
 	}
 
-	private: String^ seleccionarElementoCombo(System::Windows::Forms::ComboBox^ comboBox) {
+	private: String^ seleccionarElementoCombo(ComboBox^ comboBox) {
 		// Configuramos la semilla del generador de números aleatorios
 		std::srand(static_cast<unsigned int>(std::time(nullptr)));
 		// Generamos un índice aleatorio dentro del rango de elementos del ComboBox
@@ -965,6 +1059,14 @@ namespace Simulador {
 		// Selecciona el elemento correspondiente al índice aleatorio
 		comboBox->SelectedIndex = indiceAleatorio;
 		return comboBox->Text;
+	}
+	public: void activarPanel_de_atención(Panel^ panel, Label^ Text, Label^ Text2) {
+		ColaSolicitudes Cola;
+		Cola.agregarSolicitud(_nombre, _apellido, _vegetariano, _regular, _dieta);
+		panel->Visible = true;
+		Text->Text = "El supervisor " + _nombre + " " + _apellido + " a ordenado "
+			+ _vegetariano + " vegetarianos " + _regular + " regulares " + _dieta + " dieta";
+		Text2->Text = "En espera";
 	}
 	};
 }

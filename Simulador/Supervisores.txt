@@ -1,0 +1,47 @@
+0|||||0|0|0|0
+111|Alejandro|García|Ingeniería|Nivel Estratégico|50|0|0|0
+67|Alejandro|Vázquez|Recursos humanos|Presidente|174|0|152|8
+684|Javier|Muñoz|Diseño|Nivel Táctico|32|1|0|2
+3593|Ángel|Ramírez|Atención al cliente|Nivel Táctico|30|0|0|1
+164|Antonia|Domínguez|Tecnología|Nivel Táctico|30|1|0|1
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+124|||Recursos humanos||37|0|4|2
+244|Daniel|Alonso|Desarrollo de Software|Nivel Operativo|33|0|2|9
