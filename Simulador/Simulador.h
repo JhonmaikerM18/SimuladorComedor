@@ -81,7 +81,8 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ lbl_Tiempo;
 	private: System::Windows::Forms::Label^ lbl_Temporizador;
 	private: System::Windows::Forms::Timer^ Temporizador;
-	private: System::Windows::Forms::Timer^ Cronometro;
+	private: System::Windows::Forms::Timer^ CronometroPrincipal_noVisible;
+
 	private: System::Windows::Forms::Label^ lbl_Cronometro;
 	private: System::Windows::Forms::Label^ lbl_Tiempo_Cronometro;
 	private: System::Windows::Forms::Panel^ panel1;
@@ -103,6 +104,19 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ lbl_Proceso_1;
 
 	private: System::Windows::Forms::ProgressBar^ progressBar1;
+	private: System::Windows::Forms::Timer^ Cronometro_Visible;
+	private: System::Windows::Forms::Panel^ panel_Atencion_4;
+	private: System::Windows::Forms::Label^ lbl_Proceso_4;
+	private: System::Windows::Forms::ProgressBar^ progressBar4;
+	private: System::Windows::Forms::Label^ lbl_Atencion_4;
+	private: System::Windows::Forms::Panel^ panel_Atencion_3;
+	private: System::Windows::Forms::Label^ lbl_Proceso_3;
+	private: System::Windows::Forms::ProgressBar^ progressBar3;
+	private: System::Windows::Forms::Label^ lbl_Atencion_3;
+	private: System::Windows::Forms::Panel^ panel_Atencion_2;
+	private: System::Windows::Forms::Label^ lbl_Proceso_2;
+	private: System::Windows::Forms::ProgressBar^ progressBar2;
+	private: System::Windows::Forms::Label^ lbl_Atencion_2;
 
 	private: System::ComponentModel::IContainer^ components;
 
@@ -160,16 +174,29 @@ namespace Simulador {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->Temporizador = (gcnew System::Windows::Forms::Timer(this->components));
-			this->Cronometro = (gcnew System::Windows::Forms::Timer(this->components));
+			this->CronometroPrincipal_noVisible = (gcnew System::Windows::Forms::Timer(this->components));
 			this->lbl_Cronometro = (gcnew System::Windows::Forms::Label());
 			this->lbl_Tiempo_Cronometro = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->pic_Logo = (gcnew System::Windows::Forms::PictureBox());
 			this->group_Atencion = (gcnew System::Windows::Forms::GroupBox());
+			this->panel_Atencion_4 = (gcnew System::Windows::Forms::Panel());
+			this->lbl_Proceso_4 = (gcnew System::Windows::Forms::Label());
+			this->progressBar4 = (gcnew System::Windows::Forms::ProgressBar());
+			this->lbl_Atencion_4 = (gcnew System::Windows::Forms::Label());
+			this->panel_Atencion_3 = (gcnew System::Windows::Forms::Panel());
+			this->lbl_Proceso_3 = (gcnew System::Windows::Forms::Label());
+			this->progressBar3 = (gcnew System::Windows::Forms::ProgressBar());
+			this->lbl_Atencion_3 = (gcnew System::Windows::Forms::Label());
+			this->panel_Atencion_2 = (gcnew System::Windows::Forms::Panel());
+			this->lbl_Proceso_2 = (gcnew System::Windows::Forms::Label());
+			this->progressBar2 = (gcnew System::Windows::Forms::ProgressBar());
+			this->lbl_Atencion_2 = (gcnew System::Windows::Forms::Label());
 			this->panel_Atencion_1 = (gcnew System::Windows::Forms::Panel());
 			this->lbl_Proceso_1 = (gcnew System::Windows::Forms::Label());
 			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 			this->lbl_Atencion_1 = (gcnew System::Windows::Forms::Label());
+			this->Cronometro_Visible = (gcnew System::Windows::Forms::Timer(this->components));
 			this->group_Datos->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde6))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde5))->BeginInit();
@@ -187,6 +214,9 @@ namespace Simulador {
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pic_Logo))->BeginInit();
 			this->group_Atencion->SuspendLayout();
+			this->panel_Atencion_4->SuspendLayout();
+			this->panel_Atencion_3->SuspendLayout();
+			this->panel_Atencion_2->SuspendLayout();
 			this->panel_Atencion_1->SuspendLayout();
 			this->SuspendLayout();
 			//
@@ -623,9 +653,9 @@ namespace Simulador {
 			this->lbl_Temporizador->ForeColor = System::Drawing::Color::Red;
 			this->lbl_Temporizador->Location = System::Drawing::Point(528, 99);
 			this->lbl_Temporizador->Name = L"lbl_Temporizador";
-			this->lbl_Temporizador->Size = System::Drawing::Size(106, 20);
+			this->lbl_Temporizador->Size = System::Drawing::Size(40, 20);
 			this->lbl_Temporizador->TabIndex = 29;
-			this->lbl_Temporizador->Text = L"Temporizador";
+			this->lbl_Temporizador->Text = L"2:00";
 			//
 			// lbl_Tiempo
 			//
@@ -648,7 +678,6 @@ namespace Simulador {
 			this->lbl_Num_Trabajadores->Size = System::Drawing::Size(18, 20);
 			this->lbl_Num_Trabajadores->TabIndex = 24;
 			this->lbl_Num_Trabajadores->Text = L"0";
-			this->lbl_Num_Trabajadores->Visible = false;
 			//
 			// label10
 			//
@@ -703,10 +732,10 @@ namespace Simulador {
 			this->Temporizador->Interval = 1000;
 			this->Temporizador->Tick += gcnew System::EventHandler(this, &Simulador::Temporizador_Tick);
 			//
-			// Cronometro
+			// CronometroPrincipal_noVisible
 			//
-			this->Cronometro->Interval = 1000;
-			this->Cronometro->Tick += gcnew System::EventHandler(this, &Simulador::Cronometro_Tick);
+			this->CronometroPrincipal_noVisible->Interval = 1000;
+			this->CronometroPrincipal_noVisible->Tick += gcnew System::EventHandler(this, &Simulador::Cronometro_Principal_Tiempo_Tick);
 			//
 			// lbl_Cronometro
 			//
@@ -763,6 +792,9 @@ namespace Simulador {
 			this->group_Atencion->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->group_Atencion->Controls->Add(this->panel_Atencion_4);
+			this->group_Atencion->Controls->Add(this->panel_Atencion_3);
+			this->group_Atencion->Controls->Add(this->panel_Atencion_2);
 			this->group_Atencion->Controls->Add(this->panel_Atencion_1);
 			this->group_Atencion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -772,6 +804,129 @@ namespace Simulador {
 			this->group_Atencion->TabIndex = 34;
 			this->group_Atencion->TabStop = false;
 			this->group_Atencion->Text = L"Atención y Entrega ";
+			//
+			// panel_Atencion_4
+			//
+			this->panel_Atencion_4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->panel_Atencion_4->Controls->Add(this->lbl_Proceso_4);
+			this->panel_Atencion_4->Controls->Add(this->progressBar4);
+			this->panel_Atencion_4->Controls->Add(this->lbl_Atencion_4);
+			this->panel_Atencion_4->Location = System::Drawing::Point(15, 142);
+			this->panel_Atencion_4->Name = L"panel_Atencion_4";
+			this->panel_Atencion_4->Size = System::Drawing::Size(889, 34);
+			this->panel_Atencion_4->TabIndex = 3;
+			this->panel_Atencion_4->Visible = false;
+			//
+			// lbl_Proceso_4
+			//
+			this->lbl_Proceso_4->AutoSize = true;
+			this->lbl_Proceso_4->Location = System::Drawing::Point(646, 9);
+			this->lbl_Proceso_4->Name = L"lbl_Proceso_4";
+			this->lbl_Proceso_4->Size = System::Drawing::Size(79, 16);
+			this->lbl_Proceso_4->TabIndex = 2;
+			this->lbl_Proceso_4->Text = L"Preparando";
+			//
+			// progressBar4
+			//
+			this->progressBar4->Location = System::Drawing::Point(749, 5);
+			this->progressBar4->Name = L"progressBar4";
+			this->progressBar4->Size = System::Drawing::Size(126, 23);
+			this->progressBar4->TabIndex = 1;
+			//
+			// lbl_Atencion_4
+			//
+			this->lbl_Atencion_4->AutoSize = true;
+			this->lbl_Atencion_4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lbl_Atencion_4->Location = System::Drawing::Point(7, 9);
+			this->lbl_Atencion_4->Name = L"lbl_Atencion_4";
+			this->lbl_Atencion_4->Size = System::Drawing::Size(623, 18);
+			this->lbl_Atencion_4->TabIndex = 0;
+			this->lbl_Atencion_4->Text = L"El supervisor Jhonmaiker Machado a ordenado: 20 Vegetarianos, 3 Regulares y 60 Di"
+				L"eteticos";
+			//
+			// panel_Atencion_3
+			//
+			this->panel_Atencion_3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->panel_Atencion_3->Controls->Add(this->lbl_Proceso_3);
+			this->panel_Atencion_3->Controls->Add(this->progressBar3);
+			this->panel_Atencion_3->Controls->Add(this->lbl_Atencion_3);
+			this->panel_Atencion_3->Location = System::Drawing::Point(15, 102);
+			this->panel_Atencion_3->Name = L"panel_Atencion_3";
+			this->panel_Atencion_3->Size = System::Drawing::Size(889, 34);
+			this->panel_Atencion_3->TabIndex = 3;
+			this->panel_Atencion_3->Visible = false;
+			//
+			// lbl_Proceso_3
+			//
+			this->lbl_Proceso_3->AutoSize = true;
+			this->lbl_Proceso_3->Location = System::Drawing::Point(646, 9);
+			this->lbl_Proceso_3->Name = L"lbl_Proceso_3";
+			this->lbl_Proceso_3->Size = System::Drawing::Size(79, 16);
+			this->lbl_Proceso_3->TabIndex = 2;
+			this->lbl_Proceso_3->Text = L"Preparando";
+			//
+			// progressBar3
+			//
+			this->progressBar3->Location = System::Drawing::Point(749, 5);
+			this->progressBar3->Name = L"progressBar3";
+			this->progressBar3->Size = System::Drawing::Size(126, 23);
+			this->progressBar3->TabIndex = 1;
+			//
+			// lbl_Atencion_3
+			//
+			this->lbl_Atencion_3->AutoSize = true;
+			this->lbl_Atencion_3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lbl_Atencion_3->Location = System::Drawing::Point(7, 9);
+			this->lbl_Atencion_3->Name = L"lbl_Atencion_3";
+			this->lbl_Atencion_3->Size = System::Drawing::Size(623, 18);
+			this->lbl_Atencion_3->TabIndex = 0;
+			this->lbl_Atencion_3->Text = L"El supervisor Jhonmaiker Machado a ordenado: 20 Vegetarianos, 3 Regulares y 60 Di"
+				L"eteticos";
+			//
+			// panel_Atencion_2
+			//
+			this->panel_Atencion_2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->panel_Atencion_2->Controls->Add(this->lbl_Proceso_2);
+			this->panel_Atencion_2->Controls->Add(this->progressBar2);
+			this->panel_Atencion_2->Controls->Add(this->lbl_Atencion_2);
+			this->panel_Atencion_2->Location = System::Drawing::Point(15, 62);
+			this->panel_Atencion_2->Name = L"panel_Atencion_2";
+			this->panel_Atencion_2->Size = System::Drawing::Size(889, 34);
+			this->panel_Atencion_2->TabIndex = 3;
+			this->panel_Atencion_2->Visible = false;
+			//
+			// lbl_Proceso_2
+			//
+			this->lbl_Proceso_2->AutoSize = true;
+			this->lbl_Proceso_2->Location = System::Drawing::Point(646, 9);
+			this->lbl_Proceso_2->Name = L"lbl_Proceso_2";
+			this->lbl_Proceso_2->Size = System::Drawing::Size(79, 16);
+			this->lbl_Proceso_2->TabIndex = 2;
+			this->lbl_Proceso_2->Text = L"Preparando";
+			//
+			// progressBar2
+			//
+			this->progressBar2->Location = System::Drawing::Point(749, 5);
+			this->progressBar2->Name = L"progressBar2";
+			this->progressBar2->Size = System::Drawing::Size(126, 23);
+			this->progressBar2->TabIndex = 1;
+			//
+			// lbl_Atencion_2
+			//
+			this->lbl_Atencion_2->AutoSize = true;
+			this->lbl_Atencion_2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lbl_Atencion_2->Location = System::Drawing::Point(7, 9);
+			this->lbl_Atencion_2->Name = L"lbl_Atencion_2";
+			this->lbl_Atencion_2->Size = System::Drawing::Size(623, 18);
+			this->lbl_Atencion_2->TabIndex = 0;
+			this->lbl_Atencion_2->Text = L"El supervisor Jhonmaiker Machado a ordenado: 20 Vegetarianos, 3 Regulares y 60 Di"
+				L"eteticos";
 			//
 			// panel_Atencion_1
 			//
@@ -814,6 +969,11 @@ namespace Simulador {
 			this->lbl_Atencion_1->Text = L"El supervisor Jhonmaiker Machado a ordenado: 20 Vegetarianos, 3 Regulares y 60 Di"
 				L"eteticos";
 			//
+			// Cronometro_Visible
+			//
+			this->Cronometro_Visible->Interval = 1000;
+			this->Cronometro_Visible->Tick += gcnew System::EventHandler(this, &Simulador::Cronometro_Visible_Tick);
+			//
 			// Simulador
 			//
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -849,27 +1009,63 @@ namespace Simulador {
 			this->panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pic_Logo))->EndInit();
 			this->group_Atencion->ResumeLayout(false);
+			this->panel_Atencion_4->ResumeLayout(false);
+			this->panel_Atencion_4->PerformLayout();
+			this->panel_Atencion_3->ResumeLayout(false);
+			this->panel_Atencion_3->PerformLayout();
+			this->panel_Atencion_2->ResumeLayout(false);
+			this->panel_Atencion_2->PerformLayout();
 			this->panel_Atencion_1->ResumeLayout(false);
 			this->panel_Atencion_1->PerformLayout();
 			this->ResumeLayout(false);
 		}
 #pragma endregion
-
-		//VARIABLES BOOLEANAS GLOBALES DE VERIFICACION
-		bool b_id, b_name, b_apellido, b_area, b_jerarquia, b_trabajadores, b_vegetariano, b_regular, b_dieta;
 		//VARIABLES STRING GLOBALES DE DATOS
 		String^ _nombre, ^ _apellido, ^ _area, ^ _jerarquia;
 		//VARIABLES INT GLOBALES DE DATOS
-		int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0;
+		int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, _paneles_atencion = 0;
 
 	private: System::Void Simulador_Load(System::Object^ sender, System::EventArgs^ e) {
-		lbl_Num_Trabajadores->Text = "0";
-		lbl_Temporizador->Text = "2:00";
 		Temporizador->Start();
-		Cronometro->Start();
+		CronometroPrincipal_noVisible->Start();
+		Cronometro_Visible->Start();
+	}
+	public: void nuevoSupervisor() {
+		_nombre = "";
+		_apellido = "";
+		_area = "";
+		_jerarquia = "";
+		text_ID->Text = "";
+		combo_Nombre->Text = "";
+		combo_Apellido->Text = "";
+		combo_Area->Text = "";
+		combo_Jerarquia->Text = "";
+		text_Trabajadores->Text = "";
+		//DATOS DEL LOS MENUS
+		text_vegetariano->Text = "";
+		text_regular->Text = "";
+		text_dieta->Text = "";
+
+		_id = _trabajadores = _vegetariano = _regular = _dieta = 0;
+
+		verde1->Visible = false;
+		verde2->Visible = false;
+		verde3->Visible = false;
+		verde4->Visible = false;
+		verde5->Visible = false;
+		verde6->Visible = false;
+		lbl_Num_Trabajadores->Text = "";
+		//COMIDAS
+		verde7->Visible = false;
+		verde8->Visible = false;
+		verde9->Visible = false;
+		Temporizador->Stop();
+		CronometroPrincipal_noVisible->Stop();
+		Temporizador->Start();
+		CronometroPrincipal_noVisible->Start();
 	}
 
-		   int timeLeft = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR; // Constante con valor por defecto 120 segundos
+		  int timeLeft = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR; // Constante con valor por defecto 120 segundos
 	private: System::Void Temporizador_Tick(System::Object^ sender, System::EventArgs^ e) {
 		timeLeft--; // Restar 1 segundo
 		int minutos = timeLeft / 60;
@@ -884,16 +1080,15 @@ namespace Simulador {
 		}
 	}
 		   int timeCronometro = 0;
-	private: System::Void Cronometro_Tick(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Cronometro_Principal_Tiempo_Tick(System::Object^ sender, System::EventArgs^ e) {
 		timeCronometro++; // Incrementar el tiempo en 1 segundo
 		//int minutos = timeCronometro / 60;
 		//int segundos = timeCronometro % 60;
 		TimeSpan tiempo = TimeSpan::FromSeconds(timeCronometro);
-		lbl_Cronometro->Text = String::Format(L"{0}:{1:D2} - PRUEBA", tiempo.Minutes, tiempo.Seconds);
 		Verificador_TEXT();
 		// Detener el temporizador si han pasado 5 minutos (300 segundos) o lo segundos que tiene la constante
 		if (timeCronometro == TIEMPO_MAX_SEGUNDOS_CRONOMETRO) {
-			Cronometro->Stop();
+			CronometroPrincipal_noVisible->Stop();
 		}
 	}
 	private:  int generarNumeroAleatorio(int min, int max) {
@@ -924,8 +1119,28 @@ namespace Simulador {
 			Supervisor^ super = gcnew Supervisor(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
 			MenuClass^ menu = gcnew MenuClass(_vegetariano, _regular, _dieta);
 			super->guardar(menu);
-			activarPanel_de_atención(panel_Atencion_1, lbl_Atencion_1, lbl_Proceso_1);
-			Cronometro->Stop();
+			if (_paneles_atencion == 0) {
+				activarPanel_de_atención(panel_Atencion_1, lbl_Atencion_1, lbl_Proceso_1);
+				_paneles_atencion++;
+				nuevoSupervisor();
+			}
+			else if (_paneles_atencion == 1) {
+				activarPanel_de_atención(panel_Atencion_2, lbl_Atencion_2, lbl_Proceso_2);
+				_paneles_atencion++;
+				nuevoSupervisor();
+			}
+			else if (_paneles_atencion == 2) {
+				activarPanel_de_atención(panel_Atencion_3, lbl_Atencion_3, lbl_Proceso_3);
+				_paneles_atencion++;
+				nuevoSupervisor();
+			}
+			else if (_paneles_atencion == 3) {
+				activarPanel_de_atención(panel_Atencion_4, lbl_Atencion_4, lbl_Proceso_4);
+				_paneles_atencion++;
+				nuevoSupervisor();
+			}
+
+			CronometroPrincipal_noVisible->Stop();
 		}
 		//ACTIVADO EL TICK VERDE CUANDO HAY TEXTO YA SELECIONADO
 		if (!String::IsNullOrEmpty(S_id))			 verde1->Visible = true;
@@ -1065,8 +1280,14 @@ namespace Simulador {
 		Cola.agregarSolicitud(_nombre, _apellido, _vegetariano, _regular, _dieta);
 		panel->Visible = true;
 		Text->Text = "El supervisor " + _nombre + " " + _apellido + " a ordenado "
-			+ _vegetariano + " vegetarianos " + _regular + " regulares " + _dieta + " dieta";
+			+ _vegetariano + " vegetarianos " + _regular + " regulares " + _dieta + " dietéticos";
 		Text2->Text = "En espera";
+	}
+		  int timeCronometroVisible = 0;
+	private: System::Void Cronometro_Visible_Tick(System::Object^ sender, System::EventArgs^ e) {
+		timeCronometroVisible++; // Incrementar el tiempo en 1 segundo
+		TimeSpan tiempo = TimeSpan::FromSeconds(timeCronometroVisible);
+		lbl_Cronometro->Text = String::Format(L"{0}:{1:D2}", tiempo.Minutes, tiempo.Seconds);
 	}
 	};
 }
