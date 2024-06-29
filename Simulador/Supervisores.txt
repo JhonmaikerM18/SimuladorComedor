@@ -1,62 +1,38 @@
-0|||||0|0|0|0
-111|Alejandro|García|Ingeniería|Nivel Estratégico|50|0|0|0
-67|Alejandro|Vázquez|Recursos humanos|Presidente|174|0|152|8
-684|Javier|Muñoz|Diseño|Nivel Táctico|32|1|0|2
-3593|Ángel|Ramírez|Atención al cliente|Nivel Táctico|30|0|0|1
-164|Antonia|Domínguez|Tecnología|Nivel Táctico|30|1|0|1
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-124|||Recursos humanos||37|0|4|2
-244|Daniel|Alonso|Desarrollo de Software|Nivel Operativo|33|0|2|9
-8|Pedro|Delgado|Hostelería y Restaurantes|Nivel Táctico|31|0|0|5
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-0|||||0|0|0|0
-83|Sergio|Díaz|Administración de subvenciones|Vicepresidente|86|2|2|8
-76|José |Hernández|Maestro|Nivel Estratégico|57|0|1|2
-1675|Pablo|Marín|Administración de bases de datos|Nivel Estratégico|40|0|3|5
+165|Hugo|Álvarez|Ventas y marketing|Nivel Táctico|229|153|51|17
+130|Martín|Vázquez|Diseñador gráfico|Presidente|29|10|7|4
+23|Óscar|Fernández|Operaciones y producción|Presidente|288|260|26|2
+79|Rafael|Molina|Tecnología de la información|Vicepresidente|76|55|15|5
+61|Miguel|Suárez|Medicina|Nivel Táctico|46|4|4|3
+7|Alejandro|Romero|Arquitectura|Nivel Operativo|27|15|7|3
+81|Antonia|Jiménez|Gestión de proyectos y desarrollo|Nivel Estratégico|131|104|22|4
+49|Alberto|Díaz|Atención al cliente|Presidente|157|138|17|2
+17|Carlos|Álvarez|Medicina|Nivel Táctico|134|108|21|4
+158|Enrique|Navarro|Tecnología|Nivel Estratégico|160|59|37|23
+442|Mateo|Vázquez|Diseñador gráfico|Presidente|137|112|21|4
+93|Enzo|Molina|Gestión de Proyectos|Vicepresidente|56|30|14|7
+61|Antonio|Delgado|Operaciones y producción|Presidente|274|74|54|39
+170|Francisco|Rubio|Abogacía|Nivel Táctico|193|193|0|0
+137|Javier|Núñez|Administración de bases de datos|Vicepresidente|36|17|9|5
+454|Carlos|Rodríguez|Arquitectura|Nivel Operativo|62|2|2|2
+72|Sergio|Sánchez|Médico|Nivel Táctico|232|30|26|22
+40|Fernando|Martín|Hostelería y Restaurantes|Vicepresidente|150|129|18|3
+182|Antonia|Hernández|Desarrollo de Software|Nivel Operativo|69|41|17|7
+149|Diego|Gutiérrez|Tecnología de la información|Vicepresidente|287|90|62|42
+258|Enrique|Domínguez|Arte y fotografía|Nivel Operativo|13|0|0|0
+84|Mateo|Gil|Administración de subvenciones|Nivel Estratégico|264|189|54|15
+261|Hugo|Blanco|Atención al cliente|Presidente|73|37|18|9
+579|Carlos|Ramos|Hostelería y Restaurantes|Vicepresidente|260|169|59|21
+70|Iván|Ortega|Desarrollo de Software|Nivel Operativo|174|147|23|4
+194|Leo|Morales|Tecnología|Nivel Estratégico|239|117|60|30
+42|María|Núñez|Diseño|Vicepresidente|80|25|17|12
+417|Juan|Gómez|Ingeniería|Presidente|280|276|4|0
+501|Miguel|Torres|Medicina|Nivel Táctico|125|124|1|0
+3145|Ángel|González|Ventas y marketing|Nivel Táctico|126|59|32|16
+48|David|Martínez|Administración de subvenciones|Nivel Estratégico|35|6|5|4
+164|Juan |Fernández|Atención al cliente|Presidente|17|9|4|2
+183|Diego|Díaz|Operaciones y producción|Presidente|85|10|9|8
+466|Martín|Romero|Arte y fotografía|Nivel Operativo|255|52|42|33
+85|Leo|Navarro|Administración de subvenciones|Nivel Estratégico|89|11|10|9
+52|Alejandro|Vázquez|Ingeniería|Presidente|258|56|44|34
+369|Manuel|Morales|Área de Finanzas|Nivel Estratégico|235|184|40|9
+4|Carlos|Hernández|Maestro|Nivel Operativo|83|45|21|9

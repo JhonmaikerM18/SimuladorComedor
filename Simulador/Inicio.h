@@ -43,7 +43,7 @@ namespace Simulador {
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::TextBox^ text_intervalo;
 
 	private:
 		/// <summary>
@@ -62,9 +62,9 @@ namespace Simulador {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btn_cerrar = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->text_intervalo = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			//
@@ -105,26 +105,15 @@ namespace Simulador {
 			//
 			// groupBox1
 			//
-			this->groupBox1->Controls->Add(this->label4);
+			this->groupBox1->Controls->Add(this->text_intervalo);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Location = System::Drawing::Point(484, 240);
+			this->groupBox1->Location = System::Drawing::Point(496, 240);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(233, 200);
+			this->groupBox1->Size = System::Drawing::Size(221, 200);
 			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Configuraciones";
-			//
-			// label2
-			//
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(6, 26);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(112, 20);
-			this->label2->TabIndex = 0;
-			this->label2->Text = L"Modo Oscuro: ";
 			//
 			// label3
 			//
@@ -137,16 +126,28 @@ namespace Simulador {
 			this->label3->TabIndex = 1;
 			this->label3->Text = L"Intervalo de tiempo:";
 			//
-			// label4
+			// label2
 			//
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(6, 151);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(146, 20);
-			this->label4->TabIndex = 2;
-			this->label4->Text = L"Manual: ---Opcional";
+			this->label2->Location = System::Drawing::Point(6, 26);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(112, 20);
+			this->label2->TabIndex = 0;
+			this->label2->Text = L"Modo Oscuro: ";
+			//
+			// text_intervalo
+			//
+			this->text_intervalo->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->text_intervalo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->text_intervalo->ForeColor = System::Drawing::Color::Gray;
+			this->text_intervalo->Location = System::Drawing::Point(155, 86);
+			this->text_intervalo->Name = L"text_intervalo";
+			this->text_intervalo->Size = System::Drawing::Size(60, 19);
+			this->text_intervalo->TabIndex = 4;
+			this->text_intervalo->Text = L"1000";
 			//
 			// Inicio
 			//
@@ -170,6 +171,12 @@ namespace Simulador {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		Simulador^ temporal = gcnew Simulador(); //Estoy creando un objeto formulario con el nombre temporal
+		temporal->Temporizador->Interval = Convert::ToInt32(text_intervalo->Text);
+		temporal->CronometroPrincipal_noVisible->Interval = Convert::ToInt32(text_intervalo->Text);
+		temporal->Cronometro_Visible->Interval = Convert::ToInt32(text_intervalo->Text);
+		//Vale el 30% de lo que tiene el campo de texto.
+		temporal->time_progress_bar->Interval = static_cast<int>(0.3 * Convert::ToInt32(text_intervalo->Text));
+
 		temporal->ShowDialog();//Estoy abriendo el objecto formulario como una ventana de dialogo
 	}
 	private: System::Void btn_cerrar_Click(System::Object^ sender, System::EventArgs^ e) {
