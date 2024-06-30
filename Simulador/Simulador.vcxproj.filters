@@ -24,14 +24,14 @@
     <ClCompile Include="Simulador.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="ColaSolicitud.cpp">
-      <Filter>Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuClass.cpp">
+    <ClCompile Include="SolicitudClass.cpp">
       <Filter>Clases</Filter>
     </ClCompile>
     <ClCompile Include="SupervisorClass.cpp">
       <Filter>Clases</Filter>
+    </ClCompile>
+    <ClCompile Include="ColaSolicitud.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,14 +41,19 @@
     <ClInclude Include="Simulador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ColaSolicitud.h">
-      <Filter>Clases</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuClass.h">
+    <ClInclude Include="SolicitudClass.h">
       <Filter>Clases</Filter>
     </ClInclude>
     <ClInclude Include="SupervisorClass.h">
       <Filter>Clases</Filter>
     </ClInclude>
+    <ClInclude Include="ColaSolicitud.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="plantilla.html">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
   </ItemGroup>
 </Project>

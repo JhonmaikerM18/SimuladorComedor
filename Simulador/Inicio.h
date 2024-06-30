@@ -44,6 +44,7 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ text_intervalo;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
 
 	private:
 		/// <summary>
@@ -62,9 +63,10 @@ namespace Simulador {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btn_cerrar = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->text_intervalo = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->text_intervalo = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			//
@@ -105,6 +107,7 @@ namespace Simulador {
 			//
 			// groupBox1
 			//
+			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->text_intervalo);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->label2);
@@ -114,6 +117,18 @@ namespace Simulador {
 			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Configuraciones";
+			//
+			// text_intervalo
+			//
+			this->text_intervalo->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->text_intervalo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->text_intervalo->ForeColor = System::Drawing::Color::Gray;
+			this->text_intervalo->Location = System::Drawing::Point(155, 86);
+			this->text_intervalo->Name = L"text_intervalo";
+			this->text_intervalo->Size = System::Drawing::Size(60, 19);
+			this->text_intervalo->TabIndex = 4;
+			this->text_intervalo->Text = L"1000";
 			//
 			// label3
 			//
@@ -137,17 +152,15 @@ namespace Simulador {
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Modo Oscuro: ";
 			//
-			// text_intervalo
+			// comboBox1
 			//
-			this->text_intervalo->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->text_intervalo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->text_intervalo->ForeColor = System::Drawing::Color::Gray;
-			this->text_intervalo->Location = System::Drawing::Point(155, 86);
-			this->text_intervalo->Name = L"text_intervalo";
-			this->text_intervalo->Size = System::Drawing::Size(60, 19);
-			this->text_intervalo->TabIndex = 4;
-			this->text_intervalo->Text = L"1000";
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Nocturno", L"Brillante" });
+			this->comboBox1->Location = System::Drawing::Point(118, 26);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(97, 21);
+			this->comboBox1->TabIndex = 5;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Inicio::comboBox1_SelectedIndexChanged);
 			//
 			// Inicio
 			//
@@ -182,6 +195,22 @@ namespace Simulador {
 	private: System::Void btn_cerrar_Click(System::Object^ sender, System::EventArgs^ e) {
 		//MessageBox::Show("Esperamos volverte a ver :) ", "Gracias por usarnos", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		Application::Exit();
+	}
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		if ("Nocturno" == comboBox1->Text->ToString()) {
+			Color temaPrincipal = Color::Black;
+			Simulador^ simulador = gcnew Simulador();
+			this->BackColor = temaPrincipal;
+			simulador->BackColor = temaPrincipal;
+		}
+		if ("Brillante" == comboBox1->Text->ToString()) {
+			Color temaPrincipal = Color::White;
+			Simulador^ simulador = gcnew Simulador();
+			this->BackColor = temaPrincipal;
+			simulador->BackColor = temaPrincipal;
+		}
 	}
 	};
 }

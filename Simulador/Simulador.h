@@ -3,13 +3,16 @@
 #include "ctime"
 #include <iostream>
 #include "SupervisorClass.h"
+#include "SolicitudClass.h"
 
 #define TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR 120
 #define TIEMPO_MAX_SEGUNDOS_CRONOMETRO 300
 #define TIEMPO_MAX_DE_DATOS 70
 #define TIEMPO_MAX_DE_MENUS 50
 #define CANTIDAD_MAX_TRABAJADORES 300 // Esta constante también modifica la cantidad maxima de comida
-
+#define TAMANO_SOLICITUD 10
+class Solicitud;
+//Solicitud Solicitando[TAMANO_SOLICITUD]; //Arreglo de solicitudes
 namespace Simulador {
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -17,6 +20,7 @@ namespace Simulador {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 	using namespace std;
 
 	/// <summary>
@@ -72,8 +76,8 @@ namespace Simulador {
 
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ btn_pause;
+	private: System::Windows::Forms::Button^ btn_imprimir;
 
-	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Label^ lbl_Num_Trabajadores;
 
 	private: System::Windows::Forms::Label^ label10;
@@ -107,8 +111,12 @@ namespace Simulador {
 	private:
 
 	private: System::Windows::Forms::Label^ lbl_Control_Pause;
-	public: System::Windows::Forms::Timer^ time_progress_bar;
+
 	public: System::Windows::Forms::Label^ lbl_Atencion_1;
+	private: System::Windows::Forms::ListView^ listView1;
+	public: System::Windows::Forms::Timer^ time_progress_bar;
+	private:
+	public:
 
 	public:
 
@@ -169,7 +177,7 @@ namespace Simulador {
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->btn_pause = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->btn_imprimir = (gcnew System::Windows::Forms::Button());
 			this->Temporizador = (gcnew System::Windows::Forms::Timer(this->components));
 			this->CronometroPrincipal_noVisible = (gcnew System::Windows::Forms::Timer(this->components));
 			this->lbl_Cronometro = (gcnew System::Windows::Forms::Label());
@@ -178,6 +186,7 @@ namespace Simulador {
 			this->lbl_Control_Pause = (gcnew System::Windows::Forms::Label());
 			this->pic_Logo = (gcnew System::Windows::Forms::PictureBox());
 			this->group_Atencion = (gcnew System::Windows::Forms::GroupBox());
+			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->lbl_Atencion_1 = (gcnew System::Windows::Forms::Label());
 			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
 			this->Cronometro_Visible = (gcnew System::Windows::Forms::Timer(this->components));
@@ -696,18 +705,18 @@ namespace Simulador {
 			this->btn_pause->UseVisualStyleBackColor = true;
 			this->btn_pause->Click += gcnew System::EventHandler(this, &Simulador::btn_pause_Click);
 			// 
-			// button3
+			// btn_imprimir
 			// 
-			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->btn_imprimir->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_imprimir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(378, 5);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(86, 34);
-			this->button3->TabIndex = 27;
-			this->button3->Text = L"Imprimir";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Visible = false;
+			this->btn_imprimir->Location = System::Drawing::Point(378, 5);
+			this->btn_imprimir->Name = L"btn_imprimir";
+			this->btn_imprimir->Size = System::Drawing::Size(86, 34);
+			this->btn_imprimir->TabIndex = 27;
+			this->btn_imprimir->Text = L"Imprimir";
+			this->btn_imprimir->UseVisualStyleBackColor = true;
+			this->btn_imprimir->Click += gcnew System::EventHandler(this, &Simulador::btn_imprimir_Click);
 			// 
 			// Temporizador
 			// 
@@ -754,7 +763,7 @@ namespace Simulador {
 			this->panel1->Controls->Add(this->lbl_Cronometro);
 			this->panel1->Controls->Add(this->btn_pause);
 			this->panel1->Controls->Add(this->lbl_Tiempo_Cronometro);
-			this->panel1->Controls->Add(this->button3);
+			this->panel1->Controls->Add(this->btn_imprimir);
 			this->panel1->Location = System::Drawing::Point(383, 451);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(806, 45);
@@ -787,6 +796,7 @@ namespace Simulador {
 			this->group_Atencion->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->group_Atencion->Controls->Add(this->listView1);
 			this->group_Atencion->Controls->Add(this->lbl_Atencion_1);
 			this->group_Atencion->Controls->Add(this->progressBar1);
 			this->group_Atencion->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -797,6 +807,15 @@ namespace Simulador {
 			this->group_Atencion->TabIndex = 34;
 			this->group_Atencion->TabStop = false;
 			this->group_Atencion->Text = L"Atención y Entrega ";
+			// 
+			// listView1
+			// 
+			this->listView1->HideSelection = false;
+			this->listView1->Location = System::Drawing::Point(35, 165);
+			this->listView1->Name = L"listView1";
+			this->listView1->Size = System::Drawing::Size(708, 97);
+			this->listView1->TabIndex = 4;
+			this->listView1->UseCompatibleStateImageBehavior = false;
 			// 
 			// lbl_Atencion_1
 			// 
@@ -902,9 +921,6 @@ namespace Simulador {
 		timeLeft--; // Restar 1 segundo
 		TimeSpan tiempo = TimeSpan::FromSeconds(timeLeft);
 		lbl_Temporizador->Text = String::Format(L"{0}:{1:D2}", tiempo.Minutes, tiempo.Seconds);
-		if (timeLeft == 0) {
-			Temporizador->Stop(); // Detener el temporizador
-		}
 	}
 	private: System::Void Cronometro_Principal_Tiempo_Tick(System::Object^ sender, System::EventArgs^ e) {
 		timeCronometroPrincipal++; // Incrementar el tiempo en 1 segundo
@@ -944,9 +960,10 @@ namespace Simulador {
 				Llenar_Campos_De_Menus();
 			}
 			else {
-				Supervisor^ super = gcnew Supervisor(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
-				MenuClass^ menu = gcnew MenuClass(_vegetariano, _regular, _dieta);
-				super->guardar(menu);
+				Supervisor^ super = gcnew Supervisor(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores);
+				Solicitud solicitando = Solicitud(_id, _vegetariano, _regular, _dieta);
+
+
 				activarPanel_de_atención(_paneles_atencion);
 				nuevoSupervisor();
 				_paneles_atencion++;
@@ -1065,8 +1082,6 @@ namespace Simulador {
 		  int timeCronometroVisible = 0;
 	private: System::Void Cronometro_Visible_Tick(System::Object^ sender, System::EventArgs^ e) {
 		timeCronometroVisible++; // Incrementar el tiempo en 1 segundo
-		MenuClass^ menu = gcnew MenuClass(_vegetariano, _regular, _dieta);
-		ColaSolicitudes Cola;
 		TimeSpan tiempo = TimeSpan::FromSeconds(timeCronometroVisible);
 		lbl_Cronometro->Text = String::Format(L"{0}:{1:D2}", tiempo.Minutes, tiempo.Seconds);
 	}
@@ -1101,11 +1116,14 @@ namespace Simulador {
 	}
 	private: System::Void time_progress_bar_Tick(System::Object^ sender, System::EventArgs^ e) {
 		progressBar1->Visible = true;
-		if (progressBar1->Value <= 100) {
+		if (progressBar1->Value <= 100)
+		{
 			progressBar1->Value++;
 		}
 		else
 			progressBar1->Value = 0;
+	}
+	private: System::Void btn_imprimir_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
