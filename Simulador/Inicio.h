@@ -42,9 +42,8 @@ namespace Simulador {
 	private: System::Windows::Forms::Button^ btn_cerrar;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label2;
+
 	private: System::Windows::Forms::TextBox^ text_intervalo;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
 
 	private:
 		/// <summary>
@@ -65,8 +64,6 @@ namespace Simulador {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->text_intervalo = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			//
@@ -107,10 +104,8 @@ namespace Simulador {
 			//
 			// groupBox1
 			//
-			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->text_intervalo);
 			this->groupBox1->Controls->Add(this->label3);
-			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Location = System::Drawing::Point(496, 240);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(221, 200);
@@ -141,27 +136,6 @@ namespace Simulador {
 			this->label3->TabIndex = 1;
 			this->label3->Text = L"Intervalo de tiempo:";
 			//
-			// label2
-			//
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(6, 26);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(112, 20);
-			this->label2->TabIndex = 0;
-			this->label2->Text = L"Modo Oscuro: ";
-			//
-			// comboBox1
-			//
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Nocturno", L"Brillante" });
-			this->comboBox1->Location = System::Drawing::Point(118, 26);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(97, 21);
-			this->comboBox1->TabIndex = 5;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Inicio::comboBox1_SelectedIndexChanged);
-			//
 			// Inicio
 			//
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -183,34 +157,18 @@ namespace Simulador {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		Simulador^ temporal = gcnew Simulador(); //Estoy creando un objeto formulario con el nombre temporal
-		temporal->Temporizador->Interval = Convert::ToInt32(text_intervalo->Text);
-		temporal->CronometroPrincipal_noVisible->Interval = Convert::ToInt32(text_intervalo->Text);
-		temporal->Cronometro_Visible->Interval = Convert::ToInt32(text_intervalo->Text);
-		//Vale el 30% de lo que tiene el campo de texto.
-		temporal->time_progress_bar->Interval = static_cast<int>(0.3 * Convert::ToInt32(text_intervalo->Text));
+		Simulador^ temporal = gcnew Simulador();
+
+		//temporal->Temporizador->Interval = Convert::ToInt32(text_intervalo->Text);
+		//temporal->CronometroPrincipal_noVisible->Interval = Convert::ToInt32(text_intervalo->Text);
+		//temporal->Cronometro_Visible->Interval = Convert::ToInt32(text_intervalo->Text);
+		////Vale el 30% de lo que tiene el campo de texto.
 
 		temporal->ShowDialog();//Estoy abriendo el objecto formulario como una ventana de dialogo
 	}
 	private: System::Void btn_cerrar_Click(System::Object^ sender, System::EventArgs^ e) {
 		//MessageBox::Show("Esperamos volverte a ver :) ", "Gracias por usarnos", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		Application::Exit();
-	}
-	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		if ("Nocturno" == comboBox1->Text->ToString()) {
-			Color temaPrincipal = Color::Black;
-			Simulador^ simulador = gcnew Simulador();
-			this->BackColor = temaPrincipal;
-			simulador->BackColor = temaPrincipal;
-		}
-		if ("Brillante" == comboBox1->Text->ToString()) {
-			Color temaPrincipal = Color::White;
-			Simulador^ simulador = gcnew Simulador();
-			this->BackColor = temaPrincipal;
-			simulador->BackColor = temaPrincipal;
-		}
 	}
 	};
 }

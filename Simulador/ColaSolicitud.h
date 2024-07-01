@@ -1,16 +1,16 @@
 #include <iostream>
+#include "SolicitudClass.h"
 
-// Definición de la clase Nodo
+// Definici?n de la clase Nodo
 class Nodo {
 public:
-	int dato;
+	Solicitud Solicitando;
 	Nodo* siguiente;
-
-	Nodo(int valor) : dato(valor), siguiente(nullptr) {}
+	Nodo(Solicitud solicitud) : Solicitando(solicitud), siguiente(nullptr) {}
 };
 
-// Definición de la clase Cola
-class Cola {
+// Definici?n de la clase Cola
+public class Cola {
 private:
 	Nodo* primero;
 	Nodo* ultimo;
@@ -18,12 +18,16 @@ private:
 public:
 	Cola() : primero(nullptr), ultimo(nullptr) {}
 
-	// Método para agregar un elemento a la cola
-	void encolar(int valor) {
-		Nodo* nuevoNodo = new Nodo(valor);
+	// M?todo para obtener el inicio de la cola
+	static Nodo* obtenerInicio(Cola& cola) {
+		return cola.primero;
+	}
+	// M?todo para agregar un elemento a la cola
+	void encolar(Solicitud solicitando) {
+		Nodo* nuevoNodo = new Nodo(solicitando);
 
 		if (ultimo == nullptr) {
-			// La cola está vacía, el nuevo nodo es el primero y el último
+			// La cola est? vac?a, el nuevo nodo es el primero y el ?ltimo
 			primero = nuevoNodo;
 			ultimo = nuevoNodo;
 		}
@@ -34,23 +38,27 @@ public:
 		}
 	}
 
-	// Método para leer y eliminar un elemento de la cola
-	int desencolar() {
+	// M?todo para leer y eliminar un elemento de la cola
+	Solicitud desencolar() {
 		if (primero == nullptr) {
-			std::cerr << "La cola está vacía." << std::endl;
-			return -1; // Valor sentinela para indicar cola vacía
+			std::cerr << "La cola est? vac?a." << std::endl;
+			return Solicitud(-1, -1, -1, -1); // Valor sentinela para indicar cola vac?a
 		}
 
-		int valor = primero->dato;
+		Solicitud solicitud = primero->Solicitando;
 		Nodo* temp = primero;
 		primero = primero->siguiente;
 
 		if (primero == nullptr) {
-			// La cola quedó vacía después de eliminar el nodo
+			// La cola qued? vac?a despu?s de eliminar el nodo
 			ultimo = nullptr;
 		}
 
 		delete temp;
-		return valor;
+		return solicitud;
+	}
+	// M?todo para verificar si la cola est? vac?a
+	bool colaVacia() {
+		return primero == nullptr;
 	}
 };
