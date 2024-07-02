@@ -8,7 +8,7 @@ using namespace System::IO; // Corregido: Cambiado "std" por "System::IO"
 
 class Solicitud {
 public:
-	string datos; // Declaración correcta
+	string datos;
 	int vegetariano;
 	int regular;
 	int dieta;
