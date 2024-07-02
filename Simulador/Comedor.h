@@ -8,7 +8,7 @@
 #define MIN_DE_DATOS 50
 #define MAX_DE_DATOS 70
 #define MAX_DE_MENUS 10
-#define MAX_TRABAJADORES 300 // Esta constante tambi�n modifica la cantidad maxima de comida
+#define MAX_TRABAJADORES 300 // Esta constante también modifica la cantidad maxima de comida
 #define TAMANO_SOLICITUD 10
 
 //Solicitud Solicitando[TAMANO_SOLICITUD]; //Arreglo de solicitudes
@@ -104,6 +104,15 @@ namespace Simulador {
 	private: System::Windows::Forms::Timer^ Timer_Desencolar;
 	private: System::Windows::Forms::ProgressBar^ barra_desencolar;
 	private: System::Windows::Forms::Label^ barra_porcentaje;
+	private: System::Windows::Forms::FlowLayoutPanel^ Menu;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::Label^ Intervalo;
+	private: System::Windows::Forms::TextBox^ text_Intervalo;
+
+	private: System::Windows::Forms::PictureBox^ pic_btn_menu;
+	private: System::Windows::Forms::Timer^ time_Menu;
+	private: System::Windows::Forms::Panel^ panel2;
 
 	public:
 	private:
@@ -158,6 +167,7 @@ namespace Simulador {
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->lbl_Control_Pause = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->barra_porcentaje = (gcnew System::Windows::Forms::Label());
 			this->lbl_Cronometro = (gcnew System::Windows::Forms::Label());
 			this->btn_pause = (gcnew System::Windows::Forms::Button());
 			this->lbl_Tiempo_Cronometro = (gcnew System::Windows::Forms::Label());
@@ -175,7 +185,14 @@ namespace Simulador {
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->Timer_Desencolar = (gcnew System::Windows::Forms::Timer(this->components));
 			this->barra_desencolar = (gcnew System::Windows::Forms::ProgressBar());
-			this->barra_porcentaje = (gcnew System::Windows::Forms::Label());
+			this->Menu = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->text_Intervalo = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->Intervalo = (gcnew System::Windows::Forms::Label());
+			this->pic_btn_menu = (gcnew System::Windows::Forms::PictureBox());
+			this->time_Menu = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde8))->BeginInit();
@@ -193,6 +210,9 @@ namespace Simulador {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde1))->BeginInit();
 			this->groupMenu->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Logo_Superior_Derecha))->BeginInit();
+			this->Menu->SuspendLayout();
+			this->panel2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pic_btn_menu))->BeginInit();
 			this->SuspendLayout();
 			//
 			// verde2
@@ -552,6 +572,7 @@ namespace Simulador {
 			this->panel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			this->panel1->Controls->Add(this->lbl_Control_Pause);
 			this->panel1->Controls->Add(this->button1);
+			this->panel1->Controls->Add(this->barra_porcentaje);
 			this->panel1->Controls->Add(this->lbl_Cronometro);
 			this->panel1->Controls->Add(this->btn_pause);
 			this->panel1->Controls->Add(this->lbl_Tiempo_Cronometro);
@@ -587,15 +608,25 @@ namespace Simulador {
 			this->button1->Text = L"Detener";
 			this->button1->UseVisualStyleBackColor = true;
 			//
+			// barra_porcentaje
+			//
+			this->barra_porcentaje->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->barra_porcentaje->Location = System::Drawing::Point(338, 5);
+			this->barra_porcentaje->Name = L"barra_porcentaje";
+			this->barra_porcentaje->Size = System::Drawing::Size(40, 24);
+			this->barra_porcentaje->TabIndex = 46;
+			this->barra_porcentaje->Text = L"0 %";
+			//
 			// lbl_Cronometro
 			//
 			this->lbl_Cronometro->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			this->lbl_Cronometro->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lbl_Cronometro->ForeColor = System::Drawing::Color::Red;
-			this->lbl_Cronometro->Location = System::Drawing::Point(637, 46);
+			this->lbl_Cronometro->Location = System::Drawing::Point(624, 46);
 			this->lbl_Cronometro->Name = L"lbl_Cronometro";
-			this->lbl_Cronometro->Size = System::Drawing::Size(45, 25);
+			this->lbl_Cronometro->Size = System::Drawing::Size(58, 25);
 			this->lbl_Cronometro->TabIndex = 31;
 			this->lbl_Cronometro->Text = L"0:00";
 			//
@@ -657,11 +688,12 @@ namespace Simulador {
 			this->group_Datos->Controls->Add(this->combo_Jerarquia);
 			this->group_Datos->Controls->Add(this->lbl_Apellido);
 			this->group_Datos->Controls->Add(this->lbl_Nombre);
+			this->group_Datos->Dock = System::Windows::Forms::DockStyle::Left;
 			this->group_Datos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->group_Datos->Location = System::Drawing::Point(5, 0);
+			this->group_Datos->Location = System::Drawing::Point(0, 0);
 			this->group_Datos->Name = L"group_Datos";
-			this->group_Datos->Size = System::Drawing::Size(258, 485);
+			this->group_Datos->Size = System::Drawing::Size(258, 492);
 			this->group_Datos->TabIndex = 40;
 			this->group_Datos->TabStop = false;
 			this->group_Datos->Text = L"Datos necesarios";
@@ -727,8 +759,6 @@ namespace Simulador {
 			//
 			// groupMenu
 			//
-			this->groupMenu->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
 			this->groupMenu->Controls->Add(this->Logo_Superior_Derecha);
 			this->groupMenu->Controls->Add(this->verde9);
 			this->groupMenu->Controls->Add(this->verde8);
@@ -792,8 +822,8 @@ namespace Simulador {
 			this->listBox1->ItemHeight = 20;
 			this->listBox1->Location = System::Drawing::Point(269, 140);
 			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(709, 260);
-			this->listBox1->TabIndex = 44;
+			this->listBox1->Size = System::Drawing::Size(703, 260);
+			this->listBox1->TabIndex = 1;
 			//
 			// Timer_Desencolar
 			//
@@ -809,17 +839,98 @@ namespace Simulador {
 			this->barra_desencolar->Size = System::Drawing::Size(306, 23);
 			this->barra_desencolar->TabIndex = 45;
 			//
-			// barra_porcentaje
+			// Menu
 			//
-			this->barra_porcentaje->AutoSize = true;
-			this->barra_porcentaje->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->barra_porcentaje->Location = System::Drawing::Point(610, 411);
-			this->barra_porcentaje->Name = L"barra_porcentaje";
-			this->barra_porcentaje->Size = System::Drawing::Size(40, 24);
-			this->barra_porcentaje->TabIndex = 46;
-			this->barra_porcentaje->Text = L"0 %";
-			this->barra_porcentaje->Visible = false;
+			this->Menu->BackColor = System::Drawing::Color::Navy;
+			this->Menu->Controls->Add(this->panel2);
+			this->Menu->Dock = System::Windows::Forms::DockStyle::Right;
+			this->Menu->Location = System::Drawing::Point(982, 0);
+			this->Menu->MaximumSize = System::Drawing::Size(237, 800);
+			this->Menu->MinimumSize = System::Drawing::Size(0, 492);
+			this->Menu->Name = L"Menu";
+			this->Menu->Size = System::Drawing::Size(0, 492);
+			this->Menu->TabIndex = 47;
+			//
+			// panel2
+			//
+			this->panel2->Controls->Add(this->label1);
+			this->panel2->Controls->Add(this->text_Intervalo);
+			this->panel2->Controls->Add(this->comboBox1);
+			this->panel2->Controls->Add(this->Intervalo);
+			this->panel2->Location = System::Drawing::Point(3, 3);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(234, 271);
+			this->panel2->TabIndex = 4;
+			//
+			// label1
+			//
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::White;
+			this->label1->Location = System::Drawing::Point(61, 18);
+			this->label1->Margin = System::Windows::Forms::Padding(3);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(110, 33);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Temas";
+			//
+			// text_Intervalo
+			//
+			this->text_Intervalo->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->text_Intervalo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->text_Intervalo->ForeColor = System::Drawing::Color::Gray;
+			this->text_Intervalo->Location = System::Drawing::Point(33, 185);
+			this->text_Intervalo->Name = L"text_Intervalo";
+			this->text_Intervalo->Size = System::Drawing::Size(175, 31);
+			this->text_Intervalo->TabIndex = 3;
+			this->text_Intervalo->Text = L"1000";
+			this->text_Intervalo->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Comedor::text_Intervalo_KeyPress);
+			//
+			// comboBox1
+			//
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(9, 61);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(209, 32);
+			this->comboBox1->TabIndex = 1;
+			//
+			// Intervalo
+			//
+			this->Intervalo->AutoSize = true;
+			this->Intervalo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Intervalo->ForeColor = System::Drawing::Color::White;
+			this->Intervalo->Location = System::Drawing::Point(43, 136);
+			this->Intervalo->Margin = System::Windows::Forms::Padding(3);
+			this->Intervalo->Name = L"Intervalo";
+			this->Intervalo->Size = System::Drawing::Size(136, 33);
+			this->Intervalo->TabIndex = 2;
+			this->Intervalo->Text = L"Intervalo";
+			//
+			// pic_btn_menu
+			//
+			this->pic_btn_menu->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->pic_btn_menu->Dock = System::Windows::Forms::DockStyle::Right;
+			this->pic_btn_menu->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pic_btn_menu.Image")));
+			this->pic_btn_menu->Location = System::Drawing::Point(944, 0);
+			this->pic_btn_menu->MaximumSize = System::Drawing::Size(38, 30);
+			this->pic_btn_menu->MinimumSize = System::Drawing::Size(38, 30);
+			this->pic_btn_menu->Name = L"pic_btn_menu";
+			this->pic_btn_menu->Size = System::Drawing::Size(38, 30);
+			this->pic_btn_menu->TabIndex = 4;
+			this->pic_btn_menu->TabStop = false;
+			this->pic_btn_menu->Click += gcnew System::EventHandler(this, &Comedor::pic_btn_menu_Click);
+			//
+			// time_Menu
+			//
+			this->time_Menu->Interval = 10;
+			this->time_Menu->Tick += gcnew System::EventHandler(this, &Comedor::time_Menu_Tick);
 			//
 			// Comedor
 			//
@@ -827,7 +938,8 @@ namespace Simulador {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(982, 492);
-			this->Controls->Add(this->barra_porcentaje);
+			this->Controls->Add(this->pic_btn_menu);
+			this->Controls->Add(this->Menu);
 			this->Controls->Add(this->barra_desencolar);
 			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->pic_Logo);
@@ -858,8 +970,11 @@ namespace Simulador {
 			this->groupMenu->ResumeLayout(false);
 			this->groupMenu->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Logo_Superior_Derecha))->EndInit();
+			this->Menu->ResumeLayout(false);
+			this->panel2->ResumeLayout(false);
+			this->panel2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pic_btn_menu))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 		}
 #pragma endregion
 		// Mover la definici�n de miCola dentro de la clase Simulador
@@ -960,19 +1075,21 @@ namespace Simulador {
 			}
 		}
 		if (!String::IsNullOrEmpty(S_trabajadores)) {
-			if (String::IsNullOrEmpty(S_vegetariano)) {
-				_vegetariano = numeroAleatorio(0, _trabajadores);
-				text_vegetariano->Text = Convert::ToString(_vegetariano);
-			}
+			if (Tempo_Restante + 1 == numeroAleatorio(15, Tempo_Restante || Tempo_Restante <= 15)) {
+				if (String::IsNullOrEmpty(S_vegetariano)) {
+					_vegetariano = numeroAleatorio(0, _trabajadores);
+					text_vegetariano->Text = Convert::ToString(_vegetariano);
+				}
 
-			else if (String::IsNullOrEmpty(S_regular)) {
-				_regular = numeroAleatorio(0, _trabajadores - _vegetariano);
-				text_regular->Text = Convert::ToString(_regular);
-			}
+				if (String::IsNullOrEmpty(S_regular)) {
+					_regular = numeroAleatorio(0, _trabajadores - _vegetariano);
+					text_regular->Text = Convert::ToString(_regular);
+				}
 
-			else if (String::IsNullOrEmpty(S_dieta)) {
-				_dieta = numeroAleatorio(0, _trabajadores - _vegetariano - _regular);
-				text_dieta->Text = Convert::ToString(_dieta);
+				if (String::IsNullOrEmpty(S_dieta)) {
+					_dieta = numeroAleatorio(0, _trabajadores - _vegetariano - _regular);
+					text_dieta->Text = Convert::ToString(_dieta);
+				}
 			}
 		}
 		if (S_dieta->Length > 0) {
@@ -1075,6 +1192,37 @@ namespace Simulador {
 			barra_porcentaje->Text = Convert::ToString(barra_desencolar->Value) + " %";
 			//Incrementa la barra de progreso
 			barra_desencolar->Value++;
+		}
+	}
+	private: System::Void time_Menu_Tick(System::Object^ sender, System::EventArgs^ e) {
+		static bool MenuExpandido = false;
+		int cambio = MenuExpandido ? -10 : 10;
+		Menu->Width += cambio;
+
+		if (Menu->Width == Menu->MinimumSize.Width || Menu->Width == Menu->MaximumSize.Width) {
+			MenuExpandido = !MenuExpandido;
+			time_Menu->Stop();
+		}
+	}
+	private: System::Void pic_btn_menu_Click(System::Object^ sender, System::EventArgs^ e) {
+		time_Menu->Start();
+	}
+	private: System::Void text_Intervalo_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+		if ((e->KeyChar >= 48) && (e->KeyChar <= 57) || (Char::IsControl(e->KeyChar))) {
+			int a = Convert::ToInt32(text_Intervalo->Text);
+			if (a < 99)
+				text_Intervalo->Text = "100";
+			//..
+			else {
+				Temporizador->Interval = a;
+				Cronometro_Visible->Interval = a;
+				Timer_Desencolar->Interval = static_cast<int>(3 * Convert::ToInt32(text_Intervalo->Text));
+				Temporizador->Interval = a;
+				//e->Handled = false;
+			}
+		}
+		else {
+			e->Handled = true;
 		}
 	}
 	};
