@@ -121,28 +121,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColaSolicitud.cpp" />
-    <ClCompile Include="Inicio.cpp" />
+    <ClCompile Include="Comedor.cpp" />
     <ClCompile Include="SolicitudClass.cpp" />
-    <ClCompile Include="Simulador.cpp" />
-    <ClCompile Include="SupervisorClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColaSolicitud.h" />
-    <ClInclude Include="Inicio.h">
+    <ClInclude Include="Comedor.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SolicitudClass.h" />
-    <ClInclude Include="Simulador.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="SupervisorClass.h" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Inicio.resx">
-      <DependentUpon>Inicio.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Simulador.resx">
-      <DependentUpon>Simulador.h</DependentUpon>
+    <EmbeddedResource Include="Comedor.resx">
+      <DependentUpon>Comedor.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

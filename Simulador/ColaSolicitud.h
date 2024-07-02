@@ -41,8 +41,8 @@ public:
 	// M?todo para leer y eliminar un elemento de la cola
 	Solicitud desencolar() {
 		if (primero == nullptr) {
-			std::cerr << "La cola est? vac?a." << std::endl;
-			return Solicitud(-1, -1, -1, -1); // Valor sentinela para indicar cola vac?a
+			std::cerr << "La cola está vacía." << std::endl;
+			return Solicitud("-1", -1, -1, -1); // Valor sentinela para indicar cola vac?a
 		}
 
 		Solicitud solicitud = primero->Solicitando;
