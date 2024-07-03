@@ -33,7 +33,9 @@ namespace Simulador {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	public: System::Windows::Forms::DataGridView^ dataGridView1;
+	protected:
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
@@ -41,7 +43,9 @@ namespace Simulador {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::DataGridView^ DGV_Informacion_Cola;
+	public: System::Windows::Forms::DataGridView^ DGV_Informacion_Cola;
+	private:
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
@@ -90,9 +94,9 @@ namespace Simulador {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_Informacion_Cola))->BeginInit();
 			this->SuspendLayout();
-			//
+			// 
 			// dataGridView1
-			//
+			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->AllowUserToResizeColumns = false;
@@ -110,39 +114,39 @@ namespace Simulador {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->Size = System::Drawing::Size(907, 420);
 			this->dataGridView1->TabIndex = 0;
-			//
+			// 
 			// Column1
-			//
+			// 
 			this->Column1->HeaderText = L"Cantidad de menús entregados";
 			this->Column1->Name = L"Column1";
 			this->Column1->Width = 200;
-			//
+			// 
 			// Column5
-			//
+			// 
 			this->Column5->HeaderText = L"Cantidad de solicitudes.";
 			this->Column5->Name = L"Column5";
 			this->Column5->Width = 150;
-			//
+			// 
 			// Column2
-			//
+			// 
 			this->Column2->HeaderText = L"Cantidad de vegetarianos solicitados";
 			this->Column2->Name = L"Column2";
 			this->Column2->Width = 170;
-			//
+			// 
 			// Column3
-			//
+			// 
 			this->Column3->HeaderText = L"Cantidad de regulares solicitados";
 			this->Column3->Name = L"Column3";
 			this->Column3->Width = 170;
-			//
+			// 
 			// Column4
-			//
+			// 
 			this->Column4->HeaderText = L"Cantidad de dieteticos solicitados";
 			this->Column4->Name = L"Column4";
 			this->Column4->Width = 170;
-			//
+			// 
 			// button1
-			//
+			// 
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -152,9 +156,9 @@ namespace Simulador {
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Mostrar facturas";
 			this->button1->UseVisualStyleBackColor = true;
-			//
+			// 
 			// button2
-			//
+			// 
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -164,9 +168,9 @@ namespace Simulador {
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Cerrar";
 			this->button2->UseVisualStyleBackColor = true;
-			//
+			// 
 			// DGV_Informacion_Cola
-			//
+			// 
 			this->DGV_Informacion_Cola->AllowUserToAddRows = false;
 			this->DGV_Informacion_Cola->AllowUserToDeleteRows = false;
 			this->DGV_Informacion_Cola->AllowUserToResizeColumns = false;
@@ -187,60 +191,60 @@ namespace Simulador {
 			this->DGV_Informacion_Cola->ScrollBars = System::Windows::Forms::ScrollBars::None;
 			this->DGV_Informacion_Cola->Size = System::Drawing::Size(926, 258);
 			this->DGV_Informacion_Cola->TabIndex = 3;
-			//
+			// 
 			// dataGridViewTextBoxColumn1
-			//
+			// 
 			this->dataGridViewTextBoxColumn1->HeaderText = L"ID";
 			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
-			//
+			// 
 			// dataGridViewTextBoxColumn2
-			//
+			// 
 			this->dataGridViewTextBoxColumn2->HeaderText = L"Nombre";
 			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
-			//
+			// 
 			// dataGridViewTextBoxColumn3
-			//
+			// 
 			this->dataGridViewTextBoxColumn3->HeaderText = L"Apellido";
 			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
-			//
+			// 
 			// dataGridViewTextBoxColumn4
-			//
+			// 
 			this->dataGridViewTextBoxColumn4->HeaderText = L"Area de trabajo";
 			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
 			this->dataGridViewTextBoxColumn4->Width = 140;
-			//
+			// 
 			// dataGridViewTextBoxColumn5
-			//
+			// 
 			this->dataGridViewTextBoxColumn5->HeaderText = L"Jerarquia";
 			this->dataGridViewTextBoxColumn5->Name = L"dataGridViewTextBoxColumn5";
-			//
+			// 
 			// Column6
-			//
+			// 
 			this->Column6->HeaderText = L"Trabajadores";
 			this->Column6->Name = L"Column6";
-			//
+			// 
 			// Column7
-			//
+			// 
 			this->Column7->HeaderText = L"Vegetariano";
 			this->Column7->Name = L"Column7";
-			//
+			// 
 			// Column8
-			//
+			// 
 			this->Column8->HeaderText = L"Regular";
 			this->Column8->Name = L"Column8";
-			//
+			// 
 			// Column9
-			//
+			// 
 			this->Column9->HeaderText = L"Dieta";
 			this->Column9->Name = L"Column9";
-			//
+			// 
 			// Column10
-			//
+			// 
 			this->Column10->HeaderText = L"Total Menu";
 			this->Column10->Name = L"Column10";
-			//
+			// 
 			// Reportes
-			//
+			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(931, 492);
@@ -256,6 +260,7 @@ namespace Simulador {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_Informacion_Cola))->EndInit();
 			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	private: System::Void Reportes_Load(System::Object^ sender, System::EventArgs^ e) {

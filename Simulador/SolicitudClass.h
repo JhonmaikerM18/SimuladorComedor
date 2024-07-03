@@ -1,12 +1,16 @@
 #pragma once
 #include <msclr/marshal_cppstd.h>
 #include <iostream>
+
 #define MAX_SOLICITUDES 10
 
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace std;
 using namespace System::IO;
+
+//vector<SolicitudEntrega> solicitudes;
+//vector<SolicitudEntrega> entregas;
 
 class Solicitud {
 public:
