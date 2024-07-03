@@ -105,7 +105,6 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ label9;
 	public: System::Windows::Forms::Timer^ Cronometro_Visible;
 
-	private: System::Windows::Forms::ListBox^ listBox1;
 	private: System::Windows::Forms::Timer^ Timer_Desencolar;
 	private: System::Windows::Forms::ProgressBar^ barra_desencolar;
 	private: System::Windows::Forms::Label^ barra_porcentaje;
@@ -200,7 +199,6 @@ namespace Simulador {
 			this->groupMenu = (gcnew System::Windows::Forms::GroupBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->Cronometro_Visible = (gcnew System::Windows::Forms::Timer(this->components));
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->Timer_Desencolar = (gcnew System::Windows::Forms::Timer(this->components));
 			this->barra_desencolar = (gcnew System::Windows::Forms::ProgressBar());
 			this->Menu = (gcnew System::Windows::Forms::FlowLayoutPanel());
@@ -771,24 +769,6 @@ namespace Simulador {
 			this->Cronometro_Visible->Interval = 1000;
 			this->Cronometro_Visible->Tick += gcnew System::EventHandler(this, &Comedor::Cronometro_Visible_Tick);
 			//
-			// listBox1
-			//
-			this->listBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->listBox1->BackColor = System::Drawing::Color::White;
-			this->listBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->listBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->HorizontalScrollbar = true;
-			this->listBox1->ItemHeight = 20;
-			this->listBox1->Location = System::Drawing::Point(282, 140);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->SelectionMode = System::Windows::Forms::SelectionMode::None;
-			this->listBox1->Size = System::Drawing::Size(714, 60);
-			this->listBox1->TabIndex = 1;
-			this->listBox1->TabStop = false;
-			//
 			// Timer_Desencolar
 			//
 			this->Timer_Desencolar->Interval = 1800;
@@ -974,11 +954,11 @@ namespace Simulador {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column7, this->Column8, this->Column9, this->Column10
 			});
-			this->DGV_Informacion_Cola->Location = System::Drawing::Point(268, 203);
+			this->DGV_Informacion_Cola->Location = System::Drawing::Point(268, 135);
 			this->DGV_Informacion_Cola->MultiSelect = false;
 			this->DGV_Informacion_Cola->Name = L"DGV_Informacion_Cola";
 			this->DGV_Informacion_Cola->ScrollBars = System::Windows::Forms::ScrollBars::None;
-			this->DGV_Informacion_Cola->Size = System::Drawing::Size(721, 170);
+			this->DGV_Informacion_Cola->Size = System::Drawing::Size(721, 258);
 			this->DGV_Informacion_Cola->TabIndex = 1;
 			//
 			// Column1
@@ -1041,7 +1021,6 @@ namespace Simulador {
 			this->Controls->Add(this->pic_btn_menu);
 			this->Controls->Add(this->Menu);
 			this->Controls->Add(this->barra_desencolar);
-			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->pic_Logo);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->group_Datos);
@@ -1125,18 +1104,9 @@ namespace Simulador {
 			return 0;
 		else {
 			Random^ rnd = gcnew Random();
-			return rnd->Next(min, max + 2);
+			return rnd->Next(min, max + 1);
 		}
 	}
-
-		   // Función para generar un número aleatorio entre min y max
-		   //public: int numeroAleatorio(int min, int max) {
-		   //	if (min > max)
-		   //		// Manejo de error: min debe ser menor o igual que max
-		   //		return 0;
-		   //	else
-		   //		return min + rand() % (max - min + 1);
-		   //}
 
 	private: String^ ElementoCombo(ComboBox^ comboBox) {
 		// Configuramos la semilla del generador de n�meros aleatorios
@@ -1178,7 +1148,7 @@ namespace Simulador {
 			}
 		}
 		if (!String::IsNullOrEmpty(S_trabajadores)) {
-			if (Tempo_Restante == numeroAleatorio(15, Tempo_Restante) || Tempo_Restante <= 15) {
+			if (Tempo_Restante == numeroAleatorio(MIN_DE_DATOS, Tempo_Restante) || Tempo_Restante < 15) {
 				if (String::IsNullOrEmpty(S_vegetariano)) {
 					_vegetariano = numeroAleatorio(0, _trabajadores);
 					text_vegetariano->Text = Convert::ToString(_vegetariano);
@@ -1197,22 +1167,15 @@ namespace Simulador {
 		}
 
 		if (S_dieta->Length > 0) {
-			String^ Descripción = "El supervisor " + _nombre + " " + _apellido + " solicito " + _vegetariano + " vegetariano, "
-				+ _regular + " regular, " + " y " + _dieta + " dietético.";
-
-			// Convierte a std::string
-			string Dess = msclr::interop::marshal_as<std::string>(Descripción);
-			/*Supervisor^ as = gcnew Supervisor(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
-			as->Mostrar_DGV(DGV_Informacion_Cola, fila);*/
 			fila++;
 			int total = _vegetariano + _regular + _dieta;
+			// Convierte a std::string
 			string dato1 = msclr::interop::marshal_as<std::string>(S_nombre);
 			string dato2 = msclr::interop::marshal_as<std::string>(S_apellido);
 			string dato3 = msclr::interop::marshal_as<std::string>(S_area);
 			string dato4 = msclr::interop::marshal_as<std::string>(S_jerarquia);
 
 			Solicitud solicitando = Solicitud(_id, dato1, dato2, dato3, dato4, _trabajadores, _vegetariano, _regular, _dieta);
-			//Supervisor Super(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
 			miCola.encolar(solicitando);
 			fila++;
 			MostarCola();
@@ -1250,6 +1213,7 @@ namespace Simulador {
 		if (paused) {
 			// Reanudar
 			Temporizador->Start();
+			Timer_Desencolar->Start();
 			Cronometro_Visible->Start();
 			btn_pause->Text = "Pausar";
 			lbl_Control_Pause->Visible = false;
@@ -1257,6 +1221,7 @@ namespace Simulador {
 		else {
 			// Pausar
 			Temporizador->Stop();
+			Timer_Desencolar->Stop();
 			Cronometro_Visible->Stop();
 			btn_pause->Text = "Reanudar";
 			lbl_Control_Pause->Visible = true;
@@ -1269,8 +1234,6 @@ namespace Simulador {
 		Timer_Desencolar->Start();
 		barra_porcentaje->Visible = true;
 		barra_desencolar->Visible = true;
-		listBox1->Visible = true;
-		listBox1->Items->Clear();
 		DGV_Informacion_Cola->Rows->Clear();
 		MostrarSolicitudPantalla(miCola.obtenerInicio(miCola));
 	}
@@ -1289,6 +1252,9 @@ namespace Simulador {
 		if (barra_desencolar->Value == 100) {
 			barra_desencolar->Value = 0;
 			fila--;
+			int filas_desencoladas = 0;
+			//Solicitud::GuardarUltimasSolicitudes(DGV_Informacion_Cola, filas_desencoladas);
+			Solicitud::fichero_guardar(DGV_Informacion_Cola, filas_desencoladas);
 			miCola.desencolar();
 			MostarCola();
 		}
@@ -1315,7 +1281,7 @@ namespace Simulador {
 		int a = Convert::ToInt32(text_Intervalo->Text);
 		if ((e->KeyChar >= 48) && (e->KeyChar <= 57) || (Char::IsControl(e->KeyChar))) {
 			if (a < 99)
-				text_Intervalo->Text = "100";
+				text_Intervalo->Text = "1";
 			//..
 			else {
 				Temporizador->Interval = a;
