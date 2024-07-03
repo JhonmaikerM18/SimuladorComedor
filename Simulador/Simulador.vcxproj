@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="ColaSolicitud.cpp" />
     <ClCompile Include="Comedor.cpp" />
+    <ClCompile Include="Inicio.cpp" />
     <ClCompile Include="Reportes.cpp" />
     <ClCompile Include="SolicitudClass.cpp" />
     <ClCompile Include="SupervisorClass.cpp" />
@@ -129,6 +130,9 @@
   <ItemGroup>
     <ClInclude Include="ColaSolicitud.h" />
     <ClInclude Include="Comedor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Inicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Reportes.h">
@@ -140,6 +144,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Comedor.resx">
       <DependentUpon>Comedor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio.resx">
+      <DependentUpon>Inicio.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes.resx">
       <DependentUpon>Reportes.h</DependentUpon>
