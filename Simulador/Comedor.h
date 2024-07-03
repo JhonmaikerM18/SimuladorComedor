@@ -126,13 +126,12 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ lbl_Trabajadores;
 	private: System::Windows::Forms::GroupBox^ group_Datos;
 	private: System::Windows::Forms::DataGridView^ DGV_Informacion_Cola;
-
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
@@ -221,8 +220,8 @@ namespace Simulador {
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -973,7 +972,7 @@ namespace Simulador {
 			this->DGV_Informacion_Cola->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->DGV_Informacion_Cola->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(10) {
 				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column6, this->Column5, this->Column7, this->Column8, this->Column9, this->Column10
+					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column7, this->Column8, this->Column9, this->Column10
 			});
 			this->DGV_Informacion_Cola->Location = System::Drawing::Point(268, 203);
 			this->DGV_Informacion_Cola->MultiSelect = false;
@@ -1003,15 +1002,15 @@ namespace Simulador {
 			this->Column4->Name = L"Column4";
 			this->Column4->Width = 140;
 			//
-			// Column6
-			//
-			this->Column6->HeaderText = L"Trabajadores";
-			this->Column6->Name = L"Column6";
-			//
 			// Column5
 			//
 			this->Column5->HeaderText = L"Jerarquia";
 			this->Column5->Name = L"Column5";
+			//
+			// Column6
+			//
+			this->Column6->HeaderText = L"Trabajadores";
+			this->Column6->Name = L"Column6";
 			//
 			// Column7
 			//
@@ -1084,7 +1083,7 @@ namespace Simulador {
 		// Mover la definici�n de miCola dentro de la clase Simulador
 		 // Variables globales
 		String^ _nombre = "", ^ _apellido = "", ^ _area = "", ^ _jerarquia = "";
-		int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, _paneles_atencion = 0;
+		int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, fila = 0;
 		int Tempo_Restante = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR; // Constante con valor por defecto 120 segundos
 		//..
 
@@ -1196,19 +1195,26 @@ namespace Simulador {
 				}
 			}
 		}
-		int fila = 0;
+
 		if (S_dieta->Length > 0) {
 			String^ Descripción = "El supervisor " + _nombre + " " + _apellido + " solicito " + _vegetariano + " vegetariano, "
 				+ _regular + " regular, " + " y " + _dieta + " dietético.";
 
 			// Convierte a std::string
 			string Dess = msclr::interop::marshal_as<std::string>(Descripción);
-			Supervisor^ as = gcnew Supervisor(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
-			as->Mostrar_DGV(DGV_Informacion_Cola, fila);
+			/*Supervisor^ as = gcnew Supervisor(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
+			as->Mostrar_DGV(DGV_Informacion_Cola, fila);*/
+			fila++;
 			int total = _vegetariano + _regular + _dieta;
-			Solicitud solicitando = Solicitud(Dess, _vegetariano, _regular, _dieta);
+			string dato1 = msclr::interop::marshal_as<std::string>(S_nombre);
+			string dato2 = msclr::interop::marshal_as<std::string>(S_apellido);
+			string dato3 = msclr::interop::marshal_as<std::string>(S_area);
+			string dato4 = msclr::interop::marshal_as<std::string>(S_jerarquia);
+
+			Solicitud solicitando = Solicitud(_id, dato1, dato2, dato3, dato4, _trabajadores, _vegetariano, _regular, _dieta);
 			//Supervisor Super(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
 			miCola.encolar(solicitando);
+			fila++;
 			MostarCola();
 			nuevoSupervisor();
 		}
@@ -1265,11 +1271,13 @@ namespace Simulador {
 		barra_desencolar->Visible = true;
 		listBox1->Visible = true;
 		listBox1->Items->Clear();
+		DGV_Informacion_Cola->Rows->Clear();
 		MostrarSolicitudPantalla(miCola.obtenerInicio(miCola));
 	}
 	private:  void MostrarSolicitudPantalla(Nodo* unNodo) {
 		if (unNodo != NULL) {
-			listBox1->Items->Add(unNodo->Solicitando.MostrarString());
+			//listBox1->Items->Add(unNodo->Solicitando.MostrarString());
+			unNodo->Solicitando.Mostrar_DGV(DGV_Informacion_Cola, fila);
 
 			if (unNodo->siguiente != NULL) {
 				// Llamar recursivamente con el siguiente nodo
@@ -1280,6 +1288,7 @@ namespace Simulador {
 	private: System::Void Timer_Desencolar_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (barra_desencolar->Value == 100) {
 			barra_desencolar->Value = 0;
+			fila--;
 			miCola.desencolar();
 			MostarCola();
 		}
