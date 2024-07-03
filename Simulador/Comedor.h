@@ -2,6 +2,7 @@
 #include <msclr/marshal_cppstd.h>
 #include <iostream>
 #include "ColaSolicitud.h"
+#include "SupervisorClass.h"
 
 #define TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR 120
 #define TIEMPO_MAX_SEGUNDOS_CRONOMETRO 300
@@ -1195,16 +1196,18 @@ namespace Simulador {
 				}
 			}
 		}
+		int fila = 0;
 		if (S_dieta->Length > 0) {
 			String^ Descripción = "El supervisor " + _nombre + " " + _apellido + " solicito " + _vegetariano + " vegetariano, "
 				+ _regular + " regular, " + " y " + _dieta + " dietético.";
 
 			// Convierte a std::string
 			string Dess = msclr::interop::marshal_as<std::string>(Descripción);
-
+			Supervisor^ as = gcnew Supervisor(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
+			as->Mostrar_DGV(DGV_Informacion_Cola, fila);
 			int total = _vegetariano + _regular + _dieta;
 			Solicitud solicitando = Solicitud(Dess, _vegetariano, _regular, _dieta);
-			Supervisor Super(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
+			//Supervisor Super(_id, _nombre, _apellido, _area, _jerarquia, _trabajadores, _vegetariano, _regular, _dieta);
 			miCola.encolar(solicitando);
 			MostarCola();
 			nuevoSupervisor();
@@ -1256,20 +1259,6 @@ namespace Simulador {
 		paused = !paused;
 	}
 
-		   ////Desencolar una solicitud
-
-		   //Solicitud solicitudDesencolada = miCola.desencolar();
-		   //// Si la cola est� vac�a, det�n el temporizador
-
-		   //if (miCola.colaVacia()) {
-		   //	time_Desencolar->Stop();
-		   //	MessageBox::Show("La cola esta vacia");
-		   //}
-		   //else {
-		   //	miCola.desencolar();
-		   //	MostarCola();
-		   //}
-
 	private: void MostarCola() {
 		Timer_Desencolar->Start();
 		barra_porcentaje->Visible = true;
@@ -1280,14 +1269,11 @@ namespace Simulador {
 	}
 	private:  void MostrarSolicitudPantalla(Nodo* unNodo) {
 		if (unNodo != NULL) {
-			Supervisor^ Supervisor;
-			static int fila = 0;
 			listBox1->Items->Add(unNodo->Solicitando.MostrarString());
-			Supervisor->Mostrar_DGV(DGV_Informacion_Cola, fila);
+
 			if (unNodo->siguiente != NULL) {
 				// Llamar recursivamente con el siguiente nodo
 				MostrarSolicitudPantalla(unNodo->siguiente);
-				fila++;
 			}
 		}
 	}
