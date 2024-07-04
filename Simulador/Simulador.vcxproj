@@ -123,6 +123,7 @@
     <ClCompile Include="ColaSolicitud.cpp" />
     <ClCompile Include="Comedor.cpp" />
     <ClCompile Include="Inicio.cpp" />
+    <ClCompile Include="PilaSolicitud.cpp" />
     <ClCompile Include="Reportes.cpp" />
     <ClCompile Include="SolicitudClass.cpp" />
     <ClCompile Include="SupervisorClass.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="Inicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="PilaSolicitud.h" />
     <ClInclude Include="Reportes.h">
       <FileType>CppForm</FileType>
     </ClInclude>
