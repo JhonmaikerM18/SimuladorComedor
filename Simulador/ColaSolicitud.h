@@ -43,7 +43,7 @@ public:
 	Solicitud desencolar() {
 		if (primero == nullptr) {
 			cerr << "La cola está vacía." << endl;
-			return Solicitud(-1, "-1", "-1", "-1", "-1", -1, -1, -1, -1); // Valor sentinela para indicar cola vac?a
+			return Solicitud(-1, "-1", "-1", "-1", "-1", -1, -1, -1, -1);
 		}
 
 		Solicitud solicitud = primero->Solicitando;
