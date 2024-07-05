@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include <msclr/marshal_cppstd.h>
 #include <iostream>
+#include "Reportes.h"
 #include "ColaSolicitud.h"
 #include "PilaSolicitud.h"
-#include "SupervisorClass.h"
 
 #define TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR 120
 #define TIEMPO_MAX_SEGUNDOS_CRONOMETRO 300
@@ -78,7 +78,8 @@ namespace Simulador {
 	private: System::Windows::Forms::PictureBox^ pic_Logo;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Label^ lbl_Control;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ btn_detener;
+
 	private: System::Windows::Forms::Label^ lbl_Cronometro;
 	private: System::Windows::Forms::Button^ btn_pause;
 	private: System::Windows::Forms::Label^ lbl_Tiempo_Cronometro;
@@ -172,7 +173,7 @@ namespace Simulador {
 			   this->panel1 = (gcnew System::Windows::Forms::Panel());
 			   this->lbl_cantidad_menus_entregados = (gcnew System::Windows::Forms::Label());
 			   this->lbl_Control = (gcnew System::Windows::Forms::Label());
-			   this->button1 = (gcnew System::Windows::Forms::Button());
+			   this->btn_detener = (gcnew System::Windows::Forms::Button());
 			   this->barra_porcentaje = (gcnew System::Windows::Forms::Label());
 			   this->lbl_Cronometro = (gcnew System::Windows::Forms::Label());
 			   this->btn_pause = (gcnew System::Windows::Forms::Button());
@@ -573,7 +574,7 @@ namespace Simulador {
 			   this->panel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			   this->panel1->Controls->Add(this->lbl_cantidad_menus_entregados);
 			   this->panel1->Controls->Add(this->lbl_Control);
-			   this->panel1->Controls->Add(this->button1);
+			   this->panel1->Controls->Add(this->btn_detener);
 			   this->panel1->Controls->Add(this->barra_porcentaje);
 			   this->panel1->Controls->Add(this->lbl_Cronometro);
 			   this->panel1->Controls->Add(this->btn_pause);
@@ -607,19 +608,25 @@ namespace Simulador {
 			   this->lbl_Control->TabIndex = 35;
 			   this->lbl_Control->Text = L"Simulación no iniciada";
 			   //
-			   // button1
+			   // btn_detener
 			   //
-			   this->button1->Anchor = System::Windows::Forms::AnchorStyles::None;
-			   this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
-			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->btn_detener->Anchor = System::Windows::Forms::AnchorStyles::None;
+			   this->btn_detener->BackColor = System::Drawing::Color::BlueViolet;
+			   this->btn_detener->Cursor = System::Windows::Forms::Cursors::Hand;
+			   this->btn_detener->Enabled = false;
+			   this->btn_detener->FlatAppearance->BorderSize = 0;
+			   this->btn_detener->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			   this->btn_detener->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->button1->Location = System::Drawing::Point(487, 40);
-			   this->button1->Name = L"button1";
-			   this->button1->Size = System::Drawing::Size(83, 34);
-			   this->button1->TabIndex = 25;
-			   this->button1->Text = L"Detener";
-			   this->button1->UseVisualStyleBackColor = true;
+			   this->btn_detener->ForeColor = System::Drawing::Color::White;
+			   this->btn_detener->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_detener.Image")));
+			   this->btn_detener->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->btn_detener->Location = System::Drawing::Point(308, 40);
+			   this->btn_detener->Name = L"btn_detener";
+			   this->btn_detener->Size = System::Drawing::Size(141, 34);
+			   this->btn_detener->TabIndex = 25;
+			   this->btn_detener->Text = L"  Detener";
+			   this->btn_detener->UseVisualStyleBackColor = false;
 			   //
 			   // barra_porcentaje
 			   //
@@ -648,17 +655,22 @@ namespace Simulador {
 			   // btn_pause
 			   //
 			   this->btn_pause->Anchor = System::Windows::Forms::AnchorStyles::None;
+			   this->btn_pause->BackColor = System::Drawing::Color::BlueViolet;
 			   this->btn_pause->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_pause->Enabled = false;
+			   this->btn_pause->FlatAppearance->BorderSize = 0;
 			   this->btn_pause->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->btn_pause->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->btn_pause->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->btn_pause->Location = System::Drawing::Point(583, 40);
+			   this->btn_pause->ForeColor = System::Drawing::Color::White;
+			   this->btn_pause->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_pause.Image")));
+			   this->btn_pause->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->btn_pause->Location = System::Drawing::Point(467, 40);
 			   this->btn_pause->Name = L"btn_pause";
-			   this->btn_pause->Size = System::Drawing::Size(83, 34);
+			   this->btn_pause->Size = System::Drawing::Size(141, 34);
 			   this->btn_pause->TabIndex = 26;
-			   this->btn_pause->Text = L"Pausar";
-			   this->btn_pause->UseVisualStyleBackColor = true;
+			   this->btn_pause->Text = L"  Pausar";
+			   this->btn_pause->UseVisualStyleBackColor = false;
 			   this->btn_pause->Click += gcnew System::EventHandler(this, &Comedor::btn_pause_Click);
 			   //
 			   // lbl_Tiempo_Cronometro
@@ -675,17 +687,23 @@ namespace Simulador {
 			   // btn_reportes
 			   //
 			   this->btn_reportes->Anchor = System::Windows::Forms::AnchorStyles::None;
+			   this->btn_reportes->BackColor = System::Drawing::Color::BlueViolet;
 			   this->btn_reportes->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_reportes->Enabled = false;
+			   this->btn_reportes->FlatAppearance->BorderSize = 0;
 			   this->btn_reportes->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->btn_reportes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->btn_reportes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->btn_reportes->Location = System::Drawing::Point(678, 40);
+			   this->btn_reportes->ForeColor = System::Drawing::Color::White;
+			   this->btn_reportes->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_reportes.Image")));
+			   this->btn_reportes->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			   this->btn_reportes->Location = System::Drawing::Point(625, 40);
 			   this->btn_reportes->Name = L"btn_reportes";
-			   this->btn_reportes->Size = System::Drawing::Size(86, 34);
+			   this->btn_reportes->Size = System::Drawing::Size(144, 34);
 			   this->btn_reportes->TabIndex = 27;
-			   this->btn_reportes->Text = L"Reportes";
-			   this->btn_reportes->UseVisualStyleBackColor = true;
+			   this->btn_reportes->Text = L"  Reportes";
+			   this->btn_reportes->UseVisualStyleBackColor = false;
+			   this->btn_reportes->Click += gcnew System::EventHandler(this, &Comedor::btn_reportes_Click);
 			   //
 			   // lbl_cantidad_menus_solicitados
 			   //
@@ -832,14 +850,16 @@ namespace Simulador {
 			   this->btn_cerrar->FlatAppearance->MouseDownBackColor = System::Drawing::Color::DodgerBlue;
 			   this->btn_cerrar->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Blue;
 			   this->btn_cerrar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->btn_cerrar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->btn_cerrar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->btn_cerrar->ForeColor = System::Drawing::Color::White;
+			   this->btn_cerrar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_cerrar.Image")));
+			   this->btn_cerrar->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			   this->btn_cerrar->Location = System::Drawing::Point(14, 587);
 			   this->btn_cerrar->Name = L"btn_cerrar";
 			   this->btn_cerrar->Size = System::Drawing::Size(217, 45);
 			   this->btn_cerrar->TabIndex = 50;
-			   this->btn_cerrar->Text = L"Cerrar Simulador";
+			   this->btn_cerrar->Text = L"    Cerrar Simulador";
 			   this->btn_cerrar->UseVisualStyleBackColor = true;
 			   this->btn_cerrar->Click += gcnew System::EventHandler(this, &Comedor::btn_cerrar_Click);
 			   //
@@ -862,14 +882,16 @@ namespace Simulador {
 			   this->btn_inicio->FlatAppearance->MouseDownBackColor = System::Drawing::Color::DodgerBlue;
 			   this->btn_inicio->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Blue;
 			   this->btn_inicio->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->btn_inicio->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			   this->btn_inicio->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->btn_inicio->ForeColor = System::Drawing::Color::White;
+			   this->btn_inicio->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btn_inicio.Image")));
+			   this->btn_inicio->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 			   this->btn_inicio->Location = System::Drawing::Point(14, 525);
 			   this->btn_inicio->Name = L"btn_inicio";
 			   this->btn_inicio->Size = System::Drawing::Size(217, 45);
 			   this->btn_inicio->TabIndex = 49;
-			   this->btn_inicio->Text = L"Iniciar Simulación";
+			   this->btn_inicio->Text = L"      Iniciar Simulación";
 			   this->btn_inicio->UseVisualStyleBackColor = true;
 			   this->btn_inicio->Click += gcnew System::EventHandler(this, &Comedor::btn_inicio_Click);
 			   //
@@ -1180,6 +1202,7 @@ namespace Simulador {
 		   String^ _nombre = "", ^ _apellido = "", ^ _area = "", ^ _jerarquia = "";
 		   int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, fila = 0;
 		   int Tempo_Restante = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR; // Constante con valor por defecto 120 segundos
+		   int cantidad_de_menus_solicitados = cantidad_de_menus_entregados = 0;
 		   int Cronometro = 0;
 		   //..
 
@@ -1321,7 +1344,6 @@ namespace Simulador {
 			Solicitud solicitando = Solicitud(_id, dato1, dato2, dato3, dato4, _trabajadores, _vegetariano, _regular, _dieta);
 			miCola.encolar(solicitando);
 			fila++;
-			static int cantidad_de_menus_solicitados;
 			lbl_cantidad_menus_solicitados->Text = Convert::ToString(cantidad_de_menus_solicitados += (_vegetariano + _regular + _dieta)) + " Cantidad de menus solicitados";
 			MostarCola();
 			nuevoSupervisor();
@@ -1470,6 +1492,7 @@ namespace Simulador {
 	private: System::Void btn_inicio_Click(System::Object^ sender, System::EventArgs^ e) {
 		lbl_Control->Visible = false;
 		btn_pause->Enabled = true;
+		btn_detener->Enabled = true;
 		Temporizador->Start();
 		Cronometro_Visible->Start();
 		//btn_inicio->Enabled = false;
@@ -1479,6 +1502,10 @@ namespace Simulador {
 	private: System::Void btn_cerrar_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Gracias por preferirnos", "Información", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		Application::Exit();
+	}
+	private: System::Void btn_reportes_Click(System::Object^ sender, System::EventArgs^ e) {
+		Reportes^ form = gcnew Reportes(cantidad_de_menus_solicitados, cantidad_de_menus_solicitados);
+		form->ShowDialog();
 	}
 	};
 }

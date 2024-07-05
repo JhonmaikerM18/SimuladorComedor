@@ -14,7 +14,7 @@ namespace Simulador {
 	public ref class Reportes : public System::Windows::Forms::Form
 	{
 	public:
-		Reportes(void)
+		Reportes(int ctd_solicitados, int ctd_entregados)
 		{
 			InitializeComponent();
 			//
@@ -46,6 +46,10 @@ namespace Simulador {
 
 	private:
 
+	private:
+
+	private:
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
@@ -63,6 +67,13 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ lbl_menus_dieta;
+
+	private: System::Windows::Forms::Label^ lbl_menus_vegetarianos;
+
+	private: System::Windows::Forms::Label^ lbl_menus_solicitados;
+	private: System::Windows::Forms::Label^ lbl_menus_entregados;
+	private: System::Windows::Forms::Label^ lbl_menus_regulares;
 
 	protected:
 
@@ -99,6 +110,11 @@ namespace Simulador {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->lbl_menus_solicitados = (gcnew System::Windows::Forms::Label());
+			this->lbl_menus_entregados = (gcnew System::Windows::Forms::Label());
+			this->lbl_menus_vegetarianos = (gcnew System::Windows::Forms::Label());
+			this->lbl_menus_regulares = (gcnew System::Windows::Forms::Label());
+			this->lbl_menus_dieta = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_Información_factura))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -145,11 +161,11 @@ namespace Simulador {
 					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4, this->dataGridViewTextBoxColumn5,
 					this->Column6, this->Column7, this->Column8, this->Column9, this->Column10
 			});
-			this->DGV_Información_factura->Location = System::Drawing::Point(12, 41);
+			this->DGV_Información_factura->Location = System::Drawing::Point(503, 41);
 			this->DGV_Información_factura->MultiSelect = false;
 			this->DGV_Información_factura->Name = L"DGV_Información_factura";
 			this->DGV_Información_factura->ScrollBars = System::Windows::Forms::ScrollBars::None;
-			this->DGV_Información_factura->Size = System::Drawing::Size(1076, 420);
+			this->DGV_Información_factura->Size = System::Drawing::Size(585, 420);
 			this->DGV_Información_factura->TabIndex = 3;
 			//
 			// dataGridViewTextBoxColumn1
@@ -216,6 +232,11 @@ namespace Simulador {
 			//
 			// groupBox1
 			//
+			this->groupBox1->Controls->Add(this->lbl_menus_regulares);
+			this->groupBox1->Controls->Add(this->lbl_menus_dieta);
+			this->groupBox1->Controls->Add(this->lbl_menus_entregados);
+			this->groupBox1->Controls->Add(this->lbl_menus_vegetarianos);
+			this->groupBox1->Controls->Add(this->lbl_menus_solicitados);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->label4);
@@ -237,9 +258,9 @@ namespace Simulador {
 				static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(5, 286);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(258, 24);
+			this->label6->Size = System::Drawing::Size(263, 24);
 			this->label6->TabIndex = 4;
-			this->label6->Text = L"Cantidad de menus dieteticos";
+			this->label6->Text = L"Cantidad de menus dieteticos:";
 			//
 			// label5
 			//
@@ -248,9 +269,9 @@ namespace Simulador {
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(6, 231);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(258, 24);
+			this->label5->Size = System::Drawing::Size(263, 24);
 			this->label5->TabIndex = 3;
-			this->label5->Text = L"Cantidad de menus regulares";
+			this->label5->Text = L"Cantidad de menus regulares:";
 			//
 			// label4
 			//
@@ -259,9 +280,9 @@ namespace Simulador {
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(5, 179);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(286, 24);
+			this->label4->Size = System::Drawing::Size(291, 24);
 			this->label4->TabIndex = 2;
-			this->label4->Text = L"Cantidad de menus vegetarianos";
+			this->label4->Text = L"Cantidad de menus vegetarianos:";
 			//
 			// label3
 			//
@@ -270,9 +291,9 @@ namespace Simulador {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(3, 94);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(274, 24);
+			this->label3->Size = System::Drawing::Size(279, 24);
 			this->label3->TabIndex = 1;
-			this->label3->Text = L"Cantidad de menus entregados";
+			this->label3->Text = L"Cantidad de menus entregados:\r\n";
 			//
 			// label2
 			//
@@ -281,9 +302,59 @@ namespace Simulador {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(6, 51);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(266, 24);
+			this->label2->Size = System::Drawing::Size(271, 24);
 			this->label2->TabIndex = 0;
-			this->label2->Text = L"Cantidad de menus solicitados";
+			this->label2->Text = L"Cantidad de menus solicitados:\r\n";
+			//
+			// lbl_menus_solicitados
+			//
+			this->lbl_menus_solicitados->AutoSize = true;
+			this->lbl_menus_solicitados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lbl_menus_solicitados->Location = System::Drawing::Point(302, 51);
+			this->lbl_menus_solicitados->Name = L"lbl_menus_solicitados";
+			this->lbl_menus_solicitados->Size = System::Drawing::Size(0, 24);
+			this->lbl_menus_solicitados->TabIndex = 5;
+			//
+			// lbl_menus_entregados
+			//
+			this->lbl_menus_entregados->AutoSize = true;
+			this->lbl_menus_entregados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lbl_menus_entregados->Location = System::Drawing::Point(302, 94);
+			this->lbl_menus_entregados->Name = L"lbl_menus_entregados";
+			this->lbl_menus_entregados->Size = System::Drawing::Size(0, 24);
+			this->lbl_menus_entregados->TabIndex = 6;
+			//
+			// lbl_menus_vegetarianos
+			//
+			this->lbl_menus_vegetarianos->AutoSize = true;
+			this->lbl_menus_vegetarianos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lbl_menus_vegetarianos->Location = System::Drawing::Point(304, 179);
+			this->lbl_menus_vegetarianos->Name = L"lbl_menus_vegetarianos";
+			this->lbl_menus_vegetarianos->Size = System::Drawing::Size(0, 24);
+			this->lbl_menus_vegetarianos->TabIndex = 7;
+			//
+			// lbl_menus_regulares
+			//
+			this->lbl_menus_regulares->AutoSize = true;
+			this->lbl_menus_regulares->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lbl_menus_regulares->Location = System::Drawing::Point(302, 231);
+			this->lbl_menus_regulares->Name = L"lbl_menus_regulares";
+			this->lbl_menus_regulares->Size = System::Drawing::Size(0, 24);
+			this->lbl_menus_regulares->TabIndex = 8;
+			//
+			// lbl_menus_dieta
+			//
+			this->lbl_menus_dieta->AutoSize = true;
+			this->lbl_menus_dieta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->lbl_menus_dieta->Location = System::Drawing::Point(275, 286);
+			this->lbl_menus_dieta->Name = L"lbl_menus_dieta";
+			this->lbl_menus_dieta->Size = System::Drawing::Size(0, 24);
+			this->lbl_menus_dieta->TabIndex = 9;
 			//
 			// Reportes
 			//
@@ -309,6 +380,7 @@ namespace Simulador {
 		}
 #pragma endregion
 	private: System::Void Reportes_Load(System::Object^ sender, System::EventArgs^ e) {
+		lbl_menus_solicitados->Text = ctd_solicitados;
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
