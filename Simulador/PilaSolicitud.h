@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string> /
+#include <string>
 
 using namespace std;
 // Definición de la clase Nodo

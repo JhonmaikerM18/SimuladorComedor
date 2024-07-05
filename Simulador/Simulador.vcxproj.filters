@@ -18,23 +18,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SolicitudClass.cpp">
-      <Filter>Clases</Filter>
-    </ClCompile>
-    <ClCompile Include="ColaSolicitud.cpp">
-      <Filter>Clases</Filter>
-    </ClCompile>
     <ClCompile Include="Comedor.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="SupervisorClass.cpp">
+    <ClCompile Include="ColaSolicitud.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="PilaSolicitud.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="SolicitudClass.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Reportes.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="Inicio.cpp">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,19 +44,11 @@
     <ClInclude Include="Comedor.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="SupervisorClass.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="Reportes.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Inicio.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="PilaSolicitud.h">
+      <Filter>Clases</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="plantilla.html">
-      <Filter>Archivos de encabezado</Filter>
-    </None>
   </ItemGroup>
 </Project>

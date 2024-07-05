@@ -1,6 +1,5 @@
 #include <iostream>
 #include "SolicitudClass.h"
-#include "SupervisorClass.h"
 
 // Definici?n de la clase Nodo
 class Nodo {

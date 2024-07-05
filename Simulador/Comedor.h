@@ -238,9 +238,9 @@ namespace Simulador {
 			   this->group_Datos->SuspendLayout();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_Informacion_Cola))->BeginInit();
 			   this->SuspendLayout();
-			   // 
+			   //
 			   // verde2
-			   // 
+			   //
 			   this->verde2->Enabled = false;
 			   this->verde2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde2.Image")));
 			   this->verde2->Location = System::Drawing::Point(215, 123);
@@ -250,9 +250,9 @@ namespace Simulador {
 			   this->verde2->TabIndex = 15;
 			   this->verde2->TabStop = false;
 			   this->verde2->Visible = false;
-			   // 
+			   //
 			   // lbl_ID
-			   // 
+			   //
 			   this->lbl_ID->AutoSize = true;
 			   this->lbl_ID->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -261,9 +261,9 @@ namespace Simulador {
 			   this->lbl_ID->Size = System::Drawing::Size(103, 20);
 			   this->lbl_ID->TabIndex = 6;
 			   this->lbl_ID->Text = L"Identificación";
-			   // 
+			   //
 			   // text_ID
-			   // 
+			   //
 			   this->text_ID->BackColor = System::Drawing::Color::White;
 			   this->text_ID->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			   this->text_ID->Enabled = false;
@@ -273,9 +273,9 @@ namespace Simulador {
 			   this->text_ID->Name = L"text_ID";
 			   this->text_ID->Size = System::Drawing::Size(192, 29);
 			   this->text_ID->TabIndex = 12;
-			   // 
+			   //
 			   // combo_Nombre
-			   // 
+			   //
 			   this->combo_Nombre->BackColor = System::Drawing::Color::White;
 			   this->combo_Nombre->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->combo_Nombre->Enabled = false;
@@ -293,9 +293,9 @@ namespace Simulador {
 			   this->combo_Nombre->Name = L"combo_Nombre";
 			   this->combo_Nombre->Size = System::Drawing::Size(192, 28);
 			   this->combo_Nombre->TabIndex = 1;
-			   // 
+			   //
 			   // combo_Apellido
-			   // 
+			   //
 			   this->combo_Apellido->BackColor = System::Drawing::Color::White;
 			   this->combo_Apellido->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->combo_Apellido->Enabled = false;
@@ -314,9 +314,9 @@ namespace Simulador {
 			   this->combo_Apellido->Name = L"combo_Apellido";
 			   this->combo_Apellido->Size = System::Drawing::Size(192, 28);
 			   this->combo_Apellido->TabIndex = 2;
-			   // 
+			   //
 			   // verde9
-			   // 
+			   //
 			   this->verde9->Enabled = false;
 			   this->verde9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde9.Image")));
 			   this->verde9->Location = System::Drawing::Point(783, 52);
@@ -326,9 +326,9 @@ namespace Simulador {
 			   this->verde9->TabIndex = 31;
 			   this->verde9->TabStop = false;
 			   this->verde9->Visible = false;
-			   // 
+			   //
 			   // verde8
-			   // 
+			   //
 			   this->verde8->Enabled = false;
 			   this->verde8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde8.Image")));
 			   this->verde8->Location = System::Drawing::Point(489, 52);
@@ -338,9 +338,9 @@ namespace Simulador {
 			   this->verde8->TabIndex = 30;
 			   this->verde8->TabStop = false;
 			   this->verde8->Visible = false;
-			   // 
+			   //
 			   // verde7
-			   // 
+			   //
 			   this->verde7->Enabled = false;
 			   this->verde7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde7.Image")));
 			   this->verde7->Location = System::Drawing::Point(218, 52);
@@ -350,9 +350,9 @@ namespace Simulador {
 			   this->verde7->TabIndex = 21;
 			   this->verde7->TabStop = false;
 			   this->verde7->Visible = false;
-			   // 
+			   //
 			   // lbl_Temporizador
-			   // 
+			   //
 			   this->lbl_Temporizador->AutoSize = true;
 			   this->lbl_Temporizador->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -362,9 +362,9 @@ namespace Simulador {
 			   this->lbl_Temporizador->Size = System::Drawing::Size(40, 20);
 			   this->lbl_Temporizador->TabIndex = 29;
 			   this->lbl_Temporizador->Text = L"2:00";
-			   // 
+			   //
 			   // lbl_Tiempo
-			   // 
+			   //
 			   this->lbl_Tiempo->AutoSize = true;
 			   this->lbl_Tiempo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -373,9 +373,9 @@ namespace Simulador {
 			   this->lbl_Tiempo->Size = System::Drawing::Size(65, 20);
 			   this->lbl_Tiempo->TabIndex = 28;
 			   this->lbl_Tiempo->Text = L"Tiempo:";
-			   // 
+			   //
 			   // lbl_Num_Trabajadores
-			   // 
+			   //
 			   this->lbl_Num_Trabajadores->AutoSize = true;
 			   this->lbl_Num_Trabajadores->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -384,9 +384,9 @@ namespace Simulador {
 			   this->lbl_Num_Trabajadores->Size = System::Drawing::Size(196, 20);
 			   this->lbl_Num_Trabajadores->TabIndex = 23;
 			   this->lbl_Num_Trabajadores->Text = L"Números de trabajadores: ";
-			   // 
+			   //
 			   // pictureBox1
-			   // 
+			   //
 			   this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			   this->pictureBox1->Location = System::Drawing::Point(9, 23);
 			   this->pictureBox1->Name = L"pictureBox1";
@@ -394,9 +394,9 @@ namespace Simulador {
 			   this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureBox1->TabIndex = 14;
 			   this->pictureBox1->TabStop = false;
-			   // 
+			   //
 			   // pictureBox2
-			   // 
+			   //
 			   this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
 			   this->pictureBox2->Location = System::Drawing::Point(271, 23);
 			   this->pictureBox2->Name = L"pictureBox2";
@@ -404,9 +404,9 @@ namespace Simulador {
 			   this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureBox2->TabIndex = 15;
 			   this->pictureBox2->TabStop = false;
-			   // 
+			   //
 			   // text_dieta
-			   // 
+			   //
 			   this->text_dieta->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			   this->text_dieta->Enabled = false;
 			   this->text_dieta->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -415,9 +415,9 @@ namespace Simulador {
 			   this->text_dieta->Name = L"text_dieta";
 			   this->text_dieta->Size = System::Drawing::Size(124, 26);
 			   this->text_dieta->TabIndex = 22;
-			   // 
+			   //
 			   // pictureBox3
-			   // 
+			   //
 			   this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
 			   this->pictureBox3->Location = System::Drawing::Point(566, 23);
 			   this->pictureBox3->Name = L"pictureBox3";
@@ -425,14 +425,14 @@ namespace Simulador {
 			   this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pictureBox3->TabIndex = 16;
 			   this->pictureBox3->TabStop = false;
-			   // 
+			   //
 			   // Temporizador
-			   // 
+			   //
 			   this->Temporizador->Interval = 1000;
 			   this->Temporizador->Tick += gcnew System::EventHandler(this, &Comedor::Temporizador_Tick);
-			   // 
+			   //
 			   // lbl_Apellido
-			   // 
+			   //
 			   this->lbl_Apellido->AutoSize = true;
 			   this->lbl_Apellido->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -441,9 +441,9 @@ namespace Simulador {
 			   this->lbl_Apellido->Size = System::Drawing::Size(65, 20);
 			   this->lbl_Apellido->TabIndex = 8;
 			   this->lbl_Apellido->Text = L"Apellido";
-			   // 
+			   //
 			   // lbl_Nombre
-			   // 
+			   //
 			   this->lbl_Nombre->AutoSize = true;
 			   this->lbl_Nombre->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -452,9 +452,9 @@ namespace Simulador {
 			   this->lbl_Nombre->Size = System::Drawing::Size(65, 20);
 			   this->lbl_Nombre->TabIndex = 7;
 			   this->lbl_Nombre->Text = L"Nombre";
-			   // 
+			   //
 			   // text_regular
-			   // 
+			   //
 			   this->text_regular->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			   this->text_regular->Enabled = false;
 			   this->text_regular->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -463,9 +463,9 @@ namespace Simulador {
 			   this->text_regular->Name = L"text_regular";
 			   this->text_regular->Size = System::Drawing::Size(127, 26);
 			   this->text_regular->TabIndex = 21;
-			   // 
+			   //
 			   // label7
-			   // 
+			   //
 			   this->label7->AutoSize = true;
 			   this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -474,9 +474,9 @@ namespace Simulador {
 			   this->label7->Size = System::Drawing::Size(112, 24);
 			   this->label7->TabIndex = 17;
 			   this->label7->Text = L"Vegetariano";
-			   // 
+			   //
 			   // lbl_Jerarquia
-			   // 
+			   //
 			   this->lbl_Jerarquia->AutoSize = true;
 			   this->lbl_Jerarquia->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -485,9 +485,9 @@ namespace Simulador {
 			   this->lbl_Jerarquia->Size = System::Drawing::Size(75, 20);
 			   this->lbl_Jerarquia->TabIndex = 10;
 			   this->lbl_Jerarquia->Text = L"Jerarquia";
-			   // 
+			   //
 			   // lbl_Area
-			   // 
+			   //
 			   this->lbl_Area->AutoSize = true;
 			   this->lbl_Area->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -496,9 +496,9 @@ namespace Simulador {
 			   this->lbl_Area->Size = System::Drawing::Size(122, 20);
 			   this->lbl_Area->TabIndex = 9;
 			   this->lbl_Area->Text = L"Area de Trabajo";
-			   // 
+			   //
 			   // combo_Jerarquia
-			   // 
+			   //
 			   this->combo_Jerarquia->BackColor = System::Drawing::Color::White;
 			   this->combo_Jerarquia->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->combo_Jerarquia->Enabled = false;
@@ -514,9 +514,9 @@ namespace Simulador {
 			   this->combo_Jerarquia->Name = L"combo_Jerarquia";
 			   this->combo_Jerarquia->Size = System::Drawing::Size(192, 28);
 			   this->combo_Jerarquia->TabIndex = 4;
-			   // 
+			   //
 			   // text_vegetariano
-			   // 
+			   //
 			   this->text_vegetariano->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			   this->text_vegetariano->Enabled = false;
 			   this->text_vegetariano->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -525,9 +525,9 @@ namespace Simulador {
 			   this->text_vegetariano->Name = L"text_vegetariano";
 			   this->text_vegetariano->Size = System::Drawing::Size(113, 26);
 			   this->text_vegetariano->TabIndex = 20;
-			   // 
+			   //
 			   // combo_Area
-			   // 
+			   //
 			   this->combo_Area->BackColor = System::Drawing::Color::White;
 			   this->combo_Area->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->combo_Area->Enabled = false;
@@ -546,9 +546,9 @@ namespace Simulador {
 			   this->combo_Area->Name = L"combo_Area";
 			   this->combo_Area->Size = System::Drawing::Size(192, 24);
 			   this->combo_Area->TabIndex = 3;
-			   // 
+			   //
 			   // label8
-			   // 
+			   //
 			   this->label8->AutoSize = true;
 			   this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -557,9 +557,9 @@ namespace Simulador {
 			   this->label8->Size = System::Drawing::Size(76, 24);
 			   this->label8->TabIndex = 18;
 			   this->label8->Text = L"Regular";
-			   // 
+			   //
 			   // pic_Logo
-			   // 
+			   //
 			   this->pic_Logo->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pic_Logo.Image")));
 			   this->pic_Logo->Location = System::Drawing::Point(10, 493);
 			   this->pic_Logo->Name = L"pic_Logo";
@@ -567,9 +567,9 @@ namespace Simulador {
 			   this->pic_Logo->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			   this->pic_Logo->TabIndex = 43;
 			   this->pic_Logo->TabStop = false;
-			   // 
+			   //
 			   // panel1
-			   // 
+			   //
 			   this->panel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			   this->panel1->Controls->Add(this->lbl_cantidad_menus_entregados);
 			   this->panel1->Controls->Add(this->lbl_Control);
@@ -584,9 +584,9 @@ namespace Simulador {
 			   this->panel1->Name = L"panel1";
 			   this->panel1->Size = System::Drawing::Size(1004, 79);
 			   this->panel1->TabIndex = 42;
-			   // 
+			   //
 			   // lbl_cantidad_menus_entregados
-			   // 
+			   //
 			   this->lbl_cantidad_menus_entregados->AutoSize = true;
 			   this->lbl_cantidad_menus_entregados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -594,9 +594,9 @@ namespace Simulador {
 			   this->lbl_cantidad_menus_entregados->Name = L"lbl_cantidad_menus_entregados";
 			   this->lbl_cantidad_menus_entregados->Size = System::Drawing::Size(0, 20);
 			   this->lbl_cantidad_menus_entregados->TabIndex = 50;
-			   // 
+			   //
 			   // lbl_Control
-			   // 
+			   //
 			   this->lbl_Control->Anchor = System::Windows::Forms::AnchorStyles::Left;
 			   this->lbl_Control->AutoSize = true;
 			   this->lbl_Control->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -606,9 +606,9 @@ namespace Simulador {
 			   this->lbl_Control->Size = System::Drawing::Size(276, 29);
 			   this->lbl_Control->TabIndex = 35;
 			   this->lbl_Control->Text = L"Simulación no iniciada";
-			   // 
+			   //
 			   // button1
-			   // 
+			   //
 			   this->button1->Anchor = System::Windows::Forms::AnchorStyles::None;
 			   this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -620,9 +620,9 @@ namespace Simulador {
 			   this->button1->TabIndex = 25;
 			   this->button1->Text = L"Detener";
 			   this->button1->UseVisualStyleBackColor = true;
-			   // 
+			   //
 			   // barra_porcentaje
-			   // 
+			   //
 			   this->barra_porcentaje->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			   this->barra_porcentaje->AutoSize = true;
 			   this->barra_porcentaje->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
@@ -632,9 +632,9 @@ namespace Simulador {
 			   this->barra_porcentaje->Size = System::Drawing::Size(40, 24);
 			   this->barra_porcentaje->TabIndex = 46;
 			   this->barra_porcentaje->Text = L"0 %";
-			   // 
+			   //
 			   // lbl_Cronometro
-			   // 
+			   //
 			   this->lbl_Cronometro->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			   this->lbl_Cronometro->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -644,9 +644,9 @@ namespace Simulador {
 			   this->lbl_Cronometro->Size = System::Drawing::Size(58, 25);
 			   this->lbl_Cronometro->TabIndex = 31;
 			   this->lbl_Cronometro->Text = L"0:00";
-			   // 
+			   //
 			   // btn_pause
-			   // 
+			   //
 			   this->btn_pause->Anchor = System::Windows::Forms::AnchorStyles::None;
 			   this->btn_pause->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_pause->Enabled = false;
@@ -660,9 +660,9 @@ namespace Simulador {
 			   this->btn_pause->Text = L"Pausar";
 			   this->btn_pause->UseVisualStyleBackColor = true;
 			   this->btn_pause->Click += gcnew System::EventHandler(this, &Comedor::btn_pause_Click);
-			   // 
+			   //
 			   // lbl_Tiempo_Cronometro
-			   // 
+			   //
 			   this->lbl_Tiempo_Cronometro->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			   this->lbl_Tiempo_Cronometro->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -671,9 +671,9 @@ namespace Simulador {
 			   this->lbl_Tiempo_Cronometro->Size = System::Drawing::Size(162, 25);
 			   this->lbl_Tiempo_Cronometro->TabIndex = 30;
 			   this->lbl_Tiempo_Cronometro->Text = L"Tiempo transcurido:";
-			   // 
+			   //
 			   // btn_reportes
-			   // 
+			   //
 			   this->btn_reportes->Anchor = System::Windows::Forms::AnchorStyles::None;
 			   this->btn_reportes->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_reportes->Enabled = false;
@@ -686,9 +686,9 @@ namespace Simulador {
 			   this->btn_reportes->TabIndex = 27;
 			   this->btn_reportes->Text = L"Reportes";
 			   this->btn_reportes->UseVisualStyleBackColor = true;
-			   // 
+			   //
 			   // lbl_cantidad_menus_solicitados
-			   // 
+			   //
 			   this->lbl_cantidad_menus_solicitados->AutoSize = true;
 			   this->lbl_cantidad_menus_solicitados->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -696,9 +696,9 @@ namespace Simulador {
 			   this->lbl_cantidad_menus_solicitados->Name = L"lbl_cantidad_menus_solicitados";
 			   this->lbl_cantidad_menus_solicitados->Size = System::Drawing::Size(0, 20);
 			   this->lbl_cantidad_menus_solicitados->TabIndex = 49;
-			   // 
+			   //
 			   // verde5
-			   // 
+			   //
 			   this->verde5->Enabled = false;
 			   this->verde5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde5.Image")));
 			   this->verde5->Location = System::Drawing::Point(215, 366);
@@ -708,9 +708,9 @@ namespace Simulador {
 			   this->verde5->TabIndex = 19;
 			   this->verde5->TabStop = false;
 			   this->verde5->Visible = false;
-			   // 
+			   //
 			   // verde4
-			   // 
+			   //
 			   this->verde4->Enabled = false;
 			   this->verde4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde4.Image")));
 			   this->verde4->Location = System::Drawing::Point(215, 288);
@@ -720,9 +720,9 @@ namespace Simulador {
 			   this->verde4->TabIndex = 18;
 			   this->verde4->TabStop = false;
 			   this->verde4->Visible = false;
-			   // 
+			   //
 			   // verde3
-			   // 
+			   //
 			   this->verde3->Enabled = false;
 			   this->verde3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde3.Image")));
 			   this->verde3->Location = System::Drawing::Point(215, 204);
@@ -732,9 +732,9 @@ namespace Simulador {
 			   this->verde3->TabIndex = 17;
 			   this->verde3->TabStop = false;
 			   this->verde3->Visible = false;
-			   // 
+			   //
 			   // verde1
-			   // 
+			   //
 			   this->verde1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde1.Image")));
 			   this->verde1->Location = System::Drawing::Point(215, 58);
 			   this->verde1->Name = L"verde1";
@@ -743,9 +743,9 @@ namespace Simulador {
 			   this->verde1->TabIndex = 16;
 			   this->verde1->TabStop = false;
 			   this->verde1->Visible = false;
-			   // 
+			   //
 			   // groupMenu
-			   // 
+			   //
 			   this->groupMenu->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				   | System::Windows::Forms::AnchorStyles::Right));
 			   this->groupMenu->Controls->Add(this->verde9);
@@ -771,9 +771,9 @@ namespace Simulador {
 			   this->groupMenu->TabIndex = 41;
 			   this->groupMenu->TabStop = false;
 			   this->groupMenu->Text = L"Selección de Menus";
-			   // 
+			   //
 			   // label9
-			   // 
+			   //
 			   this->label9->AutoSize = true;
 			   this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -782,27 +782,27 @@ namespace Simulador {
 			   this->label9->Size = System::Drawing::Size(52, 24);
 			   this->label9->TabIndex = 19;
 			   this->label9->Text = L"Dieta";
-			   // 
+			   //
 			   // Cronometro_Visible
-			   // 
+			   //
 			   this->Cronometro_Visible->Interval = 1000;
 			   this->Cronometro_Visible->Tick += gcnew System::EventHandler(this, &Comedor::Cronometro_Visible_Tick);
-			   // 
+			   //
 			   // Timer_Desencolar
-			   // 
+			   //
 			   this->Timer_Desencolar->Interval = 1800;
 			   this->Timer_Desencolar->Tick += gcnew System::EventHandler(this, &Comedor::Timer_Desencolar_Tick);
-			   // 
+			   //
 			   // barra_desencolar
-			   // 
+			   //
 			   this->barra_desencolar->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
 			   this->barra_desencolar->Location = System::Drawing::Point(922, 641);
 			   this->barra_desencolar->Name = L"barra_desencolar";
 			   this->barra_desencolar->Size = System::Drawing::Size(406, 23);
 			   this->barra_desencolar->TabIndex = 45;
-			   // 
+			   //
 			   // Menu
-			   // 
+			   //
 			   this->Menu->BackColor = System::Drawing::Color::Navy;
 			   this->Menu->Controls->Add(this->panel2);
 			   this->Menu->Dock = System::Windows::Forms::DockStyle::Right;
@@ -812,9 +812,9 @@ namespace Simulador {
 			   this->Menu->Name = L"Menu";
 			   this->Menu->Size = System::Drawing::Size(248, 722);
 			   this->Menu->TabIndex = 47;
-			   // 
+			   //
 			   // panel2
-			   // 
+			   //
 			   this->panel2->Controls->Add(this->btn_cerrar);
 			   this->panel2->Controls->Add(this->label1);
 			   this->panel2->Controls->Add(this->btn_inicio);
@@ -825,9 +825,9 @@ namespace Simulador {
 			   this->panel2->Name = L"panel2";
 			   this->panel2->Size = System::Drawing::Size(245, 650);
 			   this->panel2->TabIndex = 4;
-			   // 
+			   //
 			   // btn_cerrar
-			   // 
+			   //
 			   this->btn_cerrar->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_cerrar->FlatAppearance->MouseDownBackColor = System::Drawing::Color::DodgerBlue;
 			   this->btn_cerrar->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Blue;
@@ -842,9 +842,9 @@ namespace Simulador {
 			   this->btn_cerrar->Text = L"Cerrar Simulador";
 			   this->btn_cerrar->UseVisualStyleBackColor = true;
 			   this->btn_cerrar->Click += gcnew System::EventHandler(this, &Comedor::btn_cerrar_Click);
-			   // 
+			   //
 			   // label1
-			   // 
+			   //
 			   this->label1->AutoSize = true;
 			   this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -855,9 +855,9 @@ namespace Simulador {
 			   this->label1->Size = System::Drawing::Size(110, 33);
 			   this->label1->TabIndex = 0;
 			   this->label1->Text = L"Temas";
-			   // 
+			   //
 			   // btn_inicio
-			   // 
+			   //
 			   this->btn_inicio->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_inicio->FlatAppearance->MouseDownBackColor = System::Drawing::Color::DodgerBlue;
 			   this->btn_inicio->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Blue;
@@ -872,9 +872,9 @@ namespace Simulador {
 			   this->btn_inicio->Text = L"Iniciar Simulación";
 			   this->btn_inicio->UseVisualStyleBackColor = true;
 			   this->btn_inicio->Click += gcnew System::EventHandler(this, &Comedor::btn_inicio_Click);
-			   // 
+			   //
 			   // text_Intervalo
-			   // 
+			   //
 			   this->text_Intervalo->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->text_Intervalo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -885,9 +885,9 @@ namespace Simulador {
 			   this->text_Intervalo->TabIndex = 3;
 			   this->text_Intervalo->Text = L"1000";
 			   this->text_Intervalo->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Comedor::text_Intervalo_KeyPress);
-			   // 
+			   //
 			   // comboBox1
-			   // 
+			   //
 			   this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			   this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			   this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -897,9 +897,9 @@ namespace Simulador {
 			   this->comboBox1->Name = L"comboBox1";
 			   this->comboBox1->Size = System::Drawing::Size(209, 32);
 			   this->comboBox1->TabIndex = 1;
-			   // 
+			   //
 			   // Intervalo
-			   // 
+			   //
 			   this->Intervalo->AutoSize = true;
 			   this->Intervalo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -910,9 +910,9 @@ namespace Simulador {
 			   this->Intervalo->Size = System::Drawing::Size(136, 33);
 			   this->Intervalo->TabIndex = 2;
 			   this->Intervalo->Text = L"Intervalo";
-			   // 
+			   //
 			   // pic_btn_menu
-			   // 
+			   //
 			   this->pic_btn_menu->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->pic_btn_menu->Dock = System::Windows::Forms::DockStyle::Right;
 			   this->pic_btn_menu->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pic_btn_menu.Image")));
@@ -924,14 +924,14 @@ namespace Simulador {
 			   this->pic_btn_menu->TabIndex = 4;
 			   this->pic_btn_menu->TabStop = false;
 			   this->pic_btn_menu->Click += gcnew System::EventHandler(this, &Comedor::pic_btn_menu_Click);
-			   // 
+			   //
 			   // time_Menu
-			   // 
+			   //
 			   this->time_Menu->Interval = 10;
 			   this->time_Menu->Tick += gcnew System::EventHandler(this, &Comedor::time_Menu_Tick);
-			   // 
+			   //
 			   // verde6
-			   // 
+			   //
 			   this->verde6->Enabled = false;
 			   this->verde6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"verde6.Image")));
 			   this->verde6->Location = System::Drawing::Point(215, 439);
@@ -941,9 +941,9 @@ namespace Simulador {
 			   this->verde6->TabIndex = 20;
 			   this->verde6->TabStop = false;
 			   this->verde6->Visible = false;
-			   // 
+			   //
 			   // text_Trabajadores
-			   // 
+			   //
 			   this->text_Trabajadores->BackColor = System::Drawing::Color::White;
 			   this->text_Trabajadores->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			   this->text_Trabajadores->Enabled = false;
@@ -953,9 +953,9 @@ namespace Simulador {
 			   this->text_Trabajadores->Name = L"text_Trabajadores";
 			   this->text_Trabajadores->Size = System::Drawing::Size(192, 29);
 			   this->text_Trabajadores->TabIndex = 13;
-			   // 
+			   //
 			   // lbl_Trabajadores
-			   // 
+			   //
 			   this->lbl_Trabajadores->AutoSize = true;
 			   this->lbl_Trabajadores->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -964,9 +964,9 @@ namespace Simulador {
 			   this->lbl_Trabajadores->Size = System::Drawing::Size(102, 20);
 			   this->lbl_Trabajadores->TabIndex = 11;
 			   this->lbl_Trabajadores->Text = L"Trabajadores";
-			   // 
+			   //
 			   // group_Datos
-			   // 
+			   //
 			   this->group_Datos->Controls->Add(this->verde6);
 			   this->group_Datos->Controls->Add(this->verde5);
 			   this->group_Datos->Controls->Add(this->verde4);
@@ -993,9 +993,9 @@ namespace Simulador {
 			   this->group_Datos->TabIndex = 40;
 			   this->group_Datos->TabStop = false;
 			   this->group_Datos->Text = L"Datos necesarios";
-			   // 
+			   //
 			   // DGV_Informacion_Cola
-			   // 
+			   //
 			   this->DGV_Informacion_Cola->AllowUserToAddRows = false;
 			   this->DGV_Informacion_Cola->AllowUserToDeleteRows = false;
 			   this->DGV_Informacion_Cola->AllowUserToResizeColumns = false;
@@ -1014,65 +1014,65 @@ namespace Simulador {
 			   this->DGV_Informacion_Cola->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			   this->DGV_Informacion_Cola->Size = System::Drawing::Size(827, 488);
 			   this->DGV_Informacion_Cola->TabIndex = 1;
-			   // 
+			   //
 			   // Column1
-			   // 
+			   //
 			   this->Column1->HeaderText = L"ID";
 			   this->Column1->Name = L"Column1";
 			   this->Column1->Width = 50;
-			   // 
+			   //
 			   // Column2
-			   // 
+			   //
 			   this->Column2->HeaderText = L"Nombre";
 			   this->Column2->Name = L"Column2";
-			   // 
+			   //
 			   // Column3
-			   // 
+			   //
 			   this->Column3->HeaderText = L"Apellido";
 			   this->Column3->Name = L"Column3";
-			   // 
+			   //
 			   // Column4
-			   // 
+			   //
 			   this->Column4->HeaderText = L"Area de trabajo";
 			   this->Column4->Name = L"Column4";
 			   this->Column4->Width = 140;
-			   // 
+			   //
 			   // Column5
-			   // 
+			   //
 			   this->Column5->HeaderText = L"Jerarquia";
 			   this->Column5->Name = L"Column5";
-			   // 
+			   //
 			   // Column6
-			   // 
+			   //
 			   this->Column6->HeaderText = L"Trabajadores";
 			   this->Column6->Name = L"Column6";
 			   this->Column6->Width = 80;
-			   // 
+			   //
 			   // Column7
-			   // 
+			   //
 			   this->Column7->HeaderText = L"Vegetariano";
 			   this->Column7->Name = L"Column7";
 			   this->Column7->Width = 80;
-			   // 
+			   //
 			   // Column8
-			   // 
+			   //
 			   this->Column8->HeaderText = L"Regular";
 			   this->Column8->Name = L"Column8";
 			   this->Column8->Width = 70;
-			   // 
+			   //
 			   // Column9
-			   // 
+			   //
 			   this->Column9->HeaderText = L"Dieta";
 			   this->Column9->Name = L"Column9";
 			   this->Column9->Width = 60;
-			   // 
+			   //
 			   // Column10
-			   // 
+			   //
 			   this->Column10->HeaderText = L"Total Menu";
 			   this->Column10->Name = L"Column10";
-			   // 
+			   //
 			   // listBox1
-			   // 
+			   //
 			   this->listBox1->BackColor = System::Drawing::Color::White;
 			   this->listBox1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->listBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1084,9 +1084,9 @@ namespace Simulador {
 			   this->listBox1->Name = L"listBox1";
 			   this->listBox1->Size = System::Drawing::Size(244, 252);
 			   this->listBox1->TabIndex = 48;
-			   // 
+			   //
 			   // lbl_Menu_Solicitado
-			   // 
+			   //
 			   this->lbl_Menu_Solicitado->AutoSize = true;
 			   this->lbl_Menu_Solicitado->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Regular,
 				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -1095,9 +1095,9 @@ namespace Simulador {
 			   this->lbl_Menu_Solicitado->Size = System::Drawing::Size(210, 29);
 			   this->lbl_Menu_Solicitado->TabIndex = 32;
 			   this->lbl_Menu_Solicitado->Text = L"Menus Solicitados";
-			   // 
+			   //
 			   // label2
-			   // 
+			   //
 			   this->label2->AutoSize = true;
 			   this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -1106,9 +1106,9 @@ namespace Simulador {
 			   this->label2->Size = System::Drawing::Size(193, 25);
 			   this->label2->TabIndex = 50;
 			   this->label2->Text = L"Menus Entregados";
-			   // 
+			   //
 			   // listBox2
-			   // 
+			   //
 			   this->listBox2->BackColor = System::Drawing::Color::White;
 			   this->listBox2->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->listBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1120,9 +1120,9 @@ namespace Simulador {
 			   this->listBox2->Name = L"listBox2";
 			   this->listBox2->Size = System::Drawing::Size(244, 270);
 			   this->listBox2->TabIndex = 51;
-			   // 
+			   //
 			   // Comedor
-			   // 
+			   //
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackColor = System::Drawing::Color::White;
@@ -1174,14 +1174,13 @@ namespace Simulador {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->DGV_Informacion_Cola))->EndInit();
 			   this->ResumeLayout(false);
 			   this->PerformLayout();
-
 		   }
 #pragma endregion
-		   // Mover la definici�n de miCola dentro de la clase Simulador
-			// Variables globales
+		   // Variables globales
 		   String^ _nombre = "", ^ _apellido = "", ^ _area = "", ^ _jerarquia = "";
 		   int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, fila = 0;
 		   int Tempo_Restante = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR; // Constante con valor por defecto 120 segundos
+		   int Cronometro = 0;
 		   //..
 
 	private: System::Void Comedor_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -1326,10 +1325,10 @@ namespace Simulador {
 			lbl_cantidad_menus_solicitados->Text = Convert::ToString(cantidad_de_menus_solicitados += (_vegetariano + _regular + _dieta)) + " Cantidad de menus solicitados";
 			MostarCola();
 			nuevoSupervisor();
-			Sleep(3000);
+			Sleep(3000); //Detiene el programa durante 3 segundos para ver los resultados
 		}
 	}
-		   int Cronometro = 0;
+
 	private: System::Void Cronometro_Visible_Tick(System::Object^ sender, System::EventArgs^ e) {
 		Cronometro++; // Incrementar el tiempo en 1 segundo
 		TimeSpan tiempo = TimeSpan::FromSeconds(Cronometro);

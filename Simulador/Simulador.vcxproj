@@ -122,18 +122,13 @@
   <ItemGroup>
     <ClCompile Include="ColaSolicitud.cpp" />
     <ClCompile Include="Comedor.cpp" />
-    <ClCompile Include="Inicio.cpp" />
     <ClCompile Include="PilaSolicitud.cpp" />
     <ClCompile Include="Reportes.cpp" />
     <ClCompile Include="SolicitudClass.cpp" />
-    <ClCompile Include="SupervisorClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColaSolicitud.h" />
     <ClInclude Include="Comedor.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Inicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PilaSolicitud.h" />
@@ -141,23 +136,14 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SolicitudClass.h" />
-    <ClInclude Include="SupervisorClass.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Comedor.resx">
       <DependentUpon>Comedor.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inicio.resx">
-      <DependentUpon>Inicio.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes.resx">
       <DependentUpon>Reportes.h</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="plantilla.html">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
