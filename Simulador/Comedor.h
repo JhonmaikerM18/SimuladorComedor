@@ -97,7 +97,7 @@ namespace Simulador {
 	private: System::Windows::Forms::Label^ barra_porcentaje;
 	private: System::Windows::Forms::FlowLayoutPanel^ Menu;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
+
 	private: System::Windows::Forms::Label^ Intervalo;
 	private: System::Windows::Forms::TextBox^ text_Intervalo;
 	private: System::Windows::Forms::PictureBox^ pic_btn_menu;
@@ -127,6 +127,7 @@ namespace Simulador {
 	private: System::Windows::Forms::ListBox^ listBox2;
 	private: System::Windows::Forms::Label^ lbl_cantidad_menus_entregados;
 	private: System::Windows::Forms::Button^ btn_cerrar;
+	private: System::Windows::Forms::TextBox^ text_cantidad_supervisores;
 
 	private: System::ComponentModel::IContainer^ components;
 
@@ -191,11 +192,11 @@ namespace Simulador {
 			   this->barra_desencolar = (gcnew System::Windows::Forms::ProgressBar());
 			   this->Menu = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			   this->panel2 = (gcnew System::Windows::Forms::Panel());
+			   this->text_cantidad_supervisores = (gcnew System::Windows::Forms::TextBox());
 			   this->btn_cerrar = (gcnew System::Windows::Forms::Button());
 			   this->label1 = (gcnew System::Windows::Forms::Label());
 			   this->btn_inicio = (gcnew System::Windows::Forms::Button());
 			   this->text_Intervalo = (gcnew System::Windows::Forms::TextBox());
-			   this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			   this->Intervalo = (gcnew System::Windows::Forms::Label());
 			   this->pic_btn_menu = (gcnew System::Windows::Forms::PictureBox());
 			   this->time_Menu = (gcnew System::Windows::Forms::Timer(this->components));
@@ -358,7 +359,7 @@ namespace Simulador {
 			   this->lbl_Temporizador->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->lbl_Temporizador->ForeColor = System::Drawing::Color::Red;
-			   this->lbl_Temporizador->Location = System::Drawing::Point(737, 99);
+			   this->lbl_Temporizador->Location = System::Drawing::Point(650, 104);
 			   this->lbl_Temporizador->Name = L"lbl_Temporizador";
 			   this->lbl_Temporizador->Size = System::Drawing::Size(40, 20);
 			   this->lbl_Temporizador->TabIndex = 29;
@@ -369,7 +370,7 @@ namespace Simulador {
 			   this->lbl_Tiempo->AutoSize = true;
 			   this->lbl_Tiempo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->lbl_Tiempo->Location = System::Drawing::Point(666, 99);
+			   this->lbl_Tiempo->Location = System::Drawing::Point(579, 104);
 			   this->lbl_Tiempo->Name = L"lbl_Tiempo";
 			   this->lbl_Tiempo->Size = System::Drawing::Size(65, 20);
 			   this->lbl_Tiempo->TabIndex = 28;
@@ -611,7 +612,7 @@ namespace Simulador {
 			   // btn_detener
 			   //
 			   this->btn_detener->Anchor = System::Windows::Forms::AnchorStyles::None;
-			   this->btn_detener->BackColor = System::Drawing::Color::BlueViolet;
+			   this->btn_detener->BackColor = System::Drawing::Color::Blue;
 			   this->btn_detener->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_detener->Enabled = false;
 			   this->btn_detener->FlatAppearance->BorderSize = 0;
@@ -627,6 +628,7 @@ namespace Simulador {
 			   this->btn_detener->TabIndex = 25;
 			   this->btn_detener->Text = L"  Detener";
 			   this->btn_detener->UseVisualStyleBackColor = false;
+			   this->btn_detener->Click += gcnew System::EventHandler(this, &Comedor::btn_detener_Click);
 			   //
 			   // barra_porcentaje
 			   //
@@ -639,6 +641,7 @@ namespace Simulador {
 			   this->barra_porcentaje->Size = System::Drawing::Size(40, 24);
 			   this->barra_porcentaje->TabIndex = 46;
 			   this->barra_porcentaje->Text = L"0 %";
+			   this->barra_porcentaje->Visible = false;
 			   //
 			   // lbl_Cronometro
 			   //
@@ -655,7 +658,7 @@ namespace Simulador {
 			   // btn_pause
 			   //
 			   this->btn_pause->Anchor = System::Windows::Forms::AnchorStyles::None;
-			   this->btn_pause->BackColor = System::Drawing::Color::BlueViolet;
+			   this->btn_pause->BackColor = System::Drawing::Color::Blue;
 			   this->btn_pause->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_pause->Enabled = false;
 			   this->btn_pause->FlatAppearance->BorderSize = 0;
@@ -687,7 +690,7 @@ namespace Simulador {
 			   // btn_reportes
 			   //
 			   this->btn_reportes->Anchor = System::Windows::Forms::AnchorStyles::None;
-			   this->btn_reportes->BackColor = System::Drawing::Color::BlueViolet;
+			   this->btn_reportes->BackColor = System::Drawing::Color::Blue;
 			   this->btn_reportes->Cursor = System::Windows::Forms::Cursors::Hand;
 			   this->btn_reportes->Enabled = false;
 			   this->btn_reportes->FlatAppearance->BorderSize = 0;
@@ -818,6 +821,7 @@ namespace Simulador {
 			   this->barra_desencolar->Name = L"barra_desencolar";
 			   this->barra_desencolar->Size = System::Drawing::Size(406, 23);
 			   this->barra_desencolar->TabIndex = 45;
+			   this->barra_desencolar->Visible = false;
 			   //
 			   // Menu
 			   //
@@ -833,16 +837,30 @@ namespace Simulador {
 			   //
 			   // panel2
 			   //
+			   this->panel2->Controls->Add(this->text_cantidad_supervisores);
 			   this->panel2->Controls->Add(this->btn_cerrar);
 			   this->panel2->Controls->Add(this->label1);
 			   this->panel2->Controls->Add(this->btn_inicio);
 			   this->panel2->Controls->Add(this->text_Intervalo);
-			   this->panel2->Controls->Add(this->comboBox1);
 			   this->panel2->Controls->Add(this->Intervalo);
 			   this->panel2->Location = System::Drawing::Point(3, 3);
 			   this->panel2->Name = L"panel2";
 			   this->panel2->Size = System::Drawing::Size(245, 650);
 			   this->panel2->TabIndex = 4;
+			   //
+			   // text_cantidad_supervisores
+			   //
+			   this->text_cantidad_supervisores->BackColor = System::Drawing::Color::White;
+			   this->text_cantidad_supervisores->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			   this->text_cantidad_supervisores->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular,
+				   System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			   this->text_cantidad_supervisores->ForeColor = System::Drawing::Color::Gray;
+			   this->text_cantidad_supervisores->Location = System::Drawing::Point(26, 62);
+			   this->text_cantidad_supervisores->Name = L"text_cantidad_supervisores";
+			   this->text_cantidad_supervisores->Size = System::Drawing::Size(183, 31);
+			   this->text_cantidad_supervisores->TabIndex = 51;
+			   this->text_cantidad_supervisores->Text = L"10";
+			   this->text_cantidad_supervisores->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Comedor::text_cantidad_supervisores_KeyPress);
 			   //
 			   // btn_cerrar
 			   //
@@ -866,15 +884,15 @@ namespace Simulador {
 			   // label1
 			   //
 			   this->label1->AutoSize = true;
-			   this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			   this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->label1->ForeColor = System::Drawing::Color::White;
-			   this->label1->Location = System::Drawing::Point(61, 18);
+			   this->label1->Location = System::Drawing::Point(19, 9);
 			   this->label1->Margin = System::Windows::Forms::Padding(3);
 			   this->label1->Name = L"label1";
-			   this->label1->Size = System::Drawing::Size(110, 33);
+			   this->label1->Size = System::Drawing::Size(212, 40);
 			   this->label1->TabIndex = 0;
-			   this->label1->Text = L"Temas";
+			   this->label1->Text = L"Cantidad de supervisores\r\n          en la cola.";
 			   //
 			   // btn_inicio
 			   //
@@ -897,6 +915,7 @@ namespace Simulador {
 			   //
 			   // text_Intervalo
 			   //
+			   this->text_Intervalo->BackColor = System::Drawing::Color::White;
 			   this->text_Intervalo->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			   this->text_Intervalo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
@@ -907,18 +926,6 @@ namespace Simulador {
 			   this->text_Intervalo->TabIndex = 3;
 			   this->text_Intervalo->Text = L"1000";
 			   this->text_Intervalo->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Comedor::text_Intervalo_KeyPress);
-			   //
-			   // comboBox1
-			   //
-			   this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			   this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			   this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				   static_cast<System::Byte>(0)));
-			   this->comboBox1->FormattingEnabled = true;
-			   this->comboBox1->Location = System::Drawing::Point(9, 61);
-			   this->comboBox1->Name = L"comboBox1";
-			   this->comboBox1->Size = System::Drawing::Size(209, 32);
-			   this->comboBox1->TabIndex = 1;
 			   //
 			   // Intervalo
 			   //
@@ -1169,7 +1176,6 @@ namespace Simulador {
 			   this->Text = L"Comedor";
 			   this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			   this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &Comedor::Comedor_FormClosing);
-			   this->Load += gcnew System::EventHandler(this, &Comedor::Comedor_Load);
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde2))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde9))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->verde8))->EndInit();
@@ -1200,17 +1206,14 @@ namespace Simulador {
 #pragma endregion
 		   // Variables globales
 		   String^ _nombre = "", ^ _apellido = "", ^ _area = "", ^ _jerarquia = "";
-		   int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, fila = 0;
+		   int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, fila = 0, cantidad_de_supervisores = 0;
+		   //Variables globales del tiempo del programa
 		   int Tempo_Restante = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR; // Constante con valor por defecto 120 segundos
-		   int cantidad_de_menus_solicitados = cantidad_de_menus_entregados = 0;
-		   int Cronometro = 0;
-		   //..
+		   //Variables globales que pasaran al otro formulario de reporte
+		   int cantidad_de_menus_solicitados = 0, cantidad_de_menus_entregados = 0, cantidad_vegetariano = 0,
+			   cantidad_regular = 0, cantidad_dieta = 0;
 
-	private: System::Void Comedor_Load(System::Object^ sender, System::EventArgs^ e) {
-		StreamWriter^ archivo = gcnew StreamWriter("Supervisores.txt");
-		archivo->Close();
-	}
-	public: void nuevoSupervisor() {
+	public: void limpiar_Supervisor(int temporizador) {
 		_nombre = "";
 		_apellido = "";
 		_area = "";
@@ -1221,23 +1224,50 @@ namespace Simulador {
 		combo_Area->SelectedIndex = -1;
 		combo_Jerarquia->SelectedIndex = -1;
 		text_Trabajadores->Text = "";
-		//DATOS DEL LOS MENUS
+		// DATOS DEL LOS MENUS
 		text_vegetariano->Text = "";
 		text_regular->Text = "";
 		text_dieta->Text = "";
-		Tempo_Restante = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR;
+		Tempo_Restante = temporizador;
 
 		_id = _trabajadores = _vegetariano = _regular = _dieta = 0;
 		lbl_Num_Trabajadores->Text = "";
 	}
+
 	private: System::Void Temporizador_Tick(System::Object^ sender, System::EventArgs^ e) {
 		Tempo_Restante--; // Restar 1 segundo
 		TimeSpan tiempo = TimeSpan::FromSeconds(Tempo_Restante);
-		Verificador_TEXT();
-		lbl_Temporizador->Text = String::Format(L"{0}:{1:D2}", tiempo.Minutes, tiempo.Seconds);
+		if (cantidad_de_supervisores > fila) {
+			Verificador_TEXT();
+			lbl_Temporizador->Text = String::Format(L"{0}:{1:D2}", tiempo.Minutes, tiempo.Seconds);
+		}
+		else {
+			//Solamente para limpiar los tick's
+			verde1->Visible = false;
+			verde2->Visible = false;
+			verde3->Visible = false;
+			verde4->Visible = false;
+			verde5->Visible = false;
+			verde6->Visible = false;
+			lbl_Num_Trabajadores->Visible = false;
+			// COMIDAS
+			verde7->Visible = false;
+			verde8->Visible = false;
+			verde9->Visible = false;
+
+			btn_pause->Enabled = false;
+			btn_pause->Text = "No pausa";
+			Temporizador->Stop();
+			lbl_Tiempo->Text = "Ya no hay más supervisores";
+			lbl_Temporizador->Text = "";
+			//Inicia la desapilación
+			barra_porcentaje->Visible = true;
+			barra_desencolar->Visible = true;
+			Timer_Desencolar->Start();
+		}
 	}
 
-	private:  int numeroAleatorio(int min, int max) {
+	private: int numeroAleatorio(int min, int max) {
 		if (min > max)
 			// Manejo de error... min debe ser mayor
 			return 0;
@@ -1246,15 +1276,15 @@ namespace Simulador {
 			return rnd->Next(min, max + 1);
 		}
 	}
-
 	private: String^ ElementoCombo(ComboBox^ comboBox) {
-		// Configuramos la semilla del generador de n�meros aleatorios
+		// Configuramos la semilla del generador de números aleatorios
 		srand(static_cast<unsigned int>(time(nullptr)));
 		int indiceAleatorio = rand() % comboBox->Items->Count;
-		// Selecciona el elemento correspondiente al �ndice aleatorio
+		// Selecciona el elemento correspondiente al índice aleatorio
 		comboBox->SelectedIndex = indiceAleatorio;
 		return comboBox->Text;
 	}
+
 	private: void Verificador_TEXT() {
 		String^ S_id = text_ID->Text;
 		String^ S_nombre = combo_Nombre->Text;
@@ -1266,9 +1296,6 @@ namespace Simulador {
 		String^ S_vegetariano = text_vegetariano->Text;
 		String^ S_regular = text_regular->Text;
 		String^ S_dieta = text_dieta->Text;
-		// Llenar el vector con valores
-		vector<int> vector_Solicitud; // Vector para almacenar las solicitudes
-
 		if (Tempo_Restante == numeroAleatorio(MIN_DE_DATOS, Tempo_Restante) || Tempo_Restante - 1 == numeroAleatorio(MIN_DE_DATOS, Tempo_Restante)
 			|| Tempo_Restante <= MIN_DE_DATOS)
 		{
@@ -1299,16 +1326,15 @@ namespace Simulador {
 				_vegetariano = numeroAleatorio(0, _trabajadores - _dieta - _regular);
 				text_vegetariano->Text = Convert::ToString(_vegetariano);
 				pasar_a_string_Pila(_vegetariano, " vegetarianos");
-
-				//listBox1->Items->Add(_vegetariano + " vegetariano");
+				cantidad_vegetariano += _vegetariano;
 			}
 
 			if ((String::IsNullOrEmpty(S_regular) && Tempo_Restante + 1 == numeroAleatorio(MIN_DE_DATOS, Tempo_Restante))
 				|| (String::IsNullOrEmpty(S_regular) && pase)) {
 				_regular = numeroAleatorio(0, _trabajadores - _vegetariano - _dieta);
 				text_regular->Text = Convert::ToString(_regular);
-				//listBox1->Items->Add(_regular + " regular");
 				pasar_a_string_Pila(_regular, " regulares");
+				cantidad_regular += _regular;
 			}
 
 			if ((String::IsNullOrEmpty(S_dieta) && Tempo_Restante - 2 == numeroAleatorio(MIN_DE_DATOS, Tempo_Restante))
@@ -1317,6 +1343,7 @@ namespace Simulador {
 				text_dieta->Text = Convert::ToString(_dieta);
 				//listBox1->Items->Add(_dieta + " dieta");
 				pasar_a_string_Pila(_dieta, " dietéticos");
+				cantidad_dieta += _dieta;
 			}
 			pase = false;
 		}
@@ -1343,15 +1370,15 @@ namespace Simulador {
 			string dato4 = msclr::interop::marshal_as<std::string>(S_jerarquia);
 			Solicitud solicitando = Solicitud(_id, dato1, dato2, dato3, dato4, _trabajadores, _vegetariano, _regular, _dieta);
 			miCola.encolar(solicitando);
-			fila++;
 			lbl_cantidad_menus_solicitados->Text = Convert::ToString(cantidad_de_menus_solicitados += (_vegetariano + _regular + _dieta)) + " Cantidad de menus solicitados";
 			MostarCola();
-			nuevoSupervisor();
+			limpiar_Supervisor(TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR);
 			Sleep(3000); //Detiene el programa durante 3 segundos para ver los resultados
 		}
 	}
 
 	private: System::Void Cronometro_Visible_Tick(System::Object^ sender, System::EventArgs^ e) {
+		static int Cronometro = 0;
 		Cronometro++; // Incrementar el tiempo en 1 segundo
 		TimeSpan tiempo = TimeSpan::FromSeconds(Cronometro);
 		lbl_Cronometro->Text = String::Format(L"{0}:{1:D2}", tiempo.Minutes, tiempo.Seconds);
@@ -1398,9 +1425,6 @@ namespace Simulador {
 	}
 
 	private: void MostarCola() {
-		Timer_Desencolar->Start();
-		barra_porcentaje->Visible = true;
-		barra_desencolar->Visible = true;
 		DGV_Informacion_Cola->Rows->Clear();
 		MostrarSolicitudPantalla(miCola.obtenerInicio(miCola));
 	}
@@ -1416,49 +1440,35 @@ namespace Simulador {
 		}
 	}
 	private: System::Void Timer_Desencolar_Tick(System::Object^ sender, System::EventArgs^ e) {
-		static int cantidad_de_menus_solicitados;
-		if (barra_desencolar->Value == 33) {
-			string cadenaDesapilada = miPila.desapilar();
-			String^ String_cadena = msclr::interop::marshal_as<System::String^>(cadenaDesapilada);
-			listBox1->Items->Remove(gcnew String(cadenaDesapilada.c_str()));
-			//..
-			listBox2->Items->Add(String_cadena);
-			cantidad_de_menus_solicitados += stoi(cadenaDesapilada);
-			lbl_cantidad_menus_entregados->Text = Convert::ToString(cantidad_de_menus_solicitados) + " Cantidad de menus entregada";
-		}
-		if (barra_desencolar->Value == 66) {
-			string cadenaDesapilada = miPila.desapilar();
-			String^ String_cadena = msclr::interop::marshal_as<System::String^>(cadenaDesapilada);
-			listBox1->Items->Remove(gcnew String(cadenaDesapilada.c_str()));
-			//..
-			listBox2->Items->Add(String_cadena);
-			cantidad_de_menus_solicitados += stoi(cadenaDesapilada);
-			lbl_cantidad_menus_entregados->Text = Convert::ToString(cantidad_de_menus_solicitados) + " Cantidad de menus entregada";
-		}
-		if (barra_desencolar->Value == 99) {
-			string cadenaDesapilada = miPila.desapilar();
-			String^ String_cadena = msclr::interop::marshal_as<System::String^>(cadenaDesapilada);
-			listBox1->Items->Remove(gcnew String(cadenaDesapilada.c_str()));
-			//..
-			listBox2->Items->Add(String_cadena);
-			cantidad_de_menus_solicitados += stoi(cadenaDesapilada);
-			lbl_cantidad_menus_entregados->Text = Convert::ToString(cantidad_de_menus_solicitados) + " Cantidad de menus entregada";
-		}
-		if (barra_desencolar->Value == 100) {
-			barra_desencolar->Value = 0;
-			fila--;
-			int filas_desencoladas = 0;
-			//Solicitud::GuardarUltimasSolicitudes(DGV_Informacion_Cola, filas_desencoladas);
-			Solicitud::fichero_guardar(DGV_Informacion_Cola, filas_desencoladas);
-			miCola.desencolar();
-			MostarCola();
+		if (!miPila.pilaVacia()) {
+			if (barra_desencolar->Value == 33 || barra_desencolar->Value == 66 || barra_desencolar->Value == 99) {
+				//..
+				string cadenaDesapilada = miPila.desapilar();
+				String^ String_cadena = msclr::interop::marshal_as<System::String^>(cadenaDesapilada);
+				listBox1->Items->Remove(gcnew String(cadenaDesapilada.c_str()));
+				listBox2->Items->Add(String_cadena);
+				cantidad_de_menus_entregados += stoi(cadenaDesapilada);
+				lbl_cantidad_menus_entregados->Text = Convert::ToString(cantidad_de_menus_entregados) + " Cantidad de menus entregados";
+			}
+
+			if (barra_desencolar->Value == 100) {
+				barra_desencolar->Value = 0;
+				fila--;
+				//miCola.desencolar();
+				MostarCola();
+			}
+			else {
+				//Incrementa la barra de progreso
+				barra_desencolar->Value++;
+				barra_porcentaje->Text = Convert::ToString(barra_desencolar->Value) + " %";
+			}
 		}
 		else {
-			//Incrementa la barra de progreso
-			barra_desencolar->Value++;
-			barra_porcentaje->Text = Convert::ToString(barra_desencolar->Value) + " %";
+			btn_reportes->Enabled = true;
+			btn_detener->Enabled = false;
 		}
 	}
+
 	private: System::Void time_Menu_Tick(System::Object^ sender, System::EventArgs^ e) {
 		static bool MenuExpandido = true;
 		int cambio = MenuExpandido ? -10 : 10;
@@ -1479,17 +1489,26 @@ namespace Simulador {
 		}
 
 		int intervalo = Convert::ToInt32(text_Intervalo->Text);
-		if (intervalo < 99 || intervalo == 0 || intervalo == 00) {
+		if (intervalo > 99 || intervalo == 0 || intervalo == 00) {
 			text_Intervalo->Text = "100";
 		}
 		else {
 			Temporizador->Interval = intervalo;
 			Cronometro_Visible->Interval = intervalo;
-			Timer_Desencolar->Interval = static_cast<int>(3 * Convert::ToInt32(text_Intervalo->Text));
+			Timer_Desencolar->Interval = static_cast<int>(0.5 * Convert::ToInt32(text_Intervalo->Text));
 			e->Handled = false;
 		}
 	}
 	private: System::Void btn_inicio_Click(System::Object^ sender, System::EventArgs^ e) {
+		cantidad_de_supervisores = Convert::ToInt32(text_cantidad_supervisores->Text);
+		if (cantidad_de_supervisores > 20) {
+			text_cantidad_supervisores->Text = "20";
+			return;
+		}
+		else if (cantidad_de_supervisores == 0) {
+			text_cantidad_supervisores->Text = "10";
+			return;
+		}
 		lbl_Control->Visible = false;
 		btn_pause->Enabled = true;
 		btn_detener->Enabled = true;
@@ -1498,14 +1517,69 @@ namespace Simulador {
 		//btn_inicio->Enabled = false;
 		btn_inicio->Visible = false;
 		btn_cerrar->Visible = false;
+		text_cantidad_supervisores->Enabled = false;
 	}
 	private: System::Void btn_cerrar_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Gracias por preferirnos", "Información", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		Application::Exit();
 	}
 	private: System::Void btn_reportes_Click(System::Object^ sender, System::EventArgs^ e) {
-		Reportes^ form = gcnew Reportes(cantidad_de_menus_solicitados, cantidad_de_menus_solicitados);
+		Reportes^ form = gcnew Reportes(cantidad_de_menus_solicitados, cantidad_de_menus_solicitados,
+			cantidad_vegetariano, cantidad_regular, cantidad_dieta);
 		form->ShowDialog();
+	}
+	private: System::Void btn_detener_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (MessageBox::Show("¿Deseas detener el programa?", "Confirmar detención", MessageBoxButtons::YesNo, MessageBoxIcon::Question) ==
+			System::Windows::Forms::DialogResult::Yes) {
+			limpiar_Supervisor(-10);
+			lbl_Temporizador->Text = "0:00";
+			Verificador_TEXT();
+			text_ID->Text = "";
+			Temporizador->Stop();
+			Cronometro_Visible->Stop();
+			Timer_Desencolar->Stop();
+			barra_desencolar->Value = 0;
+			btn_reportes->Enabled = true;
+			btn_cerrar->Visible = true;
+		}
+	}
+	private: System::Void text_cantidad_supervisores_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+		if (!Char::IsDigit(e->KeyChar) && !Char::IsControl(e->KeyChar)) {
+			e->Handled = true; // Bloquea el ingreso de caracteres no numéricos
+			return;
+		}
+	}
+		   // Guardar las ultimas 10 solicitudes en el archivo
+	public:	   void GuardarUltimasSolicitudes(DataGridView^ Data, int x) {
+		StreamWriter^ archivo = gcnew StreamWriter("Ultimas 10 facturas.txt", false); // Sobreescribir el archivo
+		for (int i = 0; i < 10; i++) {
+			String^ Superior = String::Format("Factura Generada el dia {0} a las {1}\n\n",
+				System::DateTime::Now.ToLongDateString(), System::DateTime::Now.ToShortTimeString());
+
+			String^ S_ID = (Data->Rows[x]->Cells[0]->Value->ToString());
+			String^ S_Nombre = (Data->Rows[x]->Cells[1]->Value->ToString());
+			String^ S_Apellido = (Data->Rows[x]->Cells[2]->Value->ToString());
+			String^ S_Area = (Data->Rows[x]->Cells[3]->Value->ToString());
+			String^ S_Jerarquia = (Data->Rows[x]->Cells[4]->Value->ToString());
+			String^ S_Trabajadores = (Data->Rows[x]->Cells[5]->Value->ToString());
+			String^ S_Vegetariano = (Data->Rows[x]->Cells[6]->Value->ToString());
+			String^ S_Regular = (Data->Rows[x]->Cells[7]->Value->ToString());
+			String^ S_Dieta = (Data->Rows[x]->Cells[8]->Value->ToString());
+			String^ S_Total = (Data->Rows[x]->Cells[9]->Value->ToString());
+
+			if (S_ID->Length > 0) {
+				String^ InformacionFactura = String::Format(
+					"ID {0} del Supervisor {1} {2} del área de {3} (con jerarquía de {4}) con {5} a su cargo se le solicitó:\n" +
+					"- {6} vegetarianos\n" +
+					"- {7} regulares\n" +
+					"- {8} dieta\n" +
+					"- {9} TOTAL\n" +
+					"--------------------------------------------------------------------------------------\n\n",
+					S_ID, S_Nombre, S_Apellido, S_Area, S_Jerarquia, S_Trabajadores, S_Vegetariano, S_Regular, S_Dieta, S_Total);
+			}
+		}
+
+		archivo->Close();
 	}
 	};
 }
