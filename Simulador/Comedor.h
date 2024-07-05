@@ -926,6 +926,7 @@ namespace Simulador {
 			   this->text_Intervalo->TabIndex = 3;
 			   this->text_Intervalo->Text = L"1000";
 			   this->text_Intervalo->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Comedor::text_Intervalo_KeyPress);
+			   this->text_Intervalo->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Comedor::text_Intervalo_KeyUp);
 			   //
 			   // Intervalo
 			   //
@@ -1487,17 +1488,6 @@ namespace Simulador {
 			e->Handled = true; // Bloquea el ingreso de caracteres no numéricos
 			return;
 		}
-
-		int intervalo = Convert::ToInt32(text_Intervalo->Text);
-		if (intervalo > 99 || intervalo == 0 || intervalo == 00) {
-			text_Intervalo->Text = "100";
-		}
-		else {
-			Temporizador->Interval = intervalo;
-			Cronometro_Visible->Interval = intervalo;
-			Timer_Desencolar->Interval = static_cast<int>(0.5 * Convert::ToInt32(text_Intervalo->Text));
-			e->Handled = false;
-		}
 	}
 	private: System::Void btn_inicio_Click(System::Object^ sender, System::EventArgs^ e) {
 		cantidad_de_supervisores = Convert::ToInt32(text_cantidad_supervisores->Text);
@@ -1580,6 +1570,19 @@ namespace Simulador {
 		}
 
 		archivo->Close();
+	}
+	private: System::Void text_Intervalo_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		int intervalo = Convert::ToInt32(text_Intervalo->Text);
+		if (intervalo < 99 || intervalo == 0 || intervalo == 00) {
+			text_Intervalo->Text = "100";
+			return;
+		}
+		else {
+			Temporizador->Interval = intervalo;
+			Cronometro_Visible->Interval = intervalo;
+			Timer_Desencolar->Interval = static_cast<int>(0.5 * Convert::ToInt32(text_Intervalo->Text));
+			e->Handled = false;
+		}
 	}
 	};
 }
