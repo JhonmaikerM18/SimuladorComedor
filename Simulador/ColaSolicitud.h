@@ -1,15 +1,12 @@
 #include <iostream>
 #include "SolicitudClass.h"
 
-// Definici?n de la clase Nodo
 class Nodo {
 public:
 	Solicitud Solicitando;
 	Nodo* siguiente;
 	Nodo(Solicitud solicitud) : Solicitando(solicitud), siguiente(nullptr) {}
 };
-
-// Definici?n de la clase Cola
 public class Cola {
 private:
 	Nodo* primero;

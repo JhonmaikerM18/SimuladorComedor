@@ -7,9 +7,6 @@ using namespace System::Windows::Forms;
 using namespace std;
 using namespace System::IO;
 
-//vector<SolicitudEntrega> solicitudes;
-//vector<SolicitudEntrega> entregas;
-
 class Solicitud {
 public:
 	string datos;

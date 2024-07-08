@@ -537,12 +537,12 @@ namespace Simulador {
 			   this->combo_Area->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
 			   this->combo_Area->FormattingEnabled = true;
-			   this->combo_Area->Items->AddRange(gcnew cli::array< System::Object^  >(25) {
+			   this->combo_Area->Items->AddRange(gcnew cli::array< System::Object^  >(24) {
 				   L"Recursos humanos", L"Ventas y marketing", L"Finanzas y contabilidad",
 					   L"Operaciones y producción", L"Tecnología de la información", L"Gestión de proyectos y desarrollo", L"Abogacía", L"Arte y fotografía",
-					   L"Atención al cliente", L"Administración de bases de datos", L"Administración de subvenciones", L"Medicina", L"Arquitectura",
-					   L"Ingeniería", L"Diseño", L"Tecnología", L"Médico", L"Maestro", L"Diseñador gráfico", L"Hostelería y Restaurantes", L"Área de Finanzas",
-					   L"Logística y Distribución", L"Desarrollo de Software", L"Marketing Digital", L"Gestión de Proyectos"
+					   L"Atención al cliente", L"Administración de bases de datos", L"Medicina", L"Arquitectura", L"Ingeniería", L"Diseño", L"Tecnología",
+					   L"Médico", L"Maestro", L"Diseñador gráfico", L"Hostelería y Restaurantes", L"Área de Finanzas", L"Logística y Distribución",
+					   L"Desarrollo de Software", L"Marketing Digital", L"Gestión de Proyectos"
 			   });
 			   this->combo_Area->Location = System::Drawing::Point(15, 292);
 			   this->combo_Area->Name = L"combo_Area";
@@ -1207,7 +1207,7 @@ namespace Simulador {
 #pragma endregion
 		   // Variables globales
 		   String^ _nombre = "", ^ _apellido = "", ^ _area = "", ^ _jerarquia = "";
-		   int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, fila = 0, cantidad_de_supervisores = 0;
+		   int _id = 0, _trabajadores = 0, _vegetariano = 0, _regular = 0, _dieta = 0, Supervisores_encola = 0, cantidad_de_supervisores = 0;
 		   //Variables globales del tiempo del programa
 		   int Tempo_Restante = TIEMPO_MAX_SEGUNDOS_TEMPORIZADOR; // Constante con valor por defecto 120 segundos
 		   //Variables globales que pasaran al otro formulario de reporte
@@ -1238,7 +1238,7 @@ namespace Simulador {
 	private: System::Void Temporizador_Tick(System::Object^ sender, System::EventArgs^ e) {
 		Tempo_Restante--; // Restar 1 segundo
 		TimeSpan tiempo = TimeSpan::FromSeconds(Tempo_Restante);
-		if (cantidad_de_supervisores > fila) {
+		if (cantidad_de_supervisores > Supervisores_encola) {
 			Verificador_TEXT();
 			lbl_Temporizador->Text = String::Format(L"{0}:{1:D2}", tiempo.Minutes, tiempo.Seconds);
 		}
@@ -1362,7 +1362,7 @@ namespace Simulador {
 		verde9->Visible = !String::IsNullOrEmpty(S_dieta);
 
 		if (S_vegetariano->Length > 0 && S_regular->Length > 0 && S_dieta->Length > 0) {
-			fila++;
+			Supervisores_encola++;
 			int total = _vegetariano + _regular + _dieta;
 			// Convierte a std::string
 			string dato1 = msclr::interop::marshal_as<std::string>(S_nombre);
@@ -1429,10 +1429,11 @@ namespace Simulador {
 		DGV_Informacion_Cola->Rows->Clear();
 		MostrarSolicitudPantalla(miCola.obtenerInicio(miCola));
 	}
+
 	private:  void MostrarSolicitudPantalla(Nodo* unNodo) {
 		if (unNodo != NULL) {
 			//listBox1->Items->Add(unNodo->Solicitando.MostrarString());
-			unNodo->Solicitando.Mostrar_DGV(DGV_Informacion_Cola, fila);
+			unNodo->Solicitando.Mostrar_DGV(DGV_Informacion_Cola, Supervisores_encola);
 
 			if (unNodo->siguiente != NULL) {
 				// Llamar recursivamente con el siguiente nodo
@@ -1454,7 +1455,7 @@ namespace Simulador {
 
 			if (barra_desencolar->Value == 100) {
 				barra_desencolar->Value = 0;
-				fila--;
+				Supervisores_encola--;
 				//miCola.desencolar();
 				MostarCola();
 			}
@@ -1539,41 +1540,10 @@ namespace Simulador {
 			return;
 		}
 	}
-		   // Guardar las ultimas 10 solicitudes en el archivo
-	public:	   void GuardarUltimasSolicitudes(DataGridView^ Data, int x) {
-		StreamWriter^ archivo = gcnew StreamWriter("Ultimas 10 facturas.txt", false); // Sobreescribir el archivo
-		for (int i = 0; i < 10; i++) {
-			String^ Superior = String::Format("Factura Generada el dia {0} a las {1}\n\n",
-				System::DateTime::Now.ToLongDateString(), System::DateTime::Now.ToShortTimeString());
 
-			String^ S_ID = (Data->Rows[x]->Cells[0]->Value->ToString());
-			String^ S_Nombre = (Data->Rows[x]->Cells[1]->Value->ToString());
-			String^ S_Apellido = (Data->Rows[x]->Cells[2]->Value->ToString());
-			String^ S_Area = (Data->Rows[x]->Cells[3]->Value->ToString());
-			String^ S_Jerarquia = (Data->Rows[x]->Cells[4]->Value->ToString());
-			String^ S_Trabajadores = (Data->Rows[x]->Cells[5]->Value->ToString());
-			String^ S_Vegetariano = (Data->Rows[x]->Cells[6]->Value->ToString());
-			String^ S_Regular = (Data->Rows[x]->Cells[7]->Value->ToString());
-			String^ S_Dieta = (Data->Rows[x]->Cells[8]->Value->ToString());
-			String^ S_Total = (Data->Rows[x]->Cells[9]->Value->ToString());
-
-			if (S_ID->Length > 0) {
-				String^ InformacionFactura = String::Format(
-					"ID {0} del Supervisor {1} {2} del área de {3} (con jerarquía de {4}) con {5} a su cargo se le solicitó:\n" +
-					"- {6} vegetarianos\n" +
-					"- {7} regulares\n" +
-					"- {8} dieta\n" +
-					"- {9} TOTAL\n" +
-					"--------------------------------------------------------------------------------------\n\n",
-					S_ID, S_Nombre, S_Apellido, S_Area, S_Jerarquia, S_Trabajadores, S_Vegetariano, S_Regular, S_Dieta, S_Total);
-			}
-		}
-
-		archivo->Close();
-	}
 	private: System::Void text_Intervalo_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		int intervalo = Convert::ToInt32(text_Intervalo->Text);
-		if (intervalo < 99 || intervalo == 0 || intervalo == 00) {
+		if (intervalo < 100) {
 			text_Intervalo->Text = "100";
 			return;
 		}
@@ -1584,5 +1554,37 @@ namespace Simulador {
 			e->Handled = false;
 		}
 	}
+		   /*   // Guardar las ultimas 10 solicitudes en el archivo
+	   public:	   void GuardarUltimasSolicitudes(DataGridView^ Data, int x) {
+		   StreamWriter^ archivo = gcnew StreamWriter("Ultimas 10 facturas.txt", false); // Sobreescribir el archivo
+		   for (int i = 0; i < 10; i++) {
+			   String^ Superior = String::Format("Factura Generada el dia {0} a las {1}\n\n",
+				   System::DateTime::Now.ToLongDateString(), System::DateTime::Now.ToShortTimeString());
+
+			   String^ S_ID = (Data->Rows[x]->Cells[0]->Value->ToString());
+			   String^ S_Nombre = (Data->Rows[x]->Cells[1]->Value->ToString());
+			   String^ S_Apellido = (Data->Rows[x]->Cells[2]->Value->ToString());
+			   String^ S_Area = (Data->Rows[x]->Cells[3]->Value->ToString());
+			   String^ S_Jerarquia = (Data->Rows[x]->Cells[4]->Value->ToString());
+			   String^ S_Trabajadores = (Data->Rows[x]->Cells[5]->Value->ToString());
+			   String^ S_Vegetariano = (Data->Rows[x]->Cells[6]->Value->ToString());
+			   String^ S_Regular = (Data->Rows[x]->Cells[7]->Value->ToString());
+			   String^ S_Dieta = (Data->Rows[x]->Cells[8]->Value->ToString());
+			   String^ S_Total = (Data->Rows[x]->Cells[9]->Value->ToString());
+
+			   if (S_ID->Length > 0) {
+				   String^ InformacionFactura = String::Format(
+					   "ID {0} del Supervisor {1} {2} del área de {3} (con jerarquía de {4}) con {5} a su cargo se le solicitó:\n" +
+					   "- {6} vegetarianos\n" +
+					   "- {7} regulares\n" +
+					   "- {8} dieta\n" +
+					   "- {9} TOTAL\n" +
+					   "--------------------------------------------------------------------------------------\n\n",
+					   S_ID, S_Nombre, S_Apellido, S_Area, S_Jerarquia, S_Trabajadores, S_Vegetariano, S_Regular, S_Dieta, S_Total);
+			   }
+		   }
+
+		   archivo->Close();
+	   }*/
 	};
 }
