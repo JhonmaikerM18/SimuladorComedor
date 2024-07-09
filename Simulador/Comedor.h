@@ -1455,7 +1455,7 @@ namespace Simulador {
 
 			if (barra_desencolar->Value == 100) {
 				barra_desencolar->Value = 0;
-				Supervisores_encola--;
+				//Supervisores_encola--;
 				//miCola.desencolar();
 				MostarCola();
 			}
@@ -1468,6 +1468,7 @@ namespace Simulador {
 		else {
 			btn_reportes->Enabled = true;
 			btn_detener->Enabled = false;
+			Cronometro_Visible->Stop();
 		}
 	}
 
